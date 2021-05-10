@@ -1,0 +1,25 @@
+@import "tailwindcss/base";
+
+@import "tailwindcss/components";
+
+@import "tailwindcss/utilities";
+
+.testClass {
+  background-image: url("./../images/home-hero-Image.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  height: 100vh;
+  p {
+    a {
+      text-decoration: underline;
+    }
+  }
+  .heading {
+    color: #00556f;
+    font-size: 52px;
+  }
+  .sub-heading {
+    color: #ffffff;
+    font-size: 42px;
+  }
+}
