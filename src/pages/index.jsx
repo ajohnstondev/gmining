@@ -1,9 +1,13 @@
 import React from "react";
 import Layout from "../components/layout";
-import CoperatePresentation from "../containers/homepage/coperate-presentation";
-import Hero from "../containers/homepage/hero";
-import Intro from "../containers/homepage/intro";
-import MarketingPosition from "../containers/homepage/market-position";
+import Footer from "./../components/footer/index";
+import {
+  Hero,
+  Intro,
+  MarketingPosition,
+  CoperatePresentation,
+  Article,
+} from "./../containers/homepage";
 const Home = () => {
   return (
     <Layout>
@@ -11,6 +15,8 @@ const Home = () => {
       <Intro />
       <MarketingPosition />
       <CoperatePresentation />
+      <Article />
+      <Footer />
     </Layout>
   );
 };
