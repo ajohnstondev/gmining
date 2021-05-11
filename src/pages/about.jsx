@@ -24,7 +24,6 @@ function AboutPage() {
             – Yousuf
           </cite>
         </div>
-
       </section>
     </Layout>
   );
