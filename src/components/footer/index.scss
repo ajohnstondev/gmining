@@ -4,16 +4,17 @@
   background-size: 100% 100%;
   height: 300px;
   padding-top: 200px;
+  .see-button {
+    background: linear-gradient(to right, #c59425 0%, #e9b949 100%);
+    color: #ffffff;
+  }
 }
 
 .footer-bar {
-  height: 270px;
-  background-color: #00556f;
+  background: transparent linear-gradient(180deg, #00556f 0%, #0a4253 100%) 0%
+    0% no-repeat padding-box;
 }
 
 .footer-overly {
-    background-color: rgba(255, 255, 255, 0.959);
-    position: absolute;
-    padding: 10px;
-    width: 100%;
+  width: 100%;
 }

@@ -6,27 +6,30 @@ function Footer() {
   const [isExpanded, toggleExpansion] = useState(false);
 
   return (
-    <div className="items-center max-w-7xl mx-auto ">
-      <div className="footer-section"></div>
-      <div className="footer-overly text-center">
-        <h2 className="text-2xl text-secondary uppercase pb-2">
-          JOIN OUR MAILING LIST
-        </h2>
-        <div className="flex justify-center gap-4">
-          <input
-            type="text"
-            placeholder="NAME"
-            className="bg-transparent border-b-2 border-gray-600 w-64 outline-none"
-          />
-          <input
-            type="text"
-            placeholder="EMAIL ADDRESS"
-            className="bg-transparent border-b-2 border-gray-600 w-64 outline-none"
-          />
-          <button className="seeMoreBtn rounded p-2">Submit</button>
+    <div className="">
+      <div className="footer-section relative z-10 flex justify-center">
+        <div className="footer-overly text-center max-w-6xl py-8 bg-gray-300 absolute z-20 rounded-xl">
+          <h2 className="text-2xl text-secondary uppercase pb-2">
+            JOIN OUR MAILING LIST
+          </h2>
+          <div className="grid grid-cols-10 gap-8 px-8 py-4">
+            <input
+              type="text"
+              placeholder="NAME"
+              className="bg-transparent border-b-2 border-gray-600 col-span-4 outline-none"
+            />
+            <input
+              type="text"
+              placeholder="EMAIL ADDRESS"
+              className="bg-transparent border-b-2 border-gray-600 col-span-4 outline-none"
+            />
+            <button className="see-button rounded p-2 col-span-2">
+              Submit
+            </button>
+          </div>
         </div>
       </div>
-      <div className="flex flex-wrap items-center justify-between footer-bar p-6">
+      <div className="flex flex-wrap items-center justify-between footer-bar px-6 pt-48 pb-24">
         <Link className="flex items-center no-underline text-white" to="/">
           <img src={Logo} alt="logo" />
         </Link>
