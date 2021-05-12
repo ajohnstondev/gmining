@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { graphql, useStaticQuery, Link } from "gatsby";
-
+import "./index.scss";
 import Logo from "../../images/logo.png";
 import SearchIcon from "./../../images/search-icon.png";
 function Header({ inverted }) {
   const [isExpanded, toggleExpansion] = useState(false);
+  const [scroll, setScroll] = useState(false);
   const { site } = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -18,10 +19,30 @@ function Header({ inverted }) {
     {
       title: "ABOUT",
       path: "/about-us",
+      items: [
+        {
+          title: "ABOUT US",
+          path: "/about-us",
+        },
+        {
+          title: "OUR TEAM",
+          path: "/our-team",
+        },
+      ],
     },
     {
       title: "CORPORATE",
       path: "/corporate",
+      items: [
+        {
+          title: "CORPORATE GOVERNENCE",
+          path: "/corporate-governence",
+        },
+        {
+          title: "CORPORATE DIRECTORY",
+          path: "/corporate-directory",
+        },
+      ],
     },
     {
       title: "NEWS",
@@ -30,19 +51,50 @@ function Header({ inverted }) {
     {
       title: "Investors",
       path: "/investors",
+      items: [
+        {
+          title: "REPORTS AND DISCLOUSERS",
+          path: "/reports",
+        },
+        {
+          title: "EVENTS AND PRESENTATION",
+          path: "/events-and-presentation",
+        },
+      ],
     },
     {
       title: "PROJECTS",
       path: "/projects",
     },
   ];
+  function scrollFunction() {
+    console.log("askh");
+    if (typeof window != "undefined") {
+      if (window.pageYOffset > 0) {
+        setScroll(true);
+      } else {
+        setScroll(false);
+      }
+    }
+  }
+  useEffect(() => {
+    console.log("use Effect");
+    if (typeof window != "undefined") {
+      window.onscroll = function () {
+        scrollFunction();
+      };
+    }
+  }, []);
+
   return (
     <header
       className={`${
         inverted ? "bg-white" : "bg-transparent"
-      }  absolute left-0 right-0 top-0 z-10`}
+      }   left-0 right-0 top-0 z-10 header-main ${
+        scroll ? "fixed bg-white" : "absolute"
+      }`}
     >
-      <div className="flex flex-wrap items-center justify-between max-w-7xl mx-auto p-4 md:p-6">
+      <div className="flex flex-wrap items-center justify-between max-w-7xl mx-auto px-4 md:px-6">
         <Link className="flex items-center no-underline text-white" to="/">
           <img src={Logo} alt="logo" />
         </Link>
@@ -68,13 +120,26 @@ function Header({ inverted }) {
         >
           {navigations.map((item) => (
             <Link
-              className={`block md:inline-block mt-4 md:mt-0 md:ml-10 no-underline ${
+              className={`block md:inline-block  mt-4 md:mt-0 md:ml-10 no-underline link-item relative ${
                 inverted ? "text-text" : "text-white"
-              } `}
+              } ${scroll ? "text-text" : "text-white"} `}
               key={item.title}
               to={item.path}
             >
-              {item.title}
+              <div className="  item">{item.title}</div>
+              {item.items && (
+                <div className="  dropdown absolute -ml-4">
+                  {item.items?.map((item) => (
+                    <Link
+                      className="block bg-white no-underline text-black py-4 pl-4 pr-8 text-text"
+                      key={item.title}
+                      to={item.path}
+                    >
+                      {item.title}
+                    </Link>
+                  ))}
+                </div>
+              )}
             </Link>
           ))}
 
