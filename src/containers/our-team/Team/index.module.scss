@@ -1,0 +1,92 @@
+.teamCardContainer {
+  &.active {
+    position: relative;
+    &::after {
+      content: "";
+      background-color: var(--color_s);
+      display: block;
+      height: 6px;
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+
+      width: 55%;
+      @media (min-width: 1024px) {
+        width: 85%;
+      }
+    }
+  }
+  padding: 10px;
+
+  .card {
+    height: 230px;
+    @media (min-width: 1024px) {
+      height: 270px;
+    }
+    p {
+      line-height: 19px;
+    }
+  }
+}
+
+.coloredStripe {
+  background-color: #f4f0e9;
+  height: 180px;
+  transform: translateY(calc(-100% - 10px));
+  position: relative;
+  z-index: -1;
+}
+
+.rightArrow {
+  position: absolute;
+
+  right: 30px;
+  bottom: 75px;
+
+  @media (min-width: 768px) {
+    right: 40px;
+    bottom: 70px;
+  }
+
+  @media (min-width: 1024px) {
+    right: 0px;
+    bottom: 94px;
+  }
+
+  @media (min-width: 1240px) {
+    right: -30px;
+    bottom: 75px;
+  }
+
+  .icon {
+    fill: var(--color_s);
+  }
+}
+
+.leftArrow {
+  position: absolute;
+  transform: rotate(0.5turn);
+
+  left: 30px;
+  bottom: 75px;
+
+  @media (min-width: 768px) {
+    left: 40px;
+    bottom: 70px;
+  }
+
+  @media (min-width: 1024px) {
+    left: 0px;
+    bottom: 94px;
+  }
+
+  @media (min-width: 1240px) {
+    left: -30px;
+    bottom: 75px;
+  }
+
+  .icon {
+    fill: var(--color_s);
+  }
+}

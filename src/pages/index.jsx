@@ -16,7 +16,6 @@ const Home = () => {
       <MarketingPosition />
       <CoperatePresentation />
       <Article />
-      <Footer />
     </Layout>
   );
 };

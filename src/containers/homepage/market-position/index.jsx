@@ -1,5 +1,7 @@
 import React from "react";
-import styles from "./index.scss";
+
+import * as styles from "./index.module.scss";
+
 const MarketingPosition = () => {
   return (
     <section className="intro-section  bg-secondary py-12 text-center p-4">
@@ -21,35 +23,35 @@ const MarketingPosition = () => {
           </p>
         </div>
         <div className="py-6 ">
-          <div className="flex flex-wrap  justify-center gap-2 text-center">
-            <div className="xs:w-1/2 md:w-1/4 lg:w-1/6">
+          <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 md:grid-cols-4 text-center">
+            <div>
               <h1 className="text-primary font-normal text-5xl mb-4">I</h1>
               <p className="text-base">
                 Led by experienced mine builder Louis-Pierre Gignac (CEO) and
                 Chairman: Louis Gignac Sr. (Chairman)
               </p>
             </div>
-            <div className="xs:w-1/2 md:w-1/4 lg:w-1/6">
+            <div>
               <h1 className="text-primary font-normal text-5xl mb-4">II</h1>
               <p className="text-base">
                 Board and management aligned with shareholders
               </p>
             </div>
-            <div className="xs:w-1/2 md:w-1/4 lg:w-1/6">
+            <div>
               <h1 className="text-primary font-normal text-5xl mb-4">III</h1>
               <p className="text-base">
                 Significant institutional support from specialized mining funds
                 and high net worth groups
               </p>
             </div>
-            <div className="xs:w-1/2 md:w-1/4 lg:w-1/6">
+            <div>
               <h1 className="text-primary font-normal text-5xl mb-4">IV</h1>
               <p className="text-base">
                 Exclusively supported by G Mining Services through an arm’s
                 length MSA
               </p>
             </div>
-            <div className="xs:w-1/2 md:w-1/4 lg:w-1/6">
+            <div>
               <h1 className="text-primary font-normal text-5xl mb-4">V</h1>
               <p className="text-base">
                 Plan to acquire at least one advanced‐stage mining asset in 2021

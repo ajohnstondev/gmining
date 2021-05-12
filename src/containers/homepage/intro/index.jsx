@@ -1,10 +1,12 @@
 import React from "react";
-import styles from "./index.scss";
+
+import * as styles from "./index.module.scss";
+
 const Intro = () => {
   return (
     <section className="intro-section py-12 max-w-6xl mx-auto p-4">
-      <div className="lg:flex flex-none gap-12">
-        <div className="flex-1">
+      <div class="grid gap-4 grid-cols-1  sm:grid-cols-1 xl:grid-cols-2 md:grid-cols-2 md:gap-8">
+        <div className="">
           <h2 className="text-2xl text-secondary uppercase">
             A company with no ceiling
           </h2>
@@ -18,9 +20,12 @@ const Intro = () => {
             creating the next mid-tier producer.
           </p>
         </div>
-        <div className="border-secondary border border-l-0 border-solid p-6 pl-0 flex-1">
+
+        <div className="border-secondary border border-l-0 border-solid p-6 pl-0">
           <div className="bg-gray-200 rounded p-6">
-            <h2 className="text-xl text-primary uppercase mb-2 font-semibold">Tsx-v Gmin</h2>
+            <h2 className="text-xl text-primary uppercase mb-2 font-semibold">
+              Tsx-v Gmin
+            </h2>
             <div className="grid grid-cols-2 gap-12">
               <h4 className="text-primary font-medium">Stock Price (CAD):</h4>
               <h4 className="">1.10 0.00(0.0%)</h4>
@@ -38,6 +43,7 @@ const Intro = () => {
           </div>
         </div>
       </div>
+      <div className="lg:flex flex-none gap-12"></div>
     </section>
   );
 };

@@ -1,19 +1,16 @@
 import PropTypes from "prop-types";
 import React from "react";
 import Header from "../header";
+import Footer from "../footer";
 
-function Layout({ children }) {
+function Layout({ children, inverted }) {
   return (
     <div>
-      <Header />
+      <Header inverted={inverted} />
 
       <main>{children}</main>
 
-      {/* <footer className="bg-blue-700">
-        <nav className="text-center max-w-4xl mx-auto p-4 md:p-8 text-sm">
-          <p className="text-white font-bold">Copyright &copy;</p>
-        </nav>
-      </footer> */}
+      <Footer />
     </div>
   );
 }

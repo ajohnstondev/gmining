@@ -1,9 +1,13 @@
 import React from "react";
-import styles from "./index.scss";
+
+import * as styles from "./index.module.scss";
+
 const Hero = () => {
   return (
-    <section className="hero-section relative">
-      <div className="absolute top-0 right-0 left-0 bottom-0 overlay"></div>
+    <section className={` ${styles.heroSection} relative`}>
+      <div
+        className={`absolute top-0 right-0 left-0 bottom-0 ${styles.overlay}`}
+      ></div>
       <div className="max-w-6xl mx-auto px-4 relative">
         <div className="absolute left-0">
           <h1 className="text-primary text-5xl ">G MINING VENTURES.</h1>

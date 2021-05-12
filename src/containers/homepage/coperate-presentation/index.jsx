@@ -1,5 +1,7 @@
 import React from "react";
-import styles from "./index.scss";
+
+import * as styles from "./index.module.scss";
+
 const CoperatePresentation = () => {
   return (
     <section className="bg-primary py-12">
@@ -15,7 +17,9 @@ const CoperatePresentation = () => {
           more details please click the button below:
         </p>
 
-        <button className="rounded p-2 uppercase button ">Download</button>
+        <button className={`rounded p-2 uppercase ${styles.button} `}>
+          Download
+        </button>
       </div>
     </section>
   );

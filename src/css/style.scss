@@ -1,5 +1,12 @@
 @import "tailwindcss/base";
-
 @import "tailwindcss/components";
-
 @import "tailwindcss/utilities";
+
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
+
+body {
+  --color_p: #00556f;
+  --color_s: #c59425;
+  --color_t: "#606060";
+}
