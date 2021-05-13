@@ -3,6 +3,8 @@ import { graphql, useStaticQuery, Link } from "gatsby";
 import "./index.scss";
 import Logo from "../../images/logo.png";
 import SearchIcon from "./../../images/search-icon.png";
+import ArrowDownBlack from "../../images/down-arrow-black.png";
+import ArrowDownWhite from "../../images/down-arrow-white.png";
 function Header({ inverted }) {
   const [isExpanded, toggleExpansion] = useState(false);
   const [scroll, setScroll] = useState(false);
@@ -26,7 +28,7 @@ function Header({ inverted }) {
         },
         {
           title: "OUR TEAM",
-          path: "/our-team",
+          path: "/about-us/our-team",
         },
       ],
     },
@@ -36,11 +38,11 @@ function Header({ inverted }) {
       items: [
         {
           title: "CORPORATE GOVERNENCE",
-          path: "/corporate-governence",
+          path: "corporate/corporate-governence",
         },
         {
           title: "CORPORATE DIRECTORY",
-          path: "/corporate-directory",
+          path: "corporate/corporate-directory",
         },
       ],
     },
@@ -49,7 +51,7 @@ function Header({ inverted }) {
       path: "/news",
     },
     {
-      title: "Investors",
+      title: "INVESTORS",
       path: "/investors",
       items: [
         {
@@ -58,7 +60,7 @@ function Header({ inverted }) {
         },
         {
           title: "EVENTS AND PRESENTATION",
-          path: "/events-and-presentation",
+          path: "reports/events-and-presentation",
         },
       ],
     },
@@ -78,7 +80,6 @@ function Header({ inverted }) {
     }
   }
   useEffect(() => {
-    console.log("use Effect");
     if (typeof window != "undefined") {
       window.onscroll = function () {
         scrollFunction();
@@ -88,13 +89,15 @@ function Header({ inverted }) {
 
   return (
     <header
+      onMouseOver={() => setScroll(true)}
+      onMouseOut={() => setScroll(false)}
       className={`${
         inverted ? "bg-white" : "bg-transparent"
       }   left-0 right-0 top-0 z-10 header-main ${
         scroll ? "fixed bg-white" : "absolute"
       }`}
     >
-      <div className="flex flex-wrap items-center justify-between max-w-7xl mx-auto px-4 md:px-6">
+      <div className="flex flex-wrap items-center justify-between px-4 md:px-6">
         <Link className="flex items-center no-underline text-white" to="/">
           <img src={Logo} alt="logo" />
         </Link>
@@ -125,8 +128,21 @@ function Header({ inverted }) {
               } ${scroll ? "text-text" : "text-white"} `}
               key={item.title}
               to={item.path}
+              activeClassName="active"
+              partiallyActive={true}
             >
-              <div className="  item">{item.title}</div>
+              <div className="  item flex items-center">
+                <span>{item.title}</span>
+                {item.items && (
+                  <span>
+                    {!scroll && !inverted ? (
+                      <img src={ArrowDownWhite} className="ml-4" />
+                    ) : (
+                      <img src={ArrowDownBlack} className="ml-4" />
+                    )}
+                  </span>
+                )}
+              </div>
               {item.items && (
                 <div className="  dropdown absolute -ml-4">
                   {item.items?.map((item) => (
@@ -144,7 +160,7 @@ function Header({ inverted }) {
           ))}
 
           <Link
-            className="block md:inline-block mt-4 md:mt-0 md:ml-10 no-underline text-black"
+            className="block md:inline-block mt-4 md:mt-0 md:ml-10 no-underline text-primary"
             key="PROJECTS"
             to="/"
           >
