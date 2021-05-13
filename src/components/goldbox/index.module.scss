@@ -1,0 +1,29 @@
+.ourMissionContainer {
+  display: flex;
+  align-items: center;
+
+  @media (min-width: 1024px) {
+    height: 345px;
+  }
+
+  .missionWrapper {
+    @media (min-width: 1024px) {
+      border: 2px solid var(--color_s);
+    }
+    position: relative;
+
+    .missionHeading {
+      background-color: #fff;
+      position: absolute;
+      top: 0px;
+      padding: 0px 22px;
+      @media (min-width: 1024px) {
+        transform: translateY(-50%);
+      }
+    }
+
+    .dark {
+      font-weight: 600;
+    }
+  }
+}

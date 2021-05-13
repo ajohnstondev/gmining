@@ -8,6 +8,7 @@ import ArrowDownWhite from "../../images/down-arrow-white.png";
 function Header({ inverted }) {
   const [isExpanded, toggleExpansion] = useState(false);
   const [scroll, setScroll] = useState(false);
+  const [isInverted, setInverted] = useState(inverted);
   const { site } = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -38,11 +39,11 @@ function Header({ inverted }) {
       items: [
         {
           title: "CORPORATE GOVERNENCE",
-          path: "corporate/corporate-governence",
+          path: "/corporate",
         },
         {
           title: "CORPORATE DIRECTORY",
-          path: "corporate/corporate-directory",
+          path: "/corporate/corporate-directory",
         },
       ],
     },
@@ -60,7 +61,7 @@ function Header({ inverted }) {
         },
         {
           title: "EVENTS AND PRESENTATION",
-          path: "reports/events-and-presentation",
+          path: "/reports/events-and-presentation",
         },
       ],
     },
@@ -89,15 +90,15 @@ function Header({ inverted }) {
 
   return (
     <header
-      onMouseOver={() => setScroll(true)}
-      onMouseOut={() => setScroll(false)}
+      onMouseOver={() => setInverted(true)}
+      onMouseOut={() => setInverted(false)}
       className={`${
-        inverted ? "bg-white" : "bg-transparent"
+        isInverted || inverted ? "bg-white" : "bg-transparent"
       }   left-0 right-0 top-0 z-10 header-main ${
         scroll ? "fixed bg-white" : "absolute"
       }`}
     >
-      <div className="flex flex-wrap items-center justify-between px-4 md:px-6">
+      <div className="flex flex-wrap items-center justify-between  px-4 md:px-6">
         <Link className="flex items-center no-underline text-white" to="/">
           <img src={Logo} alt="logo" />
         </Link>
@@ -124,7 +125,7 @@ function Header({ inverted }) {
           {navigations.map((item) => (
             <Link
               className={`block md:inline-block  mt-4 md:mt-0 md:ml-10 no-underline link-item relative ${
-                inverted ? "text-text" : "text-white"
+                inverted || isInverted ? "text-text" : "text-white"
               } ${scroll ? "text-text" : "text-white"} `}
               key={item.title}
               to={item.path}
@@ -135,7 +136,7 @@ function Header({ inverted }) {
                 <span>{item.title}</span>
                 {item.items && (
                   <span>
-                    {!scroll && !inverted ? (
+                    {!scroll && !inverted && !isInverted ? (
                       <img src={ArrowDownWhite} className="ml-4" />
                     ) : (
                       <img src={ArrowDownBlack} className="ml-4" />

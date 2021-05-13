@@ -1,0 +1,10 @@
+.documentsContainer {
+  padding-top: 45px;
+  padding-bottom: 45px;
+
+  @media (min-width: 1024px) {
+    padding-top: 75px;
+    padding-bottom: 75px;
+  }
+  background-color: #e9f0f2;
+}

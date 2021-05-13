@@ -1,5 +1,5 @@
-import React, { useState } from "react";
 import { graphql, useStaticQuery, Link } from "gatsby";
+import React, { useState } from "react";
 import Logo from "../../images/white-log.png";
 import "./index.scss";
 function Footer() {
