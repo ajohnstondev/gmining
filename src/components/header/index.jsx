@@ -57,11 +57,11 @@ function Header({ inverted }) {
       items: [
         {
           title: "REPORTS AND DISCLOUSERS",
-          path: "/reports",
+          path: "/investors",
         },
         {
           title: "EVENTS AND PRESENTATION",
-          path: "/reports/events-and-presentation",
+          path: "/investors/events-and-presentations",
         },
       ],
     },
@@ -71,7 +71,6 @@ function Header({ inverted }) {
     },
   ];
   function scrollFunction() {
-    console.log("askh");
     if (typeof window != "undefined") {
       if (window.pageYOffset > 0) {
         setScroll(true);
