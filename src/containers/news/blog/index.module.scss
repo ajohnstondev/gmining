@@ -1,0 +1,18 @@
+.blogContainer {
+  @media (min-width: 1024px) {
+    width: 700px;
+  }
+
+  .article {
+    background-color: #f2f6f7;
+  }
+}
+
+.chevronRight {
+  fill: var(--color_s);
+}
+
+.chevronLeft {
+  fill: var(--color_s);
+  transform: rotate(180deg);
+}
