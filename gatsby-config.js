@@ -1,7 +1,22 @@
+const path = require("path");
+
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
+const spaceId = process.env.CONTENTFUL_SPACE_ID;
+const accessToken = process.env.CONTENTFUL_ACCESS_TOKEN;
+
+if (!spaceId || !accessToken) {
+  throw new Error(
+    "Contentful sapceId and the access token need to be provided."
+  );
+}
+
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Tailwind Start`,
-    description: `Gatsby starter styled with Tailwind`,
+    title: `G Mining`,
+    description: `G Mining Web site`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -17,7 +32,13 @@ module.exports = {
         icon: `src/images/tailwind-icon.png`,
       },
     },
-
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: spaceId,
+        accessToken: accessToken,
+      },
+    },
     {
       resolve: `gatsby-plugin-sass`,
       options: {

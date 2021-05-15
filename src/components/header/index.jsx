@@ -71,6 +71,7 @@ function Header({ inverted }) {
     },
   ];
   function scrollFunction() {
+    console.log("askh");
     if (typeof window != "undefined") {
       if (window.pageYOffset > 0) {
         setScroll(true);

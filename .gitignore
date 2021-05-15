@@ -12,3 +12,4 @@ package-lock.json
 
 # deployment-specific configs
 now.json
+.env.development

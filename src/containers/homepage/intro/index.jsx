@@ -1,23 +1,15 @@
 import React from "react";
+import "./index.module.scss";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
-import * as styles from "./index.module.scss";
-
-const Intro = () => {
+const Intro = ({ data }) => {
   return (
     <section className="intro-section py-12 max-w-6xl mx-auto p-4">
       <div class="grid gap-4 grid-cols-1  sm:grid-cols-1 xl:grid-cols-2 md:grid-cols-2 md:gap-8">
         <div className="">
-          <h2 className="text-2xl text-secondary uppercase">
-            A company with no ceiling
-          </h2>
+          <h2 className="text-2xl text-secondary uppercase">{data.title}</h2>
           <p className="mt-4 text-text">
-            G Mining Ventures Corp. (GMIN) is a mineral exploration company
-            focused on the acquisition and development of precious metal
-            properties. GMIN was created to capitalize on the value that
-            successful mine development offers. The corporation is founded by
-            the principals of G Mining Services Inc., whose proven method of
-            building new mines on time and under budget will be leveraged into
-            creating the next mid-tier producer.
+            {documentToReactComponents(JSON.parse(data.content.raw))}
           </p>
         </div>
 

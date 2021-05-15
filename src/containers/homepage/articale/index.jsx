@@ -3,7 +3,7 @@ import { Link } from "gatsby";
 
 import * as styles from "./index.module.scss";
 
-const MarketingPosition = () => {
+const MarketingPosition = ({ quickLinks }) => {
   return (
     <section className="intro-section  bg-secondary py-12">
       <div className="max-w-6xl mx-auto">
@@ -36,43 +36,24 @@ const MarketingPosition = () => {
           </div>
           <div className="col-span-1">
             <h2 className="text-2xl text-secondary uppercase pb-2">
-              Quick Links
+              {quickLinks.title}
             </h2>
             <div className="border-secondary border-b border-solid mb-2"></div>
-            <Link
-              className="text-primary uppercase text-sm font-semibold	block my-4"
-              to="/"
-            >
-              Press Releases
-            </Link>
 
-            <Link
-              className="text-primary uppercase text-sm font-semibold	block my-4"
-              to="/"
-            >
-              Blog
-            </Link>
+            {quickLinks.quickLinks.items.map((v, i) => {
+              return (
+                <Link
+                  className="text-primary uppercase text-sm font-semibold	block my-4"
+                  to={v.link}
+                >
+                  {v.title}
+                </Link>
+              );
+            })}
 
-            <Link
-              className="text-primary uppercase text-sm font-semibold	block my-4"
-              to="/"
-            >
-              Financials
-            </Link>
-
-            <Link
-              className="text-primary uppercase text-sm font-semibold	block my-4"
-              to="/"
-            >
-              Presentations & fact sheetss
-            </Link>
-
-            <p className="py-4">
-              For more information on disclosures, reports, and other
-              publications, click below:
-            </p>
+            <p className="py-4">{quickLinks.content}</p>
             <button className={`${styles.seeMoreBtn} p-3 uppercase rounded`}>
-              See More
+              <Link href={quickLinks.ctaLink}>{quickLinks.ctaText}</Link>
             </button>
           </div>
         </div>
