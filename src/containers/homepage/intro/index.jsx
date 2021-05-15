@@ -1,6 +1,6 @@
 import React from "react";
-import "./index.module.scss";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import "./index.module.scss";
 
 const Intro = ({ data }) => {
   return (

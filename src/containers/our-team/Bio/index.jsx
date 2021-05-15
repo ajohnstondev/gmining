@@ -2,7 +2,7 @@ import React from "react";
 
 import * as styles from "./index.module.scss";
 
-const Bio = ({ name, title, designation, image, detail }) => {
+const Bio = ({ name, role, position, image, bio }) => {
   return (
     <div className={`${styles.bioContainer}`}>
       <div className="px-4 lg:px-8 xl:px-0 max-w-6xl mx-auto flex gap-12 items-center">
@@ -12,16 +12,18 @@ const Bio = ({ name, title, designation, image, detail }) => {
               {name}
             </h2>
           )}
-          {designation && (
+          {position && (
             <h4 className="hidden lg:block text-secondary text-lg font-semibold">
-              {designation}
+              {position}
             </h4>
           )}
-          {title && <h3 className="text-xl font-semibold lg:my-3">{title}</h3>}
-          {detail && <p className="text-text text-lg mt-3">{detail}</p>}
+          {role && <h3 className="text-xl font-semibold lg:my-3">{role}</h3>}
+          {bio && <p className="text-text text-lg mt-3">{bio.bio}</p>}
         </div>
         <div className="hidden lg:block w-4/12">
-          {image && <img alt={name} src={image} className="w-full" />}
+          {image && (
+            <img alt={name} src={image?.file?.url} className="w-full" />
+          )}
         </div>
       </div>
     </div>

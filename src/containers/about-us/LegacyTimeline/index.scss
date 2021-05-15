@@ -1,4 +1,4 @@
-.timelineContainer {
+.timeline-container {
   position: relative;
 
   &::before {
@@ -11,16 +11,16 @@
     left: 50%;
   }
 
-  .timelineEvent {
+  .timeline-event {
     justify-content: center;
     display: flex;
 
-    .eventContainer {
+    .event-container {
       padding: 0px 36px 36px 36px;
       width: 50%;
       position: relative;
 
-      .eventDetail {
+      .event-detail {
         background-color: #f2f6f7;
         border-radius: 5px;
         padding: 22px 36px;
@@ -38,7 +38,7 @@
         }
       }
 
-      .eventIcon {
+      .event-icon {
         position: absolute;
         width: 65px;
         bottom: 0px;
@@ -46,7 +46,7 @@
         transform: translateX(-50%);
       }
 
-      .eventLine {
+      .event-line {
         &::before {
           content: "";
           position: absolute;
@@ -69,26 +69,26 @@
     }
   }
 
-  .eventRight {
+  .event-right {
     justify-content: flex-end;
 
-    .eventContainer {
+    .event-container {
       padding-left: 108px;
 
-      .eventDetail {
+      .event-detail {
         padding-left: 48px;
         align-items: flex-start;
         padding-bottom: 22px;
         text-align: left;
       }
 
-      .eventIcon {
+      .event-icon {
         left: 108px;
         top: 50%;
         transform: translate(-50%, -50%);
       }
 
-      .eventLine {
+      .event-line {
         left: 0px;
         background-color: var(--color_s);
         &::before {
@@ -101,25 +101,25 @@
     }
   }
 
-  .eventLeft {
+  .event-left {
     justify-content: flex-start;
-    .eventContainer {
+    .event-container {
       padding-right: 108px;
 
-      .eventDetail {
+      .event-detail {
         padding-right: 48px;
         align-items: flex-start;
         padding-bottom: 22px;
         text-align: start;
       }
 
-      .eventIcon {
+      .event-icon {
         left: 100%;
         top: 50%;
         transform: translate(calc(-50% - 108px), -50%);
       }
 
-      .eventLine {
+      .event-line {
         right: 0px;
 
         background-color: var(--color_s);
@@ -133,23 +133,23 @@
     }
   }
 
-  .firstEvent {
-    .eventContainer {
+  .first-event {
+    .event-container {
       margin-bottom: 60px;
     }
   }
 
-  .lastEvent {
-    .eventContainer {
+  .last-event {
+    .event-container {
       margin-top: 60px;
       padding-bottom: 0px;
       padding-top: 36px;
 
-      .eventDetail {
+      .event-detail {
         padding-top: 38px;
       }
 
-      .eventIcon {
+      .event-icon {
         top: 36px;
         transform: translate(-50%, -50%);
       }

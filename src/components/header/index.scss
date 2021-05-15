@@ -18,6 +18,10 @@
   .link-item:hover {
     .dropdown {
       display: block;
+      .dropdown-active {
+        background-color: #025068;
+        color: white;
+      }
     }
   }
   .active {

@@ -1,18 +1,31 @@
 import { graphql, useStaticQuery, Link } from "gatsby";
 import React, { useState } from "react";
+
+import Modal from "../Modal";
 import Logo from "../../images/white-log.png";
 import "./index.scss";
+
 function Footer() {
   const [isExpanded, toggleExpansion] = useState(false);
+  const [thankModal, setThankModal] = useState(false);
+
+  const subscribeHandler = (e) => {
+    e.preventDefault();
+    setThankModal(true);
+  };
 
   return (
     <div className="">
+      {thankModal && <Modal onClose={() => setThankModal(false)} />}
       <div className="footer-section relative z-10 flex justify-center">
         <div className="footer-overly text-center max-w-6xl py-8 bg-gray-300 absolute z-20 rounded-xl px-4">
           <h2 className="text-2xl text-secondary uppercase pb-2">
             JOIN OUR MAILING LIST
           </h2>
-          <div className="block md:flex  justify-center max-w-6xl mx-auto gap-2 items-center">
+          <form
+            onSubmit={subscribeHandler}
+            className="block md:flex  justify-center max-w-6xl mx-auto gap-2 items-center"
+          >
             <div className="w-1/1 sm:w-1/1 md:w-1/1 xl:w-2/5 py-2">
               <input
                 type="text"
@@ -30,7 +43,7 @@ function Footer() {
             <div className="w-1/1 sm:w-1/1 md:w-1/1 xl:w-1/5 py-2">
               <button className="see-button rounded p-2 w-full">Submit</button>
             </div>
-          </div>
+          </form>
         </div>
       </div>
       <div className="footer-bar">

@@ -1,4 +1,4 @@
-.ourMissionContainer {
+.our-mission-container {
   display: flex;
   align-items: center;
 
@@ -6,13 +6,13 @@
     height: 345px;
   }
 
-  .missionWrapper {
+  .mission-wrapper {
     @media (min-width: 1024px) {
       border: 2px solid var(--color_s);
     }
     position: relative;
 
-    .missionHeading {
+    .mission-heading {
       background-color: #fff;
       position: absolute;
       top: 0px;

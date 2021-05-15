@@ -1,6 +1,7 @@
 import { Link } from "gatsby";
-import React from "react";
+import React, { useState } from "react";
 
+import RRenderer from "../../../components/richtextRenderer";
 import { ChevronRight } from "../../../components/icon";
 import * as styles from "./index.module.scss";
 
@@ -31,7 +32,27 @@ const BLOG_DATA = {
   ],
 };
 
-const Blog = () => {
+const Blog = ({ data }) => {
+  const [page, setPage] = useState(1);
+
+  const renderPagination = () => {
+    const pagination = [];
+    let pgCount = Math.ceil(data.length / 4);
+    for (; pgCount > 0; pgCount--) {
+      pagination.unshift(pgCount);
+    }
+    return pagination.map((num) => (
+      <li
+        className={`text-secondary cursor-pointer ${
+          num === page && "underline"
+        }`}
+        onClick={() => setPage(num)}
+      >
+        {num}
+      </li>
+    ));
+  };
+
   return (
     <div className="py-8 lg:py-24">
       <div className="px-6 lg:px-8 px-0 max-w-6xl mx-auto">
@@ -48,26 +69,27 @@ const Blog = () => {
           </div>
           <div className={` ${styles.blogContainer}`}>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-8">
-              {BLOG_DATA.articles.map((article) => (
-                <div
-                  className={`${styles.article} flex flex-col gap-3 rounded-lg py-5 lg:py-10 px-6`}
-                >
-                  <h3 className="text-primary text-2xl capitalize">
-                    {article.title}
-                  </h3>
-                  <h4 className="uppercase text-text">{article.date}</h4>
-                  <p className="text-text text-lg">
-                    <span className="font-semibold">Source Name</span> -{" "}
-                    {article.sourceName}
-                  </p>
-                  <Link
-                    to={article.link}
-                    className="text-sm text-secondary underline"
+              {data
+                .slice((page - 1) * 4, (page - 1) * 4 + 4)
+                .map(({ node: { content, ctaLink, ctaText, title } }) => (
+                  <div
+                    className={`${styles.article} flex flex-col gap-3 rounded-lg py-5 lg:py-10 px-6`}
                   >
-                    READ THE ARTICLE {">"}
-                  </Link>
-                </div>
-              ))}
+                    <h3 className="text-primary text-2xl capitalize">
+                      {title}
+                    </h3>
+                    <h4 className="uppercase text-text">7th April, 1997</h4>
+                    <p className="text-text text-lg">
+                      <RRenderer data={content} />
+                    </p>
+                    <Link
+                      to={ctaLink}
+                      className="text-sm text-secondary underline"
+                    >
+                      {ctaText}
+                    </Link>
+                  </div>
+                ))}
             </div>
             <div className={`${styles.pagination}`}>
               <div className="flex items-center">
@@ -75,10 +97,7 @@ const Blog = () => {
                   <ChevronRight size={19} />
                 </div>
                 <ul className="flex flex-1 justify-center gap-10">
-                  <li className="text-secondary">1</li>
-                  <li className="text-secondary">2</li>
-                  <li className="text-secondary">3</li>
-                  <li className="text-secondary">4</li>
+                  {renderPagination()}
                 </ul>
                 <div>
                   <ChevronRight

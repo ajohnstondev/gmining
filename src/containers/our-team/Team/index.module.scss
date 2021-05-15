@@ -1,4 +1,5 @@
 .teamCardContainer {
+  padding: 0px 10px;
   &.active {
     position: relative;
     &::after {
@@ -7,7 +8,7 @@
       display: block;
       height: 6px;
       position: absolute;
-      bottom: 10px;
+      bottom: 0px;
       left: 50%;
       transform: translateX(-50%);
 
@@ -17,12 +18,11 @@
       }
     }
   }
-  padding: 10px;
 
   .card {
     height: 230px;
     @media (min-width: 1024px) {
-      height: 270px;
+      height: 300px;
     }
     p {
       line-height: 19px;
@@ -33,7 +33,7 @@
 .coloredStripe {
   background-color: #f4f0e9;
   height: 180px;
-  transform: translateY(calc(-100% - 10px));
+  transform: translateY(calc(-100%));
   position: relative;
   z-index: -1;
 }

@@ -5,43 +5,6 @@ import { ChevronRight } from "../../../components/icon";
 import Bio from "../Bio";
 import * as styles from "./index.module.scss";
 
-const TEAM_DATA = [
-  {
-    image: "http://s3.amazonaws.com/37assets/svn/765-default-avatar.png",
-    title: "Big Title",
-    detail:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis corrupti quis eaque recusandae culpa, nostrum doloribus iste deleniti fugiat cupiditate blanditiis, impedit ipsum molestiae repellendus dignissimos eveniet quae excepturi quos sapiente voluptatem accusantium minima nihil! Tempore quidem adipisci optio cupiditate doloremque ratione obcaecati suscipit culpa officia soluta, laudantium ullam facilis, neque natus. Qui quod aliquid quibusdam voluptates, enim ipsa hic reiciendis nesciunt natus labore eaque quo voluptatem possimus! Nesciunt, minima beatae dignissimos error blanditiis, qui minus ut atque ab soluta tenetur accusamus. Magnam quam iure quaerat placeat. Hic excepturi, similique inventore debitis modi necessitatibus, esse eius, praesentium illum iusto delectus!",
-    name: "John Doe",
-    designation: "Founder and CEO",
-  },
-  {
-    image: "http://s3.amazonaws.com/37assets/svn/765-default-avatar.png",
-    name: "John Doe",
-    designation: "Founder and CEO",
-  },
-  {
-    image:
-      "https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg",
-    name: "John Doe",
-    designation: "Founder and CEO",
-  },
-  {
-    image: "http://s3.amazonaws.com/37assets/svn/765-default-avatar.png",
-    name: "John Doe",
-    designation: "Founder and CEO",
-  },
-  {
-    image: "http://s3.amazonaws.com/37assets/svn/765-default-avatar.png",
-    name: "John Doe",
-    designation: "Founder and CEO",
-  },
-  {
-    image: "http://s3.amazonaws.com/37assets/svn/765-default-avatar.png",
-    name: "John Doe",
-    designation: "Founder and CEO and everything else",
-  },
-];
-
 const RightArrow = ({ onClick }) => {
   return (
     <div className={styles.rightArrow} onClick={onClick}>
@@ -62,7 +25,7 @@ const LeftArrow = ({ onClick }) => {
   );
 };
 
-const Team = () => {
+const Team = ({ data: { heading, subheading, teamMembersList } }) => {
   const [activeMember, setActiveMember] = useState(0);
 
   const settings = {
@@ -88,14 +51,13 @@ const Team = () => {
     <div className="pt-20">
       <div className="max-w-6xl mx-auto">
         <h3 className="text-center text-text uppercase mb-8">
-          <span className="text-secondary"> Management Team</span> | Board Of
-          Directors
+          <span className="text-secondary"> {heading}</span> | {subheading}
         </h3>
         <div>
           <Slider {...settings}>
-            {TEAM_DATA &&
-              TEAM_DATA.length > 0 &&
-              TEAM_DATA.map(({ image, name, designation }, idx) => (
+            {teamMembersList &&
+              teamMembersList.length > 0 &&
+              teamMembersList.map(({ image, name, position }, idx) => (
                 <div
                   className={`${styles.teamCardContainer} ${
                     activeMember === idx && styles.active
@@ -106,7 +68,7 @@ const Team = () => {
                     <div className="w-4/12 lg:w-7/12">
                       <img
                         alt={name}
-                        src={image}
+                        src={image?.file?.url}
                         className="rounded-xl w-full"
                       />
                     </div>
@@ -115,7 +77,7 @@ const Team = () => {
                         {name}
                       </h4>
                       <p className="text-center w-8/12 mx-auto text-text text-sm">
-                        {designation}
+                        {position}
                       </p>
                     </div>
                   </div>
@@ -125,7 +87,7 @@ const Team = () => {
         </div>
       </div>
       <div className={`${styles.coloredStripe}`} />
-      <Bio {...TEAM_DATA[activeMember]} />
+      <Bio {...teamMembersList[activeMember]} />
     </div>
   );
 };

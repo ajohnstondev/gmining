@@ -1,8 +1,9 @@
 import React from "react";
 
+import RRenderer from "../../../components/richtextRenderer";
 import * as styles from "./index.module.scss";
 
-const OurMission = () => {
+const OurMission = ({ data: { title, content } }) => {
   return (
     <div className={`${styles.ourMissionContainer}`}>
       <div
@@ -11,15 +12,10 @@ const OurMission = () => {
         <h2
           className={`text-2xl text-secondary uppercase ${styles.missionHeading}`}
         >
-          Our Mission
+          {title}
         </h2>
         <p className={`text-center mb-8`}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt
-          accusamus placeat nam adipisci cupiditate quas a repudiandae obcaecati
-          id pariatur quam culpa, eos officia ipsum tempore laborum.
-        </p>
-        <p className={`${styles.dark} text-center`}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          <RRenderer data={content} />
         </p>
       </div>
     </div>

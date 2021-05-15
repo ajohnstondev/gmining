@@ -1,10 +1,10 @@
 import React from "react";
 
-import * as styles from "./index.module.scss";
+import "./index.scss";
 
-const Hero = ({ title, slogan }) => {
+const Hero = ({ title, slogan, image }) => {
   return (
-    <div className={`${styles.heroContainer}`}>
+    <div className={`hero-container`}>
       <div className={`flex flex-col lg:flex-row h-full items-center`}>
         <div className="w-full lg:w-1/2 flex-1 flex flex-col justify-center pl-8 lg:pl-24">
           {title && (
@@ -16,7 +16,12 @@ const Hero = ({ title, slogan }) => {
             </h2>
           )}
         </div>
-        <div className={`w-1/2 ${styles.heroImage}`}></div>
+        <div
+          style={{
+            backgroundImage: `url(${image?.file?.url})`,
+          }}
+          className={`w-1/2 hero-image`}
+        ></div>
       </div>
     </div>
   );

@@ -5,7 +5,9 @@ import Logo from "../../images/logo.png";
 import SearchIcon from "./../../images/search-icon.png";
 import ArrowDownBlack from "../../images/down-arrow-black.png";
 import ArrowDownWhite from "../../images/down-arrow-white.png";
-function Header({ inverted }) {
+import Modal from "../Modal";
+
+const Header = ({ inverted }) => {
   const [isExpanded, toggleExpansion] = useState(false);
   const [scroll, setScroll] = useState(false);
   const [isInverted, setInverted] = useState(inverted);
@@ -148,9 +150,10 @@ function Header({ inverted }) {
                 <div className="  dropdown absolute -ml-4">
                   {item.items?.map((item) => (
                     <Link
-                      className="block bg-white no-underline text-black py-4 pl-4 pr-8 text-text"
+                      className="subitem block bg-white no-underline text-black py-4 pl-4 pr-8 text-text"
                       key={item.title}
                       to={item.path}
+                      activeClassName="dropdown-active"
                     >
                       {item.title}
                     </Link>
@@ -178,6 +181,6 @@ function Header({ inverted }) {
       </div>
     </header>
   );
-}
+};
 
 export default Header;

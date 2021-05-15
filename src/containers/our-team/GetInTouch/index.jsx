@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 
+import Modal from "../../../components/Modal";
 import * as styles from "./index.module.scss";
 
 const GetInTouch = () => {
+  const [thankModal, setThankModal] = useState(false);
+
+  const subscribeHandler = (e) => {
+    e.preventDefault();
+    setThankModal(true);
+  };
+
   return (
     <div>
-      <div
+      {thankModal && <Modal onClose={() => setThankModal(false)} />}
+      <form
+        onSubmit={subscribeHandler}
         className={`${styles.footerOverly} text-center mx-auto max-w-6xl py-8 bg-gray-300 z-20 rounded-lg`}
       >
         <h2 className="text-2xl text-secondary uppercase pb-2">GET IN TOUCH</h2>
@@ -31,7 +41,7 @@ const GetInTouch = () => {
         <button className={`${styles.seeButton} rounded py-3 px-16`}>
           Submit
         </button>
-      </div>
+      </form>
     </div>
   );
 };

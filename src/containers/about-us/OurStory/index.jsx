@@ -1,35 +1,24 @@
 import React from "react";
 
 import * as styles from "./index.module.scss";
+import RRenderer from "../../../components/richtextRenderer";
 
-const OurStory = () => {
+const OurStory = ({ data: { title, content, image } }) => {
   return (
     <div className={`${styles.storyContainer} py-24`}>
       <div className="max-w-6xl mx-auto flex gap-8 items-center">
         <div className="w-1/2">
-          <h2 className="text-2xl text-secondary uppercase">Our Story</h2>
-          <p className="pt-4 text-text text-lg">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum,
-            tenetur ut pariatur voluptatibus commodi aperiam dolor quis, qui,
-            alias soluta necessitatibus explicabo a natus cum? Ipsam similique
-            dolorum alias corporis adipisci iste!
-          </p>
-          <p className="pt-4 text-text text-lg">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum,
-            tenetur ut pariatur voluptatibus commodi aperiam dolor quis, qui,
-            alias soluta necessitatibus explicabo a natus cum? Ipsam similique
-            dolorum alias corporis adipisci iste!
-          </p>
-          <p className="pt-4 text-text text-lg">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum,
-            tenetur ut pariatur voluptatibus commodi aperiam dolor quis, qui,
-            alias soluta necessitatibus explicabo a natus cum? Ipsam similique
-            dolorum alias corporis adipisci iste!
-          </p>
+          <h2 className="text-2xl text-secondary uppercase">{title}</h2>
+          <RRenderer
+            data={content}
+            config={{
+              p: "text-text text-lg",
+            }}
+          />
         </div>
         <div className="w-1/2">
           <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/CamionFermont.png/1200px-CamionFermont.png"
+            src={image.file.url}
             alt=""
             className="w-10/12 mx-auto rounded-lg"
           />
