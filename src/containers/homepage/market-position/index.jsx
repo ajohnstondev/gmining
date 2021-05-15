@@ -1,6 +1,5 @@
 import React from "react";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-
 import "./index.module.scss";
 
 const MarketingPosition = ({ data }) => {

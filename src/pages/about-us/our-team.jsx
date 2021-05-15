@@ -1,10 +1,10 @@
 import React from "react";
+import { graphql } from "gatsby";
 
 import Layout from "../../components/layout";
 import Hero from "../../components/hero";
 import Team from "../../containers/our-team/Team";
 import GetInTouch from "../../containers/our-team/GetInTouch";
-import { graphql } from "gatsby";
 
 const OurTeam = ({ data }) => {
   const { title, heroImage, subtitle } = data.hero;

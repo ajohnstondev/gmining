@@ -3,7 +3,6 @@ import React from "react";
 import "./index.scss";
 
 const LegacyTimeline = ({ data: { title, content, timeline, icons } }) => {
-  console.log(timeline);
   const firstEvent = timeline.items.shift();
   const lastEvent = timeline.items.pop();
 
