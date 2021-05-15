@@ -1,0 +1,13 @@
+.disc-bullet {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  &::before {
+    content: "";
+    height: 6px;
+    width: 6px;
+    border: 1px solid gray;
+    display: block;
+    border-radius: 50%;
+  }
+}
