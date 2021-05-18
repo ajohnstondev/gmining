@@ -1,7 +1,8 @@
 import React from "react";
+import RRenderer from "../richtextRenderer";
 import "./index.scss";
 
-const OurMission = ({ title, main, emp }) => {
+const OurMission = ({ title, main }) => {
   return (
     <div className={`our-mission-container py-6 lg:py-0 px-4 lg:px-8 xl:px-0`}>
       <div
@@ -13,9 +14,10 @@ const OurMission = ({ title, main, emp }) => {
           </h2>
         )}
         {main && (
-          <p className={`text-left lg:text-center mb-4 lg:mb-8`}>{main}</p>
+          <p className={`text-left lg:text-center mb-4 lg:mb-8`}>
+            <RRenderer data={main} />
+          </p>
         )}
-        {emp && <p className={`dark text-left lg:text-center`}>{emp}</p>}
       </div>
     </div>
   );

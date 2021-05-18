@@ -14,7 +14,9 @@ const Text = ({ data, config }) => {
         <h3 className="mt-8 mb-2">{children}</h3>
       ),
 
-      [BLOCKS.HEADING_4]: (node, children) => <h4>{children}</h4>,
+      [BLOCKS.HEADING_4]: (node, children) => (
+        <h4 className={`${config && config.h4}`}>{children}</h4>
+      ),
 
       [BLOCKS.HEADING_5]: (node, children) => <h5>{children}</h5>,
 
@@ -32,7 +34,7 @@ const Text = ({ data, config }) => {
 
       [BLOCKS.LIST_ITEM]: (node, children) => {
         return (
-          <li className="bulletItem">
+          <li className="disc-bullet">
             <span className="flex-1">{children}</span>
           </li>
         );
@@ -72,7 +74,6 @@ const Text = ({ data, config }) => {
       [MARKS.ITALIC]: (text) => <i>{text}</i>,
     },
   };
-  console.log("CON >>", config);
   return <div>{documentToReactComponents(JSON.parse(data.raw), options)}</div>;
 };
 

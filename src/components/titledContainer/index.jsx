@@ -9,6 +9,10 @@ const TitledContainer = ({
   sideNoWrap,
   children,
   bgColor,
+  pagination,
+  page,
+  setPage,
+  setFilter,
 }) => {
   return (
     <div
@@ -29,7 +33,8 @@ const TitledContainer = ({
                   <li
                     className={`${
                       sideNoWrap && "w-full"
-                    } text-primary uppercase`}
+                    } text-primary uppercase cursor-pointer`}
+                    onClick={() => setFilter(text)}
                   >
                     {text}
                   </li>
@@ -45,10 +50,17 @@ const TitledContainer = ({
                   <ChevronRight size={19} />
                 </div>
                 <ul className="flex flex-1 justify-center gap-10">
-                  <li className="text-secondary">1</li>
-                  <li className="text-secondary">2</li>
-                  <li className="text-secondary">3</li>
-                  <li className="text-secondary">4</li>
+                  {pagination &&
+                    pagination.map((num) => (
+                      <li
+                        className={`text-secondary cursor-pointer ${
+                          num === page && "underline"
+                        }`}
+                        onClick={() => setPage(num)}
+                      >
+                        {num}
+                      </li>
+                    ))}
                 </ul>
                 <div>
                   <ChevronRight size={19} className={`tit-chevronRight`} />

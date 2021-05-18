@@ -9,8 +9,6 @@ const CorporateDirectory = ({ data }) => {
   const { title, heroImage } = data.hero;
   const { edges } = data.news;
 
-  console.log("EDGES >>", edges);
-
   return (
     <Layout inverted>
       <Hero title={title} image={heroImage} />
