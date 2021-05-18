@@ -17,7 +17,7 @@ const Article = ({ data: { heading, image, content, bottomText } }) => {
         <RRenderer
           data={content}
           config={{
-            p: "mt-2 mb-3",
+            p: "mt-1 mb-2",
             span: "disc-bullet",
             h4: "text-primary text-xl mb-4",
           }}

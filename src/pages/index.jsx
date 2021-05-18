@@ -8,14 +8,18 @@ import {
   CoperatePresentation,
   Article,
 } from "./../containers/homepage";
+
 const Home = ({ data }) => {
   return (
     <Layout>
       <Hero data={data.contentfulHomeHero} />
-      <Intro data={data.contentfulHomeIntroduction} />
+      <Intro
+        data={data.contentfulHomeIntroduction}
+        stockItem={data.contentfulStockItem}
+      />
       <MarketingPosition data={data.contentfulHomeMarketPosition} />
       <CoperatePresentation data={data.contentfulHomeCorporatePresentation} />
-      <Article quickLinks={data.contentfulHomeNewsRelease} />
+      <Article quickLinks={data.contentfulHomeNewsRelease} news={data.news} />
     </Layout>
   );
 };
@@ -37,6 +41,16 @@ export const query = graphql`
       content {
         raw
       }
+    }
+    contentfulStockItem {
+      spotGold
+      stockChangeInPercent
+      stockChangeInValue
+      stockPrice
+      ticker
+      marketCap
+      GoldChangeInPercent
+      goldChangeInValue
     }
 
     contentfulHomeMarketPosition {
@@ -60,6 +74,19 @@ export const query = graphql`
       }
       ctaButtonLink
       ctaButtonText
+    }
+    news: allContentfulNews(filter: { node_locale: { eq: "en-US" } }) {
+      edges {
+        node {
+          ctaText
+          ctaLink
+          title
+          date(formatString: "MMMM Do,YYYY")
+          content {
+            raw
+          }
+        }
+      }
     }
 
     contentfulHomeNewsRelease {

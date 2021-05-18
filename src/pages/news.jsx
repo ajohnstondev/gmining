@@ -33,7 +33,8 @@ export const query = graphql`
           ctaText
           ctaLink
           title
-          date(formatString: "MMMM Do,YYYY")
+          date(formatString: "MM-DD-YYYY")
+          formattedDate: date(formatString: "MMMM Do,YYYY")
           content {
             raw
           }

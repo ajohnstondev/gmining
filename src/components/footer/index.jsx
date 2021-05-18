@@ -1,5 +1,5 @@
-import { graphql, useStaticQuery, Link } from "gatsby";
 import React, { useState } from "react";
+import { graphql, useStaticQuery, Link } from "gatsby";
 
 import Modal from "../Modal";
 import Logo from "../../images/white-log.png";
@@ -17,31 +17,33 @@ function Footer() {
   return (
     <div className="">
       {thankModal && <Modal onClose={() => setThankModal(false)} />}
-      <div className="footer-section relative z-10 flex justify-center">
+      <div className="bg-red-900 footer-section relative z-10 flex justify-center">
         <div className="footer-overly text-center max-w-6xl py-8 bg-gray-300 absolute z-20 rounded-xl px-4">
           <h2 className="text-2xl text-secondary uppercase pb-2">
             JOIN OUR MAILING LIST
           </h2>
           <form
             onSubmit={subscribeHandler}
-            className="block md:flex  justify-center max-w-6xl mx-auto gap-2 items-center"
+            className="block md:flex justify-center max-w-6xl mx-auto gap-3 items-center"
           >
-            <div className="w-1/1 sm:w-1/1 md:w-1/1 xl:w-2/5 py-2">
+            <div className="mb-5 lg:mb-0 flex-1">
               <input
                 type="text"
                 placeholder="NAME"
-                className="bg-transparent border-b-2 border-gray-600 w-full outline-none"
+                className={`bg-transparent input pb-2 pl-2 outline-none w-full`}
               />
             </div>
-            <div className="w-1/1 sm:w-1/1 md:w-1/1 xl:w-2/5 py-2">
+            <div className="mb-5 lg:mb-0 flex-1">
               <input
                 type="text"
                 placeholder="EMAIL ADDRESS"
-                className="bg-transparent border-b-2 border-gray-600 w-full outline-none"
+                className={`bg-transparent input pb-2 pl-2 outline-none w-full`}
               />
             </div>
             <div className="w-1/1 sm:w-1/1 md:w-1/1 xl:w-1/5 py-2">
-              <button className="see-button rounded p-2 w-full">Submit</button>
+              <button className="see-button rounded py-2 px-12  w-full">
+                Submit
+              </button>
             </div>
           </form>
         </div>

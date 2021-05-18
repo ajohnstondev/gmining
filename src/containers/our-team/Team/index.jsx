@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Slider from "react-slick";
 
-import { ChevronRight } from "../../../components/icon";
+import { ChevronRight, ChevronLeft } from "../../../components/icon";
 import Bio from "../Bio";
 import * as styles from "./index.module.scss";
 
@@ -19,7 +19,7 @@ const LeftArrow = ({ onClick }) => {
   return (
     <div className={` ${styles.leftArrow}`} onClick={onClick}>
       <button>
-        <ChevronRight className={`${styles.icon}`} />
+        <ChevronLeft className={`${styles.icon}`} />
       </button>
     </div>
   );
@@ -36,6 +36,10 @@ const Team = ({ data: { heading, subheading, teamMembersList } }) => {
     slidesToScroll: 2,
     nextArrow: <RightArrow />,
     prevArrow: <LeftArrow />,
+    afterChange: (num) => {
+      console.log("SLIDE CHANGED", num);
+      setActiveMember(num);
+    },
     responsive: [
       {
         breakpoint: 1023,
@@ -48,8 +52,8 @@ const Team = ({ data: { heading, subheading, teamMembersList } }) => {
     ],
   };
   return (
-    <div className="pt-20">
-      <div className="max-w-6xl mx-auto">
+    <div className="pt-10 pb-10 lg:pb-20">
+      <div className=" max-w-6xl mx-auto">
         <h3 className="text-center text-text uppercase mb-8">
           <span className="text-secondary"> {heading}</span> | {subheading}
         </h3>

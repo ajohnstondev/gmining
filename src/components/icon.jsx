@@ -21,6 +21,27 @@ export const ChevronRight = ({ size = 22, className }) => {
   );
 };
 
+export const ChevronLeft = ({ size = 22, className }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      x="0"
+      y="0"
+      enableBackground="new 0 0 407.436 407.436"
+      version="1.1"
+      viewBox="0 0 407.436 407.436"
+      xmlSpace="preserve"
+      height={size}
+      width={size}
+    >
+      <path
+        className={className}
+        d="M315.869 21.178L294.621 0 91.566 203.718 294.621 407.436 315.869 386.258 133.924 203.718z"
+      ></path>
+    </svg>
+  );
+};
+
 export const DownAngle = ({ size = 22, color }) => {
   return (
     <svg

@@ -20,9 +20,12 @@
   }
 
   .card {
-    height: 230px;
+    height: 260px;
     @media (min-width: 1024px) {
       height: 300px;
+    }
+    @media (min-width: 1440px) {
+      height: 320px;
     }
     p {
       line-height: 19px;
@@ -41,16 +44,16 @@
 .rightArrow {
   position: absolute;
 
-  right: 30px;
-  bottom: 75px;
+  right: 10px;
+  bottom: 63px;
 
   @media (min-width: 768px) {
     right: 40px;
-    bottom: 70px;
+    bottom: 57px;
   }
 
   @media (min-width: 1024px) {
-    right: 0px;
+    right: 20px;
     bottom: 94px;
   }
 
@@ -66,14 +69,13 @@
 
 .leftArrow {
   position: absolute;
-  transform: rotate(0.5turn);
 
-  left: 30px;
-  bottom: 75px;
+  left: 10px;
+  bottom: 63px;
 
   @media (min-width: 768px) {
     left: 40px;
-    bottom: 70px;
+    bottom: 57px;
   }
 
   @media (min-width: 1024px) {

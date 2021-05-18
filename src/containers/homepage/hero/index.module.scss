@@ -1,5 +1,4 @@
 .heroSection {
-  background-image: url("//images.ctfassets.net/jj9ent3ck4o2/5EnclWlTUEt9uhdx6VJxrf/b7314da7f1060ce3b3778f855314c3ee/home-hero-Image.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50% 50%;
@@ -12,7 +11,7 @@
     height: 100vh;
   }
   .overlay {
-    background-color: rgba($color: #000000, $alpha: 0.2);
+    background-color: rgba($color: #000000, $alpha: 0.1);
   }
   p {
     a {

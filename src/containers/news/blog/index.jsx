@@ -1,17 +1,17 @@
-import { Link } from "gatsby";
 import React, { useState } from "react";
+import { Link } from "gatsby";
+import uniq from "lodash.uniq";
 
 import RRenderer from "../../../components/richtextRenderer";
 import { ChevronRight } from "../../../components/icon";
 import * as styles from "./index.module.scss";
 
-const BLOG_DATA = {
-  years: ["2021", "2022", "2023", "2024"],
-};
-
 const Blog = ({ data }) => {
   const [page, setPage] = useState(1);
-
+  const years = data.map(({ node: { date } }) => {
+    let year = new Date(date).getFullYear();
+    return year;
+  });
   const renderPagination = () => {
     const pagination = [];
     let pgCount = Math.ceil(data.length / 4);
@@ -39,36 +39,40 @@ const Blog = ({ data }) => {
         <div className={`justify-between lg:flex`}>
           <div className=" mb-6 lg:mb-0">
             <ul className="flex lg:flex-col lg:gap-3 gap-x-12 gap-y-3 flex-wrap">
-              {BLOG_DATA.years.map((year) => (
-                <li className="text-primary">{year}</li>
-              ))}
+              {uniq(years).map((year) => {
+                return <li className="text-primary">{year}</li>;
+              })}
             </ul>
           </div>
           <div className={` ${styles.blogContainer}`}>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-8">
               {data
                 .slice((page - 1) * 4, (page - 1) * 4 + 4)
-                .map(({ node: { content, ctaLink, ctaText, title, date } }) => (
-                  <div
-                    className={`${styles.article} flex flex-col gap-3 rounded-lg py-5 lg:py-10 px-6`}
-                  >
-                    <h3 className="text-primary text-2xl capitalize font-semibold">
-                      {title}
-                    </h3>
-                    <h4 className="uppercase text-text font-semibold">
-                      {date}
-                    </h4>
-                    <p className="text-text text-lg">
-                      <RRenderer data={content} />
-                    </p>
-                    <Link
-                      to={ctaLink}
-                      className="text-sm text-secondary underline uppercase font-semibold"
+                .map(
+                  ({
+                    node: { content, ctaLink, ctaText, title, formattedDate },
+                  }) => (
+                    <div
+                      className={`${styles.article} flex flex-col gap-3 rounded-lg py-5 lg:py-10 px-6`}
                     >
-                      {ctaText}
-                    </Link>
-                  </div>
-                ))}
+                      <h3 className="text-primary text-2xl capitalize font-semibold">
+                        {title}
+                      </h3>
+                      <h4 className="uppercase text-text font-semibold">
+                        {formattedDate}
+                      </h4>
+                      <p className="text-text text-lg">
+                        <RRenderer data={content} />
+                      </p>
+                      <Link
+                        to={ctaLink}
+                        className="text-sm text-secondary underline uppercase font-semibold"
+                      >
+                        {ctaText}
+                      </Link>
+                    </div>
+                  )
+                )}
             </div>
             <div className={`${styles.pagination}`}>
               <div className="flex items-center">

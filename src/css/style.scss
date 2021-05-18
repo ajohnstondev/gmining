@@ -5,6 +5,10 @@
 @import "slick-carousel/slick/slick.css";
 @import "slick-carousel/slick/slick-theme.css";
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   --color_p: #00556f;
   --color_s: #c59425;

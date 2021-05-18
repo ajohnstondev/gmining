@@ -10,6 +10,7 @@ const Header = ({ inverted }) => {
   const [isExpanded, toggleExpansion] = useState(false);
   const [scroll, setScroll] = useState(false);
   const [isInverted, setInverted] = useState(inverted);
+  const [langOpen, setLangOpen] = useState(false);
 
   const { site } = useStaticQuery(graphql`
     query SiteTitleQuery {
@@ -100,23 +101,19 @@ const Header = ({ inverted }) => {
         scroll ? "fixed bg-white" : "absolute"
       }`}
     >
-      <div className="flex flex-wrap items-center justify-between  px-4 md:px-6">
-        <Link className="flex items-center no-underline text-white" to="/">
+      <div className="py-1 flex flex-wrap items-center justify-between  px-4 md:px-6">
+        <Link
+          className="flex items-center justify-content no-underline text-white"
+          to="/"
+        >
           <img src={Logo} alt="logo" />
         </Link>
 
         <button
-          className="block md:hidden border border-white flex items-center px-3 py-2 rounded text-white"
+          className="block md:hidden flex items-center px-3 py-2 rounded text-white"
           onClick={() => toggleExpansion(!isExpanded)}
         >
-          <svg
-            className="fill-current h-3 w-3"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <title>Menu</title>
-            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-          </svg>
+          <span className="navbarToggleIcon" />
         </button>
 
         <nav
@@ -133,20 +130,28 @@ const Header = ({ inverted }) => {
             />
           ))}
 
-          <div className="flex items-center gap-x-8">
-            <Link
-              className="block md:inline-block mt-4 md:mt-0 md:ml-10 no-underline text-primary"
+          <div className="cursor-pointer flex items-center gap-x-8">
+            <div
+              className="px-3 link-item block md:inline-block mt-4 md:mt-0 md:ml-10 no-underline text-primary"
               key="PROJECTS"
               to="/"
             >
-              FR
-            </Link>
+              <div className="item" onClick={() => setLangOpen(!langOpen)}>
+                EN
+              </div>
+              <div className={`${!langOpen && "hidden"} flex langDropDown`}>
+                <Link className="lang">EN</Link>
+                <Link className="lang">FR</Link>
+              </div>
+            </div>
             <Link
-              className="block md:inline-block mt-4 md:mt-0 md:ml-10 no-underline text-black"
+              className=" block md:inline-block mt-4 md:mt-0 md:ml-10 no-underline text-black"
               key="PROJECTS"
               to="/"
             >
-              <img src={SearchIcon} />
+              <div className="">
+                <img src={SearchIcon} />
+              </div>
             </Link>
           </div>
         </nav>

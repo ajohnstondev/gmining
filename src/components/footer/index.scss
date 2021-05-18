@@ -1,9 +1,11 @@
 .footer-section {
   background-image: url("./../../images/footer-background.png");
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: cover;
+  background-position: center center;
   height: 300px;
   padding-top: 200px;
+
   .see-button {
     background: linear-gradient(to right, #c59425 0%, #e9b949 100%);
     color: #ffffff;
@@ -16,5 +18,9 @@
 }
 
 .footer-overly {
-  width: 100%;
+  width: calc(100% - 30px);
+}
+
+.input {
+  border-bottom: 1px solid var(--color_p);
 }
