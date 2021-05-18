@@ -1,5 +1,17 @@
-.button {
-    background: linear-gradient(to right, #0A4354 0%, #00556F 100%);
+.buttonContainer {
+  @media (min-width: 1024px) {
+    padding: 2px 22px;
+    transform: translateY(50%);
+  }
+
+  .button {
+    background: linear-gradient(to right, #0a4354 0%, #00556f 100%);
     color: #ffffff;
-    width: 350px
+    width: 350px;
+  }
+}
+
+.heading {
+  padding: 2px 22px;
+  transform: translateY(-50%);
 }

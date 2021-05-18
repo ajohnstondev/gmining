@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { graphql, useStaticQuery, Link } from "gatsby";
+import { graphql, useStaticQuery, Link, navigate } from "gatsby";
 import "./index.scss";
 import Logo from "../../images/logo.png";
 import SearchIcon from "./../../images/search-icon.png";
@@ -10,6 +10,7 @@ const Header = ({ inverted }) => {
   const [isExpanded, toggleExpansion] = useState(false);
   const [scroll, setScroll] = useState(false);
   const [isInverted, setInverted] = useState(inverted);
+
   const { site } = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -19,6 +20,7 @@ const Header = ({ inverted }) => {
       }
     }
   `);
+
   const navigations = [
     {
       title: "ABOUT",
@@ -123,61 +125,85 @@ const Header = ({ inverted }) => {
           } md:block md:flex md:items-center w-full md:w-auto`}
         >
           {navigations.map((item) => (
-            <Link
-              className={`block md:inline-block  mt-4 md:mt-0 md:ml-10 no-underline link-item relative ${
-                inverted || isInverted ? "text-text" : "text-white"
-              } ${scroll ? "text-text" : "text-white"} `}
-              key={item.title}
-              to={item.path}
-              activeClassName="active"
-              partiallyActive={true}
-            >
-              <div className="  item flex items-center">
-                <span>{item.title}</span>
-                {item.items && (
-                  <span>
-                    {!scroll && !inverted && !isInverted ? (
-                      <img src={ArrowDownWhite} className="ml-4" />
-                    ) : (
-                      <img src={ArrowDownBlack} className="ml-4" />
-                    )}
-                  </span>
-                )}
-              </div>
-              {item.items && (
-                <div className="  dropdown absolute -ml-4">
-                  {item.items?.map((item) => (
-                    <Link
-                      className="subitem block bg-white no-underline text-black py-4 pl-4 pr-8 text-text"
-                      key={item.title}
-                      to={item.path}
-                      activeClassName="dropdown-active"
-                    >
-                      {item.title}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </Link>
+            <NavListItem
+              item={item}
+              inverted={inverted}
+              isInverted={isInverted}
+              scroll={scroll}
+            />
           ))}
 
-          <Link
-            className="block md:inline-block mt-4 md:mt-0 md:ml-10 no-underline text-primary"
-            key="PROJECTS"
-            to="/"
-          >
-            FR
-          </Link>
-          <Link
-            className="block md:inline-block mt-4 md:mt-0 md:ml-10 no-underline text-black"
-            key="PROJECTS"
-            to="/"
-          >
-            <img src={SearchIcon} alt="" />
-          </Link>
+          <div className="flex items-center gap-x-8">
+            <Link
+              className="block md:inline-block mt-4 md:mt-0 md:ml-10 no-underline text-primary"
+              key="PROJECTS"
+              to="/"
+            >
+              FR
+            </Link>
+            <Link
+              className="block md:inline-block mt-4 md:mt-0 md:ml-10 no-underline text-black"
+              key="PROJECTS"
+              to="/"
+            >
+              <img src={SearchIcon} />
+            </Link>
+          </div>
         </nav>
       </div>
     </header>
+  );
+};
+
+const NavListItem = ({ item, inverted, isInverted, scroll }) => {
+  const [subMenuVisible, setSubMenuVisible] = useState(false);
+
+  const toggleDropDown = (e) => {
+    setSubMenuVisible(!subMenuVisible);
+    !item.items && navigate(item.path);
+  };
+
+  return (
+    <div
+      className={`cursor-pointer block md:inline-block  mt-4 md:mt-0 md:ml-10 no-underline link-item relative ${
+        inverted || isInverted ? "text-text" : "text-white"
+      } ${scroll ? "text-text" : "text-white"} `}
+      key={item.title}
+      activeClassName="active"
+      partiallyActive={true}
+      onClick={toggleDropDown}
+    >
+      <div className="item flex items-center">
+        <span>{item.title}</span>
+        {item.items && (
+          <span>
+            {!scroll && !inverted && !isInverted ? (
+              <img src={ArrowDownWhite} className="ml-4" />
+            ) : (
+              <img src={ArrowDownBlack} className="ml-4" />
+            )}
+          </span>
+        )}
+      </div>
+      {item.items && (
+        <div
+          className={`${
+            !subMenuVisible && "hidden"
+          }  dropdown lg:absolute lg:-ml-4`}
+        >
+          {item.items?.map((item) => (
+            <Link
+              className="subitem block bg-white no-underline text-black py-4 pl-4 pr-8 text-text"
+              key={item.title}
+              to={item.path}
+              activeClassName="dropdown-active"
+            >
+              {item.title}
+            </Link>
+          ))}
+        </div>
+      )}
+    </div>
   );
 };
 

@@ -5,9 +5,9 @@ import * as styles from "./index.module.scss";
 
 const MarketingPosition = ({ quickLinks }) => {
   return (
-    <section className="intro-section  bg-secondary py-12">
+    <section className="intro-section py-4 lg:py-12">
       <div className="max-w-6xl mx-auto">
-        <div class="grid gap-24 grid-cols-1  sm:grid-cols-2 xl:grid-cols-3 md:grid-cols-3 p-4">
+        <div class="grid gap-x-24 gap-y-8 grid-cols-1  sm:grid-cols-2 xl:grid-cols-3 md:grid-cols-3 p-4">
           <div className="col-span-2">
             <h2 className="text-2xl text-secondary uppercase pb-2">
               New Releases
@@ -16,12 +16,12 @@ const MarketingPosition = ({ quickLinks }) => {
             <div class="grid gap-4 grid-cols-1  sm:grid-cols-2 xl:grid-cols-2 md:grid-cols-2">
               {[1, 2, 3, 4].map((item) => {
                 return (
-                  <div class="bg-gray-400 rounded p-6">
+                  <div class={`${styles.articleContainer} rounded p-6`}>
                     <h2 className="text-primary  font-medium text-lg">
                       News Article Title Placeholder Lorem Ipsum Dolor Sit Amet
                     </h2>
                     <p className="uppercase text-sm py-4 text-gray-600">
-                      MONTH, DAY, YEAr
+                      MONTH, DAY, Year
                     </p>
                     <Link
                       className="text-secondary underline uppercase text-sm font-bold"
@@ -51,7 +51,7 @@ const MarketingPosition = ({ quickLinks }) => {
               );
             })}
 
-            <p className="py-4">{quickLinks.content}</p>
+            <p className="py-5">{quickLinks.content}</p>
             <button className={`${styles.seeMoreBtn} p-3 uppercase rounded`}>
               <Link href={quickLinks.ctaLink}>{quickLinks.ctaText}</Link>
             </button>

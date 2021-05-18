@@ -12,9 +12,11 @@ const Hero = ({ data }) => {
         // }}
       ></div>
       <div className="max-w-6xl mx-auto px-4 relative">
-        <div className="absolute left-0 ml-24">
-          <h1 className="text-primary text-5xl ">{data.title}</h1>
-          <h1 className="text-white text-4xl font-thin">{data.subtitle}</h1>
+        <div className="absolute left-0 ml-10 lg:ml-24">
+          <h1 className="text-primary text-3xl lg:text-5xl ">{data.title}</h1>
+          <h1 className="text-white text-2xl lg:text-4xl font-thin">
+            {data.subtitle}
+          </h1>
         </div>
       </div>
     </section>

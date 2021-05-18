@@ -6,30 +6,7 @@ import { ChevronRight } from "../../../components/icon";
 import * as styles from "./index.module.scss";
 
 const BLOG_DATA = {
-  years: ["2001", "2002", "2003", "2004"],
-  articles: [
-    {
-      title: "Why react Js is the best JS framework",
-      date: "7th April, 1997",
-      sourceName:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi culpa, unde autem quisquam quas laborum voluptatibus hic maiores pariatur illo temporibus eius, nesciunt ea, provident ullam adipisci nisi nam facilis!",
-      link: "/article",
-    },
-    {
-      title: "Why react Js is the best JS framework",
-      date: "7th April, 1997",
-      sourceName:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi culpa, unde autem quisquam quas laborum voluptatibus hic maiores pariatur illo temporibus eius, nesciunt ea, provident ullam adipisci nisi nam facilis!",
-      link: "/article",
-    },
-    {
-      title: "Why react Js is the best JS framework",
-      date: "7th April, 1997",
-      sourceName:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi culpa, unde autem quisquam quas laborum voluptatibus hic maiores pariatur illo temporibus eius, nesciunt ea, provident ullam adipisci nisi nam facilis!",
-      link: "/article",
-    },
-  ],
+  years: ["2021", "2022", "2023", "2024"],
 };
 
 const Blog = ({ data }) => {
@@ -43,7 +20,7 @@ const Blog = ({ data }) => {
     }
     return pagination.map((num) => (
       <li
-        className={`text-secondary cursor-pointer ${
+        className={`text-secondary cursor-pointer font-semibold ${
           num === page && "underline"
         }`}
         onClick={() => setPage(num)}
@@ -71,20 +48,22 @@ const Blog = ({ data }) => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-8">
               {data
                 .slice((page - 1) * 4, (page - 1) * 4 + 4)
-                .map(({ node: { content, ctaLink, ctaText, title } }) => (
+                .map(({ node: { content, ctaLink, ctaText, title, date } }) => (
                   <div
                     className={`${styles.article} flex flex-col gap-3 rounded-lg py-5 lg:py-10 px-6`}
                   >
-                    <h3 className="text-primary text-2xl capitalize">
+                    <h3 className="text-primary text-2xl capitalize font-semibold">
                       {title}
                     </h3>
-                    <h4 className="uppercase text-text">7th April, 1997</h4>
+                    <h4 className="uppercase text-text font-semibold">
+                      {date}
+                    </h4>
                     <p className="text-text text-lg">
                       <RRenderer data={content} />
                     </p>
                     <Link
                       to={ctaLink}
-                      className="text-sm text-secondary underline"
+                      className="text-sm text-secondary underline uppercase font-semibold"
                     >
                       {ctaText}
                     </Link>

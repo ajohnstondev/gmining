@@ -2,28 +2,34 @@
   transition: background 0.3s;
 
   .link-item {
-    .dropdown {
-      display: none;
-      width: fit-content;
-      white-space: nowrap;
+    @media (min-width: 1024px) {
+      .dropdown {
+        display: none;
+        width: fit-content;
+        white-space: nowrap;
+      }
+      &:hover {
+        .dropdown {
+          display: block;
+          .dropdown-active {
+            background-color: #025068;
+            color: white;
+          }
+        }
+      }
     }
 
     .item {
-      padding: 30px 0;
+      padding: 10px 0;
+      @media (min-width: 1024px) {
+        padding: 30px 0;
+      }
       img {
         width: 14px;
       }
     }
   }
-  .link-item:hover {
-    .dropdown {
-      display: block;
-      .dropdown-active {
-        background-color: #025068;
-        color: white;
-      }
-    }
-  }
+
   .active {
     border-bottom: 4px solid #c59425;
     .item {

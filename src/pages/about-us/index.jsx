@@ -12,9 +12,9 @@ const AboutUs = ({ data }) => {
   return (
     <Layout inverted>
       <Hero title={title} slogan={subtitle} image={heroBackground} />
-      <LegacyTimeline data={data.legacytimeline} />
       <OurMission data={data.ourmission} />
       <OurStory data={data.ourstory} />
+      <LegacyTimeline data={data.legacytimeline} />
     </Layout>
   );
 };
