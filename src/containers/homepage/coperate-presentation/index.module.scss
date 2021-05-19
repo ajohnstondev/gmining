@@ -14,4 +14,7 @@
 .heading {
   padding: 2px 22px;
   transform: translateY(-50%);
+  @media (max-width: 767px) {
+    padding: 2px 12px;
+  }
 }

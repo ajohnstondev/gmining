@@ -7,12 +7,12 @@ const GoldBox = ({ title, main }) => {
     <div className={`our-mission-container py-6 lg:py-0 px-8 xl:px-0`}>
       <div className={`max-w-6xl mx-auto pt-12 pb-0 lg:px-24 flex flex-col items-center mission-wrapper`}>
         {title && (
-          <h2 className={`text-2xl text-secondary uppercase mission-heading`}>
+          <h3 className="text-secondary uppercase mission-heading">
             {title}
-          </h2>
+          </h3>
         )}
         {main && (
-          <p className={`text-left lg:text-center mb-4 lg:mb-8`}>
+          <p className="text-left lg:text-center mb-4 lg:mb-8 text-text">
             <RRenderer
               data={main}
               config={{

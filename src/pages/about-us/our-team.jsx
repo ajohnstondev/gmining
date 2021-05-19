@@ -12,7 +12,7 @@ const OurTeam = ({ data }) => {
   return (
     <Layout inverted>
       <Hero title={title} slogan={subtitle} image={heroImage} />
-      <Team data={data.team} />
+      <Team data={data.team} members={data.members.edges} />
       <GetInTouch />
     </Layout>
   );
@@ -20,22 +20,26 @@ const OurTeam = ({ data }) => {
 
 export const query = graphql`
   query OurTeamQuery {
+    members: allContentfulTeamMember(filter: { node_locale: { eq: "en-US" } }) {
+      edges {
+        node {
+          name
+          image {
+            file {
+              url
+            }
+          }
+          position
+          bio {
+            bio
+          }
+          role
+        }
+      }
+    }
     team: contentfulOurTeamManagementTeam {
       subheading
       heading
-      teamMembersList {
-        name
-        image {
-          file {
-            url
-          }
-        }
-        position
-        bio {
-          bio
-        }
-        role
-      }
     }
     hero: contentfulOurTeamHero {
       title

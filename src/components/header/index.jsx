@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { graphql, useStaticQuery, Link, navigate } from "gatsby";
+import { graphql, useStaticQuery, Link } from "gatsby";
+import { navigate } from "gatsby";
 import "./index.scss";
 import Logo from "../../images/logo.png";
 import SearchIcon from "./../../images/search-icon.png";
@@ -119,7 +120,7 @@ const Header = ({ inverted }) => {
         <nav
           className={`${
             isExpanded ? `block` : `hidden`
-          } md:block md:flex md:items-center w-full md:w-auto`}
+          } md:block md:flex md:items-center w-full md:w-auto font-xs`}
         >
           {navigations.map((item) => (
             <NavListItem
@@ -132,24 +133,24 @@ const Header = ({ inverted }) => {
 
           <div className="cursor-pointer flex items-center gap-x-8">
             <div
-              className="px-3 link-item block md:inline-block mt-4 md:mt-0 md:ml-10 no-underline text-primary"
+              className="px-3 link-item block md:inline-block mt-4 font-xs md:mt-0 md:ml-10 no-underline text-primary"
               key="PROJECTS"
               to="/"
             >
               <div className="item" onClick={() => setLangOpen(!langOpen)}>
                 EN
               </div>
-              <div className={`${!langOpen && "hidden"} flex langDropDown`}>
+              <div className={`${!langOpen && "hidden"} flex langDropDown font-xs`}>
                 <Link className="lang">EN</Link>
                 <Link className="lang">FR</Link>
               </div>
             </div>
             <Link
-              className=" block md:inline-block mt-4 md:mt-0 md:ml-10 no-underline text-black"
+              className=" block md:inline-block mt-4 md:mt-0 md:ml-10 no-underline text-black font-xs"
               key="PROJECTS"
               to="/"
             >
-              <div className="">
+              <div>
                 <img src={SearchIcon} />
               </div>
             </Link>
@@ -198,7 +199,7 @@ const NavListItem = ({ item, inverted, isInverted, scroll }) => {
         >
           {item.items?.map((item) => (
             <Link
-              className="subitem block bg-white no-underline text-black py-4 pl-4 pr-8 text-text"
+              className="subitem block bg-white no-underline text-black py-4 pl-4 pr-8 text-text font-xs"
               key={item.title}
               to={item.path}
               activeClassName="dropdown-active"

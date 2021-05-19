@@ -25,7 +25,7 @@ const LeftArrow = ({ onClick }) => {
   );
 };
 
-const Team = ({ data: { heading, subheading, teamMembersList } }) => {
+const Team = ({ data: { heading, subheading }, members }) => {
   const [activeMember, setActiveMember] = useState(0);
 
   const settings = {
@@ -33,7 +33,7 @@ const Team = ({ data: { heading, subheading, teamMembersList } }) => {
     infinite: true,
     speed: 500,
     slidesToShow: 4,
-    slidesToScroll: 2,
+    slidesToScroll: 1,
     nextArrow: <RightArrow />,
     prevArrow: <LeftArrow />,
     afterChange: (num) => {
@@ -54,14 +54,16 @@ const Team = ({ data: { heading, subheading, teamMembersList } }) => {
   return (
     <div className="pt-10 pb-10 lg:pb-20">
       <div className=" max-w-6xl mx-auto">
-        <h3 className="text-center text-text uppercase mb-8">
-          <span className="text-secondary"> {heading}</span> | {subheading}
-        </h3>
+        <p className="text-center text-text uppercase mb-8 font-xs">
+          <span className="text-secondary"> {heading}</span> |{" "}
+          <span className="opacity-50 text-text">{subheading} </span>
+        </p>
+
         <div>
           <Slider {...settings}>
-            {teamMembersList &&
-              teamMembersList.length > 0 &&
-              teamMembersList.map(({ image, name, position }, idx) => (
+            {members &&
+              members.length > 0 &&
+              members.map(({ node: { image, name, position } }, idx) => (
                 <div
                   className={`${styles.teamCardContainer} ${
                     activeMember === idx && styles.active
@@ -69,7 +71,7 @@ const Team = ({ data: { heading, subheading, teamMembersList } }) => {
                   onClick={() => setActiveMember(idx)}
                 >
                   <div className={`flex flex-col items-center ${styles.card}`}>
-                    <div className="w-4/12 lg:w-7/12">
+                    <div className="w-4/12 lg:w-7/12 flex justify-center">
                       <img
                         alt={name}
                         src={image?.file?.url}
@@ -77,10 +79,8 @@ const Team = ({ data: { heading, subheading, teamMembersList } }) => {
                       />
                     </div>
                     <div className="pt-4">
-                      <h4 className="text-center text-primary text-xl font-semibold">
-                        {name}
-                      </h4>
-                      <p className="text-center w-8/12 mx-auto text-text text-sm">
+                      <h4 className="text-center text-primary">{name}</h4>
+                      <p className="text-center w-8/12 mx-auto text-text font-xs opacity-50">
                         {position}
                       </p>
                     </div>
@@ -91,7 +91,7 @@ const Team = ({ data: { heading, subheading, teamMembersList } }) => {
         </div>
       </div>
       <div className={`${styles.coloredStripe}`} />
-      <Bio {...teamMembersList[activeMember]} />
+      <Bio {...members[activeMember]} />
     </div>
   );
 };

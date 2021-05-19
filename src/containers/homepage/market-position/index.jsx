@@ -3,13 +3,12 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import "./index.module.scss";
 
 const MarketingPosition = ({ data }) => {
-
   return (
     <section className="intro-section  bg-secondary py-12 text-center p-4">
       <div className="max-w-6xl mx-auto">
         <div className="text-center py-6 border-secondary border-b border-solid">
-          <h2 className="text-2xl text-secondary uppercase">{data.title}</h2>
-          <h3 className="text-xl text-primary">{data.subtitle}</h3>
+          <h3 className=" text-secondary uppercase">{data.title}</h3>
+          <h4 className="text-primary">{data.subtitle}</h4>
           <p className="mt-4 text-text">
             {documentToReactComponents(JSON.parse(data.content.raw))}
           </p>
@@ -19,12 +18,8 @@ const MarketingPosition = ({ data }) => {
             {data.features.items.map((v, i) => {
               return (
                 <div>
-                  <h1 className="text-primary font-normal text-5xl mb-4">
-                    {v.title}
-                  </h1>
-                  <p className="text-base">
-                    {v.content}
-                  </p>
+                  <h1 className="text-primary mb-4">{v.title}</h1>
+                  <p className="font-xs text-text">{v.content}</p>
                 </div>
               );
             })}

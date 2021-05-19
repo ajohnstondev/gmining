@@ -9,7 +9,7 @@ const LegacyTimeline = ({ data: { title, content, timeline, icons } }) => {
   return (
     <div className="py-24">
       <div className="max-w-6xl mx-auto flex flex-col items-center">
-        <h2 className="text-2xl text-secondary uppercase">{title}</h2>
+        <h3 className=" text-secondary uppercase">{title}</h3>
         <p className="w-10/12 text-center text-text pt-6">{content.content}</p>
         <div className={`w-full mt-24 timeline-container`}>
           {/* FIRST START */}
@@ -18,11 +18,9 @@ const LegacyTimeline = ({ data: { title, content, timeline, icons } }) => {
               <span className={`event-line`} />
               <img src={icons[0].file.url} alt="" className="event-icon" />
               <div className={`event-detail`}>
-                <h3 className="text-primary font-semibold text-xl">
-                  {firstEvent.year}
-                </h3>
-                <h4 className="text-secondary">{firstEvent.title}</h4>
-                <p>{firstEvent.content}</p>
+                <h4 className="text-primary">{firstEvent.year}</h4>
+                <p className="text-secondary font-xs">{firstEvent.title}</p>
+                <p className="text-text font-xs">{firstEvent.content}</p>
               </div>
             </div>
           </div>
@@ -40,11 +38,9 @@ const LegacyTimeline = ({ data: { title, content, timeline, icons } }) => {
                       className="event-icon"
                     />
                     <div className={`event-detail`}>
-                      <h3 className="text-primary font-semibold text-xl">
-                        {year}
-                      </h3>
-                      <h4 className="text-secondary">{title}</h4>
-                      <p>{details}</p>
+                      <h4 className="text-primary">{year}</h4>
+                      <p className="text-secondary font-xs">{title}</p>
+                      <p className="text-text font-xs">{details}</p>
                     </div>
                   </div>
                 </div>
@@ -61,11 +57,9 @@ const LegacyTimeline = ({ data: { title, content, timeline, icons } }) => {
                 className="event-icon"
               />
               <div className={`event-detail`}>
-                <h3 className="text-primary font-semibold text-xl">
-                  {lastEvent.year}
-                </h3>
-                <h4 className="text-secondary">{lastEvent.title}</h4>
-                <p>{lastEvent.content}</p>
+                <h4 className="text-primary">{lastEvent.year}</h4>
+                <h4 className="text-secondary font-xs">{lastEvent.title}</h4>
+                <p className="text-text font-xs">{lastEvent.content}</p>
               </div>
             </div>
           </div>

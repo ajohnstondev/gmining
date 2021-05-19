@@ -19,14 +19,10 @@ const MarketingPosition = ({ quickLinks, news }) => {
                 .map(({ node: { content, ctaLink, ctaText, title, date } }) => {
                   return (
                     <div class={`${styles.articleContainer} rounded p-6`}>
-                      <h2 className="text-primary  font-medium text-lg">
-                        {title}
-                      </h2>
-                      <p className="uppercase text-sm py-4 text-gray-600">
-                        {date}
-                      </p>
+                      <h4 className="text-primary">{title}</h4>
+                      <p className="uppercase font-xs py-4 text-text">{date}</p>
                       <Link
-                        className="text-secondary underline uppercase text-sm font-bold"
+                        className="text-secondary underline uppercase font-xs"
                         to={ctaLink}
                       >
                         {ctaText}
@@ -45,7 +41,7 @@ const MarketingPosition = ({ quickLinks, news }) => {
             {quickLinks.quickLinks.items.map((v, i) => {
               return (
                 <Link
-                  className="text-primary uppercase text-sm font-semibold	block my-4"
+                  className="text-primary uppercase font-xs	block my-4"
                   to={v.link}
                 >
                   {v.title}
@@ -53,8 +49,8 @@ const MarketingPosition = ({ quickLinks, news }) => {
               );
             })}
 
-            <p className="py-5">{quickLinks.content}</p>
-            <button className={`${styles.seeMoreBtn} p-3 uppercase rounded`}>
+            <p className="py-5 text-text">{quickLinks.content}</p>
+            <button className={`${styles.seeMoreBtn} p-3 uppercase rounded font-xs`}>
               <Link href={quickLinks.ctaLink}>{quickLinks.ctaText}</Link>
             </button>
           </div>
