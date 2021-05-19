@@ -8,15 +8,13 @@ const Documents = ({ data }) => {
   return (
     <div className={`${styles.documentsContainer} px-4 lg:px-8 xl:px-0`}>
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-2xl text-secondary uppercase text-center pb-2 lg:pb-0">
+        <h3 className="text-secondary uppercase text-center pb-2 lg:pb-0">
           Refrence Documents
-        </h2>
+        </h3>
         <div>
           {DOCUMENTS.map(({ title, items }) => (
             <div className="py-2 lg:py-5">
-              <h3 className="text-primary text-lg font-semibold mb-3">
-                {title}
-              </h3>
+              <h4 className="text-primary mb-3">{title}</h4>
 
               {items && items.length > 0 && (
                 <ul className="flex flex-col gap-2">
@@ -26,11 +24,11 @@ const Documents = ({ data }) => {
                         {type}
                       </span>
                       <span className="gap-x-8 flex-1 flex flex-col lg:flex-row">
-                        <span className="flex-1">{title}</span>
+                        <span className="text-text flex-1">{title}</span>
                         <span>
                           <Link
                             to={download_link}
-                            className="text-secondary underline uppercase text-sm"
+                            className="text-secondary underline uppercase font-xs"
                           >
                             Download Now
                           </Link>

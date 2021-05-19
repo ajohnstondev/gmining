@@ -22,9 +22,9 @@ const TitledContainer = ({
       className="py-8 lg:py-24"
     >
       <div className="px-6 lg:px-8 px-0 max-w-6xl mx-auto">
-        <h2 className=" text-secondary text-xl lg:text-3xl border-b uppercase border-secondary pb-4 mb-4 lg:mb-8">
+        <h3 className=" text-secondary border-b uppercase border-secondary pb-4 mb-4 lg:mb-8">
           {title}
-        </h2>
+        </h3>
         <div className={`justify-between lg:flex`}>
           {sideList && (
             <div className=" mb-6 lg:mb-0">
@@ -33,7 +33,7 @@ const TitledContainer = ({
                   <li
                     className={`${
                       sideNoWrap && "w-full"
-                    } text-primary uppercase cursor-pointer`}
+                    } font-xs text-primary uppercase cursor-pointer`}
                     onClick={() => setFilter(text)}
                   >
                     {text}
@@ -47,13 +47,13 @@ const TitledContainer = ({
             <div className={`tit-pagination`}>
               <div className="flex items-center">
                 <div className={`tit-chevronLeft`}>
-                  <ChevronRight size={19} />
+                  <ChevronRight size={15} />
                 </div>
                 <ul className="flex flex-1 justify-center gap-10">
                   {pagination &&
                     pagination.map((num) => (
                       <li
-                        className={`text-secondary cursor-pointer ${
+                        className={`font-xs text-secondary cursor-pointer ${
                           num === page && "underline"
                         }`}
                         onClick={() => setPage(num)}
@@ -63,7 +63,7 @@ const TitledContainer = ({
                     ))}
                 </ul>
                 <div>
-                  <ChevronRight size={19} className={`tit-chevronRight`} />
+                  <ChevronRight size={15} className={`tit-chevronRight`} />
                 </div>
               </div>
             </div>

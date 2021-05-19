@@ -26,9 +26,12 @@ const AnnualReports = ({ data }) => {
       <div className="grid lg:grid-cols-3 gap-4 mb-10">
         {data.map(({ node: { title, date, linkText, linkUrl } }) => (
           <div className="bg-white p-8 rounded-xl flex flex-col gap-3">
-            <h3 className="text-xl lg:text-2xl text-primary">{title}</h3>
-            <p className="text-text font-semibold">{date}</p>
-            <Link to={linkUrl} className="underline uppercase text-secondary">
+            <h4 className="text-primary">{title}</h4>
+            <p className="text-text font-xs">{date}</p>
+            <Link
+              to={linkUrl}
+              className="font-xs underline uppercase text-secondary"
+            >
               {linkText}
             </Link>
           </div>

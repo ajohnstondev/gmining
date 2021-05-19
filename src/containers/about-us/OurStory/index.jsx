@@ -14,7 +14,7 @@ const OurStory = ({ data: { title, content, image } }) => {
           <RRenderer
             data={content}
             config={{
-              p: "text-text",
+              p: "text-text mb-4",
             }}
           />
         </div>

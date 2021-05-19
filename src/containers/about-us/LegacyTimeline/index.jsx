@@ -9,7 +9,7 @@ const LegacyTimeline = ({ data: { title, content, timeline, icons } }) => {
   return (
     <div className="py-24">
       <div className="max-w-6xl mx-auto flex flex-col items-center">
-        <h3 className=" text-secondary uppercase">{title}</h3>
+        <h3 className="text-secondary uppercase">{title}</h3>
         <p className="w-10/12 text-center text-text pt-6">{content.content}</p>
         <div className={`w-full mt-24 timeline-container`}>
           {/* FIRST START */}

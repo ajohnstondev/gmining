@@ -26,7 +26,7 @@ const Article = ({ data: { heading, image, content, bottomText } }) => {
           <RRenderer
             data={bottomText}
             config={{
-              p: "text-sm",
+              p: "font-xs",
             }}
           />
         </div>

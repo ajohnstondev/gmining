@@ -7,7 +7,7 @@ import * as styles from "./index.module.scss";
 const Directory = ({ data }) => {
   return (
     <div className="py-16">
-      <div className="px-4 lg:px-8 xl:px-0 max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-32">
+      <div className="px-4 lg:px-8 xl:px-0 max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-x-32 lg:gap-y-12">
         {data &&
           data.map(
             ({
@@ -23,12 +23,8 @@ const Directory = ({ data }) => {
             }) => (
               <div className="flex flex-col gap-6">
                 <div>
-                  <h3 className="text-2xl text-secondary uppercase">{name}</h3>
-                  {subtitle && (
-                    <h4 className="text-primary font-semibold text-xl">
-                      {subtitle}
-                    </h4>
-                  )}
+                  <h3 className="text-secondary uppercase">{name}</h3>
+                  {subtitle && <h4 className="text-primary">{subtitle}</h4>}
                 </div>
                 {address && (
                   <ul className="flex-1">
@@ -45,25 +41,25 @@ const Directory = ({ data }) => {
                     className={`lg:py-6 lg:px-8 py-2 px-6 rounded-xl ${styles.contactLocation}`}
                   >
                     {email && (
-                      <div className="flex gap-3">
-                        <span className="text-text font-bold">e</span>
-                        <span>{email}</span>
+                      <div className="flex gap-2">
+                        <span className="text-text">e:</span>
+                        <span className="text-text">{email}</span>
                       </div>
                     )}
                     {phone && (
-                      <div className="flex gap-3">
-                        <span className="text-text font-bold">t</span>
-                        <span>{phone}</span>
+                      <div className="flex gap-2">
+                        <span className="text-text">t: </span>
+                        <span className="text-text">{phone}</span>
                       </div>
                     )}
                     {phone2 && (
-                      <div className="flex gap-3">
-                        <span className="text-text font-bold">t</span>
-                        <span>{phone2}</span>
+                      <div className="flex gap-2">
+                        <span className="text-text">t: </span>
+                        <span className="text-text">{phone2}</span>
                       </div>
                     )}
                     {websiteUrl && (
-                      <div className="flex gap-3">
+                      <div className="flex gap-2">
                         <Link
                           to={websiteUrl}
                           className="underline text-secondary"

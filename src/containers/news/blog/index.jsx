@@ -20,7 +20,7 @@ const Blog = ({ data }) => {
     }
     return pagination.map((num) => (
       <li
-        className={`text-secondary cursor-pointer font-semibold ${
+        className={`text-secondary cursor-pointer font-xs ${
           num === page && "underline"
         }`}
         onClick={() => setPage(num)}
@@ -33,14 +33,14 @@ const Blog = ({ data }) => {
   return (
     <div className="py-8 lg:py-24">
       <div className="px-6 lg:px-8 px-0 max-w-6xl mx-auto">
-        <h2 className=" text-secondary text-xl lg:text-3xl border-b border-secondary pb-4 mb-4 lg:mb-8">
+        <h3 className="text-secondary border-b border-secondary pb-4 mb-4 lg:mb-8">
           SORT BY DATE
-        </h2>
+        </h3>
         <div className={`justify-between lg:flex`}>
           <div className=" mb-6 lg:mb-0">
             <ul className="flex lg:flex-col lg:gap-3 gap-x-12 gap-y-3 flex-wrap">
               {uniq(years).map((year) => {
-                return <li className="text-primary">{year}</li>;
+                return <li className="text-primary font-xs">{year}</li>;
               })}
             </ul>
           </div>
@@ -55,18 +55,16 @@ const Blog = ({ data }) => {
                     <div
                       className={`${styles.article} flex flex-col gap-3 rounded-lg py-5 lg:py-10 px-6`}
                     >
-                      <h3 className="text-primary text-2xl capitalize font-semibold">
-                        {title}
-                      </h3>
-                      <h4 className="uppercase text-text font-semibold">
+                      <h4 className="text-primary capitalize">{title}</h4>
+                      <h4 className="uppercase text-text font-xs">
                         {formattedDate}
                       </h4>
-                      <p className="text-text text-lg">
+                      <p className="text-text">
                         <RRenderer data={content} />
                       </p>
                       <Link
                         to={ctaLink}
-                        className="text-sm text-secondary underline uppercase font-semibold"
+                        className="font-xs text-secondary underline uppercase"
                       >
                         {ctaText}
                       </Link>
@@ -77,14 +75,14 @@ const Blog = ({ data }) => {
             <div className={`${styles.pagination}`}>
               <div className="flex items-center">
                 <div className={`${styles.chevronLeft}`}>
-                  <ChevronRight size={19} />
+                  <ChevronRight size={18} />
                 </div>
                 <ul className="flex flex-1 justify-center gap-10">
                   {renderPagination()}
                 </ul>
                 <div>
                   <ChevronRight
-                    size={19}
+                    size={18}
                     className={`${styles.chevronRight}`}
                   />
                 </div>

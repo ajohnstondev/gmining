@@ -31,9 +31,12 @@ const Events = ({ data }) => {
               <img src={image?.file?.url} alt={title} className="w-full" />
             </div>
             <div className="card-detail flex flex-col gap-3 p-6">
-              <h3 className="text-primary text-xl">{title}</h3>
-              <p className="text-text font-semibold">{date}</p>
-              <Link to={linkUrl} className="underline uppercase text-secondary">
+              <h4 className="text-primary">{title}</h4>
+              <p className="text-text font-xs">{date}</p>
+              <Link
+                to={linkUrl}
+                className="font-xs underline uppercase text-secondary"
+              >
                 {linkTitle}
               </Link>
             </div>

@@ -9,9 +9,7 @@ const MarketingPosition = ({ quickLinks, news }) => {
       <div className="max-w-6xl mx-auto">
         <div class="grid gap-x-24 gap-y-8 grid-cols-1  sm:grid-cols-2 xl:grid-cols-3 md:grid-cols-3 p-4">
           <div className="col-span-2">
-            <h2 className="text-2xl text-secondary uppercase pb-2">
-              New Releases
-            </h2>
+            <h3 className="text-secondary uppercase pb-2">New Releases</h3>
 
             <div class="grid gap-4 grid-cols-1  sm:grid-cols-2 xl:grid-cols-2 md:grid-cols-2">
               {news.edges
@@ -33,9 +31,9 @@ const MarketingPosition = ({ quickLinks, news }) => {
             </div>
           </div>
           <div className="col-span-1">
-            <h2 className="text-2xl text-secondary uppercase pb-2">
+            <h3 className="text-secondary uppercase pb-2">
               {quickLinks.title}
-            </h2>
+            </h3>
             <div className="border-secondary border-b border-solid mb-2"></div>
 
             {quickLinks.quickLinks.items.map((v, i) => {

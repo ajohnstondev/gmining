@@ -4,8 +4,7 @@
 
 @import "slick-carousel/slick/slick.css";
 @import "slick-carousel/slick/slick-theme.css";
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap");
-
+@import "../fonts/fonts.css";
 * {
   box-sizing: border-box;
 }
@@ -16,7 +15,6 @@ body {
   --color_t: "#606060";
   font-size: 18px;
   font-family: "Lato", sans-serif;
-  font-family: 400;
   @media (max-width: 767px) {
     font-size: 16px;
   }
@@ -26,13 +24,20 @@ body {
   font-weight: 400;
 }
 
+p {
+  font-size: 18px;
+  line-height: 26px;
+}
+
 h1 {
   font-size: 52px;
+  font-family: "Pierson", sans-serif;
   @media (max-width: 767px) {
     font-size: 35px;
   }
   &.sub-heading {
     font-size: 46px;
+    line-height: 56px;
   }
 }
 
@@ -52,7 +57,7 @@ h3 {
 }
 h4 {
   font-size: 22px;
-  font-weight: 400;
+  font-weight: medium;
   @media (max-width: 767px) {
     font-size: 20px;
   }

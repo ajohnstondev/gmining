@@ -37,7 +37,6 @@ const Team = ({ data: { heading, subheading }, members }) => {
     nextArrow: <RightArrow />,
     prevArrow: <LeftArrow />,
     afterChange: (num) => {
-      console.log("SLIDE CHANGED", num);
       setActiveMember(num);
     },
     responsive: [
@@ -55,7 +54,7 @@ const Team = ({ data: { heading, subheading }, members }) => {
     <div className="pt-10 pb-10 lg:pb-20">
       <div className=" max-w-6xl mx-auto">
         <p className="text-center text-text uppercase mb-8 font-xs">
-          <span className="text-secondary"> {heading}</span> |{" "}
+          <span className="text-secondary"> {heading}</span> |
           <span className="opacity-50 text-text">{subheading} </span>
         </p>
 

@@ -11,7 +11,7 @@ const Bio = ({ node: { name, role, position, image, bio } }) => {
           {position && (
             <p className="hidden lg:block text-secondary font-xs">{position}</p>
           )}
-          {role && <p className="text-text lg:my-3">{role}</p>}
+          {role && <p className="text-text font-bold lg:my-3">{role}</p>}
           {bio && <p className="text-text mt-3">{bio.bio}</p>}
         </div>
         <div className="hidden lg:block w-4/12">
