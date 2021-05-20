@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import Modal from "../../../components/Modal";
+import GradientButton from "../../../components/gradientButton";
 import * as styles from "./index.module.scss";
 
 const GetInTouch = () => {
@@ -31,16 +32,16 @@ const GetInTouch = () => {
             className={`bg-transparent ${styles.input} pb-1 pl-2 flex-1 outline-none`}
           />
         </div>
-        <div className="pt-4 mb-12 lg:mb-4 font-xs">
+        <div className="pt-4 mb-6 lg:mb-16 font-xs">
           <input
             type="text"
             placeholder="MESSAGE"
             className={`bg-transparent ${styles.input} pb-1 pl-2 flex-1 w-full outline-none`}
           />
         </div>
-        <button className={`${styles.seeButton} rounded py-3 px-16 font-xs`}>
-          Submit
-        </button>
+        <div className="flex justify-center">
+          <GradientButton long>SUBMIT</GradientButton>
+        </div>
       </form>
     </div>
   );

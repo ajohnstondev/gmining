@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "gatsby";
 import uniq from "lodash.uniq";
 
+import shortenText from "../../../utils/shortenText";
 import RRenderer from "../../../components/richtextRenderer";
 import { ChevronRight } from "../../../components/icon";
 import * as styles from "./index.module.scss";
@@ -55,11 +56,18 @@ const Blog = ({ data }) => {
                     <div
                       className={`${styles.article} flex flex-col gap-3 rounded-lg py-5 lg:py-10 px-6`}
                     >
-                      <h4 className="text-primary capitalize">{title}</h4>
+                      <h4 className="text-primary capitalize h-20">
+                        <div className="md:hidden lg:block">
+                          {shortenText(title, 50)}
+                        </div>
+                        <div className="hidden md:block lg:hidden">
+                          {shortenText(title, 80)}
+                        </div>
+                      </h4>
                       <h4 className="uppercase text-text font-xs">
                         {formattedDate}
                       </h4>
-                      <p className="text-text">
+                      <p className="flex-1 text-text">
                         <RRenderer data={content} />
                       </p>
                       <Link

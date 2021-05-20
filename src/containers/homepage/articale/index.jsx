@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "gatsby";
 
+import shortenText from "../../../utils/shortenText";
 import * as styles from "./index.module.scss";
+import GradientButton from "../../../components/gradientButton";
 
 const MarketingPosition = ({ quickLinks, news }) => {
   return (
@@ -12,12 +14,18 @@ const MarketingPosition = ({ quickLinks, news }) => {
             <h3 className="text-secondary uppercase pb-2">New Releases</h3>
 
             <div class="grid gap-4 grid-cols-1  sm:grid-cols-2 xl:grid-cols-2 md:grid-cols-2">
-              {news.edges
-                .slice(0, 4)
-                .map(({ node: { content, ctaLink, ctaText, title, date } }) => {
+              {news.edges.slice(0, 4)
+                .map(({ node: { ctaLink, ctaText, title, date } }) => {
                   return (
                     <div class={`${styles.articleContainer} rounded p-6`}>
-                      <h4 className="text-primary">{title}</h4>
+                      <h4 className={`h-20 text-primary`}>
+                        <div className="md:hidden lg:block">
+                          {shortenText(title, 50)}
+                        </div>
+                        <div className="hidden md:block lg:hidden">
+                          {shortenText(title, 30)}
+                        </div>
+                      </h4>
                       <p className="uppercase font-xs py-4 text-text">{date}</p>
                       <Link
                         className="text-secondary underline uppercase font-xs"
@@ -48,9 +56,9 @@ const MarketingPosition = ({ quickLinks, news }) => {
             })}
 
             <p className="py-5 text-text">{quickLinks.content}</p>
-            <button className={`${styles.seeMoreBtn} p-3 uppercase rounded font-xs`}>
+            <GradientButton>
               <Link href={quickLinks.ctaLink}>{quickLinks.ctaText}</Link>
-            </button>
+            </GradientButton>
           </div>
         </div>
         <div class="flex flex-wrap p-4"></div>

@@ -1,6 +1,7 @@
 import React from "react";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
+import GoldBox from "../components/goldbox";
 import {
   Hero,
   Intro,
@@ -10,6 +11,7 @@ import {
 } from "./../containers/homepage";
 
 const Home = ({ data }) => {
+  const { title, content, ctaButtonLink, ctaButtonText } = data.presentation;
   return (
     <Layout>
       <Hero data={data.contentfulHomeHero} />
@@ -18,7 +20,13 @@ const Home = ({ data }) => {
         stockItem={data.contentfulStockItem}
       />
       <MarketingPosition data={data.contentfulHomeMarketPosition} />
-      <CoperatePresentation data={data.contentfulHomeCorporatePresentation} />
+      <GoldBox
+        title={title}
+        main={content}
+        button={ctaButtonText}
+        link={ctaButtonLink}
+        blue
+      />
       <Article quickLinks={data.contentfulHomeNewsRelease} news={data.news} />
     </Layout>
   );
@@ -67,7 +75,7 @@ export const query = graphql`
       }
     }
 
-    contentfulHomeCorporatePresentation {
+    presentation: contentfulHomeCorporatePresentation {
       title
       content {
         raw

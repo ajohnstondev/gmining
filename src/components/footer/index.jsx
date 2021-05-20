@@ -1,12 +1,14 @@
-import { graphql, useStaticQuery, Link } from "gatsby";
+import { navigate, graphql, useStaticQuery, Link } from "gatsby";
 import React, { useState } from "react";
 
 import Modal from "../Modal";
+import GradientButton from "../gradientButton";
 import Logo from "../../images/white-log.png";
+import navigations from "../../site-data/navigation";
+import { Search, DownAngleLine } from "../icon";
 import "./index.scss";
 
 function Footer() {
-  const [isExpanded, toggleExpansion] = useState(false);
   const [thankModal, setThankModal] = useState(false);
 
   const subscribeHandler = (e) => {
@@ -17,14 +19,14 @@ function Footer() {
   return (
     <div className="">
       {thankModal && <Modal onClose={() => setThankModal(false)} />}
-      <div className="bg-red-900 footer-section relative z-10 flex justify-center">
-        <div className="footer-overly text-center max-w-6xl py-8 bg-gray-300 absolute z-20 rounded-xl px-4">
+      <div className="footer-section relative z-10 flex justify-center">
+        <div className="footer-overly text-center max-w-6xl py-8 absolute z-20 rounded-xl px-4">
           <h3 className="text-secondary uppercase pb-2">
             JOIN OUR MAILING LIST
           </h3>
           <form
             onSubmit={subscribeHandler}
-            className="block md:flex justify-center max-w-6xl mx-auto gap-3 items-center"
+            className="block lg:flex justify-center max-w-6xl mx-auto gap-3 items-end"
           >
             <div className="mb-5 lg:mb-0 flex-1">
               <input
@@ -40,84 +42,84 @@ function Footer() {
                 className={`bg-transparent input pb-1 pl-2 outline-none w-full font-xs`}
               />
             </div>
-            <div className="w-1/1 sm:w-1/1 md:w-1/1 xl:w-1/5 py-2">
-              <button className="see-button rounded py-2 px-12  w-full font-xs">
-                Submit
-              </button>
+            <div className="">
+              {/* Here */}
+              <GradientButton>Submit</GradientButton>
             </div>
           </form>
         </div>
       </div>
-      <div className="footer-bar">
-        <div className="flex flex-wrap items-center justify-between px-6 pb-12 pt-48 md:pt-24">
-          <Link className="flex items-center no-underline text-white" to="/">
-            <img src={Logo} alt="logo" />
-          </Link>
-          <nav
-            className={`${
-              isExpanded ? `block` : `hidden`
-            } md:block md:flex md:items-center w-full md:w-auto font-xs`}
-          >
-            <Link
-              className="block md:inline-block mt-4 md:mt-0 md:ml-10 no-underline text-white"
-              key="ABOUT"
-              to="/about"
-            >
-              ABOUT
-            </Link>
-
-            <Link
-              className="block md:inline-block mt-4 md:mt-0 md:ml-10 no-underline text-white"
-              key="CORPORATE"
-              to="/conprate"
-            >
-              CORPORATE
-            </Link>
-
-            <Link
-              className="block md:inline-block mt-4 md:mt-0 md:ml-10 no-underline text-white"
-              key="NEWS"
-              to="/new"
-            >
-              NEWS
-            </Link>
-
-            <Link
-              className="block md:inline-block mt-4 md:mt-0 md:ml-10 no-underline text-white"
-              key="INVESTORS"
-              to="/INVESTORS"
-            >
-              INVESTORS
-            </Link>
-
-            <Link
-              className="block md:inline-block mt-4 md:mt-0 md:ml-10 no-underline text-white"
-              key="PROJECTS"
-              to="/"
-            >
-              PROJECTS
-            </Link>
-
-            <Link
-              className="block md:inline-block mt-4 md:mt-0 md:ml-10 no-underline text-white"
-              key="PROJECTS"
-              to="/"
-            >
-              FR
-            </Link>
-          </nav>
-        </div>
-        <div className="px-6 pb-6">
-          <p className="text-white inline font-xs">
-            2021 G Mining Ventures Corp. All rights Reserved.
-          </p>
-          <Link href="" className="text-white underline font-xs">
-            Legal
-          </Link>
+      <div className="footer-bar pt-48 md:pt-32 pb-2 lg:pb-12 px-8 lg:px-8 xl:px-0">
+        <div className="max-w-6xl mx-auto flex flex-wrap flex-col lg:flex-row items-center lg:items-start lg:gap-y-12 gap-y-2">
+          <div className="w-full flex justify-center">
+            <img src={Logo} alt="" />
+          </div>
+          <ul className="=w-full lg:w-9/12 flex flex-col lg:flex-row items-center lg:items-start justify-between lg:pr-12">
+            {navigations.map((item) => {
+              return <MenuItem {...item} />;
+            })}
+          </ul>
+          <div className="lg:pl-4 w-6/12 lg:w-3/12 flex flex-col items-center lg:items-start">
+            <div className="w-full flex items-center">
+              <div>
+                <Search color="#fff" size={14} />
+              </div>
+              <input
+                type="text"
+                className="footer-search flex-1 ml-2 p-1 font-xs"
+                placeholder="SEARCH"
+              />
+            </div>
+            <div className="pt-4 lg:pt-2 lg:pl-6 text-white font-xs">
+              English | French
+            </div>
+          </div>
+          <div className="text-white font-xs w-full pt-4 mt-8 lg:mt-0 text-center footer-credits">
+            2021 G Mining Ventures Corp. All rights Reserved. Legal
+          </div>
         </div>
       </div>
     </div>
   );
 }
+
+const MenuItem = ({ path, title, items }) => {
+  const [subOpen, setSubOpen] = useState(false);
+
+  const onItemClick = () => {
+    if (items && items.length > 0) {
+      setSubOpen(!subOpen);
+    } else {
+      navigate(path);
+    }
+  };
+
+  return (
+    <li className="text-center lg:text-left">
+      <div
+        onClick={onItemClick}
+        className="cursor-pointer text-white font-xs pb-4"
+      >
+        <div className="flex items-center gap-x-2 justify-center lg:justify-start">
+          {title}
+          {items && items.length > 0 && (
+            <div className={`${!subOpen && "rotate"} lg:hidden`}>
+              <DownAngleLine size={10} color="#fff" />
+            </div>
+          )}
+        </div>
+      </div>
+      {items && items.length > 0 && (
+        <ul className={`${!subOpen && "hidden"} lg:flex flex-col gap-1 pb-2`}>
+          {items.map((subNav) => (
+            <li className="text-gray-500 font-xs">
+              <Link to={subNav.path}>{subNav.title}</Link>
+            </li>
+          ))}
+        </ul>
+      )}
+    </li>
+  );
+};
 
 export default Footer;
