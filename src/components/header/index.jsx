@@ -119,45 +119,92 @@ const NavListItem = ({ item, inverted, isInverted, scroll }) => {
   };
 
   return (
-    <div
-      className={`cursor-pointer block md:inline-block  mt-4 md:mt-0 md:ml-10 no-underline link-item relative ${
-        inverted || isInverted ? "text-text" : "text-white"
-      } ${scroll ? "text-text" : "text-white"} `}
-      key={item.title}
-      activeClassName="active"
-      partiallyActive={true}
-      onClick={toggleDropDown}
-    >
-      <div className="item flex items-center">
-        <span>{item.title}</span>
+    <div>
+      <div
+        className={`cursor-pointer lg:hidden block  mt-4 md:mt-0 md:ml-10 no-underline link-item relative ${
+          inverted || isInverted ? "text-text" : "text-white"
+        } ${scroll ? "text-text" : "text-white"} `}
+        key={item.title}
+        activeClassName="link"
+        partiallyActive={true}
+        onClick={toggleDropDown}
+      >
+        <div className="item flex items-center">
+          <span>{item.title}</span>
+          {item.items && (
+            <span>
+              {!scroll && !inverted && !isInverted ? (
+                <img src={ArrowDownWhite} className="ml-4" />
+              ) : (
+                <img src={ArrowDownBlack} className="ml-4" />
+              )}
+            </span>
+          )}
+        </div>
         {item.items && (
-          <span>
-            {!scroll && !inverted && !isInverted ? (
-              <img src={ArrowDownWhite} className="ml-4" />
-            ) : (
-              <img src={ArrowDownBlack} className="ml-4" />
-            )}
-          </span>
+          <div
+            className={`${
+              !subMenuVisible && "hidden"
+            }  dropdown lg:absolute lg:-ml-4`}
+          >
+            <div className="dropdown-content">
+              {item.items?.map((item) => (
+                <Link
+                  className="subitem block bg-white no-underline text-black py-4 pl-4 pr-8 text-text font-xs"
+                  key={item.title}
+                  to={item.path}
+                  activeClassName="dropdown-active"
+                >
+                  {item.title}
+                </Link>
+              ))}
+            </div>
+          </div>
         )}
       </div>
-      {item.items && (
-        <div
-          className={`${
-            !subMenuVisible && "hidden"
-          }  dropdown lg:absolute lg:-ml-4`}
-        >
-          {item.items?.map((item) => (
-            <Link
-              className="subitem block bg-white no-underline text-black py-4 pl-4 pr-8 text-text font-xs"
-              key={item.title}
-              to={item.path}
-              activeClassName="dropdown-active"
-            >
-              {item.title}
-            </Link>
-          ))}
+      <Link
+        className={`cursor-pointer hidden lg:inline-block  mt-4 md:mt-0 md:ml-10 no-underline link-item relative ${
+          inverted || isInverted ? "text-text" : "text-white"
+        } ${scroll ? "text-text" : "text-white"} `}
+        key={item.title}
+        activeClassName="link"
+        partiallyActive={true}
+        onClick={toggleDropDown}
+        to={item.path}
+      >
+        <div className="item flex items-center">
+          <span>{item.title}</span>
+          {item.items && (
+            <span>
+              {!scroll && !inverted && !isInverted ? (
+                <img src={ArrowDownWhite} className="ml-4" />
+              ) : (
+                <img src={ArrowDownBlack} className="ml-4" />
+              )}
+            </span>
+          )}
         </div>
-      )}
+        {item.items && (
+          <div
+            className={`${
+              !subMenuVisible && "hidden"
+            }  dropdown lg:absolute lg:-ml-4`}
+          >
+            <div className="dropdown-content">
+              {item.items?.map((item) => (
+                <Link
+                  className="subitem block bg-white no-underline text-black py-4 pl-4 pr-8 text-text font-xs"
+                  key={item.title}
+                  to={item.path}
+                  activeClassName="dropdown-active"
+                >
+                  {item.title}
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
+      </Link>
     </div>
   );
 };

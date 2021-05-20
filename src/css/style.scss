@@ -36,6 +36,9 @@ h1 {
   }
   &.sub-heading {
     font-size: 46px;
+    @media (max-width: 767px) {
+      font-size: 35px;
+    }
     line-height: 56px;
   }
 }
