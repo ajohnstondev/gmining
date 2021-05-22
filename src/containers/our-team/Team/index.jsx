@@ -17,7 +17,7 @@ const RightArrow = ({ onClick }) => {
 
 const LeftArrow = ({ onClick }) => {
   return (
-    <div className={` ${styles.leftArrow}`} onClick={onClick}>
+    <div className={styles.leftArrow} onClick={onClick}>
       <button>
         <ChevronLeft className={`${styles.icon}`} />
       </button>
@@ -52,7 +52,7 @@ const Team = ({ data: { heading, subheading }, members }) => {
   };
   return (
     <div className="pt-10 pb-10 lg:pb-20">
-      <div className=" max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <p className="text-center text-text uppercase mb-8 font-xs">
           <span className="text-secondary mr-1">{heading}</span>|
           <span className="opacity-50 text-text ml-1">{subheading}</span>

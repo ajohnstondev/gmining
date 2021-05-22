@@ -1,5 +1,5 @@
-import { navigate, graphql, useStaticQuery, Link } from "gatsby";
 import React, { useState } from "react";
+import { navigate, graphql, useStaticQuery, Link } from "gatsby";
 
 import Modal from "../Modal";
 import GradientButton from "../gradientButton";
