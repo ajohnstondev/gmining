@@ -54,38 +54,54 @@ const Team = ({ data: { heading, subheading }, members }) => {
     <div className="pt-10 pb-10 lg:pb-20">
       <div className="max-w-6xl mx-auto">
         <p className="text-center text-text uppercase mb-8 font-xs">
-          <span className="text-secondary mr-1">{heading}</span>|
-          <span className="opacity-50 text-text ml-1">{subheading}</span>
+          <span className="text-secondary"> {heading}</span> |
+          <span className="opacity-50 text-text"> {subheading}</span>
         </p>
 
         <div>
           <Slider {...settings}>
             {members &&
               members.length > 0 &&
-              members.map(({ node: { image, name, position } }, idx) => (
-                <div
-                  className={`${styles.teamCardContainer} ${
-                    activeMember === idx && styles.active
-                  }`}
-                  onClick={() => setActiveMember(idx)}
-                >
-                  <div className={`flex flex-col items-center ${styles.card}`}>
-                    <div className="w-4/12 lg:w-7/12 flex justify-center">
-                      <img
-                        alt={name}
-                        src={image?.file?.url}
-                        className="rounded-xl w-full"
-                      />
-                    </div>
-                    <div className="pt-4">
-                      <h4 className="text-center text-primary">{name}</h4>
-                      <p className="text-center w-8/12 mx-auto text-text font-xs opacity-50">
-                        {position}
-                      </p>
+              members.map(
+                (
+                  { node: { image, name, position, isBoardOfDirectors } },
+                  idx
+                ) => (
+                  <div
+                    className={`${styles.teamCardContainer} ${
+                      activeMember === idx && styles.active
+                    }`}
+                    onClick={() => setActiveMember(idx)}
+                  >
+                    {console.log("NOW")}
+                    <div
+                      className={`flex flex-col items-center ${styles.card}`}
+                    >
+                      <div
+                        className={`w-4/12 lg:w-7/12 flex justify-center ${styles.cardImage}`}
+                      >
+                        <img
+                          alt={name}
+                          src={image?.file?.url}
+                          className="rounded-xl"
+                        />
+                      </div>
+                      <div className="pt-4">
+                        <h4
+                          className={`${styles.cardTitle} text-center text-primary`}
+                        >
+                          {name}
+                        </h4>
+                        <p
+                          className={`${styles.cardPosition} text-center w-8/12 mx-auto text-text font-xs opacity-50`}
+                        >
+                          {position}
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                )
+              )}
           </Slider>
         </div>
       </div>

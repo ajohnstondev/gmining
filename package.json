@@ -3,6 +3,7 @@
   "description": "GMining Ventures Website",
   "version": "0.0.1",
   "dependencies": {
+    "@contentful/rich-text-types": "^14.1.2",
     "dotenv": "^9.0.2",
     "env-cmd": "^10.1.0",
     "gatsby": "^3.4.2",

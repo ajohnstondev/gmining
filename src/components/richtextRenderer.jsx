@@ -1,7 +1,7 @@
 import React from "react";
 
 import { BLOCKS, INLINES, MARKS } from "@contentful/rich-text-types";
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import { renderRichText } from "gatsby-source-contentful/rich-text";
 
 const Text = ({ data, config }) => {
   const options = {
@@ -43,7 +43,15 @@ const Text = ({ data, config }) => {
       [BLOCKS.HR]: () => <hr />,
 
       [BLOCKS.EMBEDDED_ASSET]: (node, children) => {
-        return <div className="py-8">Image Here</div>;
+        return (
+          <div className="flex justify-center">
+            <img
+              className="mb-12"
+              src={node.data.target.file.url}
+              alt={node.data.target.title}
+            />
+          </div>
+        );
       },
 
       [BLOCKS.EMBEDDED_ENTRY]: (node, children) => {
@@ -74,7 +82,8 @@ const Text = ({ data, config }) => {
       [MARKS.ITALIC]: (text) => <i>{text}</i>,
     },
   };
-  return <div>{documentToReactComponents(JSON.parse(data.raw), options)}</div>;
+
+  return <div>{renderRichText(data, options)}</div>;
 };
 
 export default Text;

@@ -10,9 +10,12 @@ const SedarFillings = ({ data }) => {
   const [page, setPage] = useState(1);
   const [filter, setFilter] = useState("");
 
+  let pagLen = 1;
+
   const generatePagination = () => {
     const pagination = [];
     let pgCount = Math.ceil(data.length / numPerPage);
+    pagLen = pgCount;
     for (; pgCount > 0; pgCount--) {
       pagination.unshift(pgCount);
     }
@@ -38,6 +41,7 @@ const SedarFillings = ({ data }) => {
       page={page}
       setPage={setPage}
       setFilter={setFilter}
+      pagLen={pagLen}
     >
       <ul className="flex flex-col gap-2 mb-6 lg:mb-10">
         {data

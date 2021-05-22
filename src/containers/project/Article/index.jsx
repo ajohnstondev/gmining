@@ -10,9 +10,7 @@ const Article = ({ data: { heading, image, content, bottomText } }) => {
         <h2 className="uppercase text-2xl text-secondary font-semibold text-center mb-10">
           {heading}
         </h2>
-        <div className="bg-red-700 mb-12">
-          <img alt="" src={image?.file?.url} className="w-full mx-auto" />
-        </div>
+
         {/* config object used to control classes on rich text dynamically */}
         <RRenderer
           data={content}
@@ -33,6 +31,6 @@ const Article = ({ data: { heading, image, content, bottomText } }) => {
       </div>
     </div>
   );
-};
+}
 
 export default Article;

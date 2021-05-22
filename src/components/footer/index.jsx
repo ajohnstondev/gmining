@@ -4,7 +4,6 @@ import { navigate, graphql, useStaticQuery, Link } from "gatsby";
 import Modal from "../Modal";
 import GradientButton from "../gradientButton";
 import Logo from "../../images/white-log.png";
-import navigations from "../../site-data/navigation";
 import { Search, DownAngleLine } from "../icon";
 import "./index.scss";
 
@@ -15,9 +14,84 @@ function Footer() {
     e.preventDefault();
     setThankModal(true);
   };
+  const { site, projects } = useStaticQuery(graphql`
+    query Footer {
+      projects: allContentfulProject(filter: { node_locale: { eq: "en-US" } }) {
+        edges {
+          node {
+            heading
+            slug
+          }
+        }
+      }
+    }
+  `);
+
+  let currentEdges = projects.edges;
+  currentEdges = currentEdges.map(({ node }) => {
+    return {
+      title: node.heading,
+      path: `/${node.slug}`,
+    };
+  });
+
+  const projectsLinks = {
+    title: "PROJECTS",
+    path: currentEdges[0].path,
+    items: currentEdges,
+  };
+  const navigations = [
+    {
+      title: "ABOUT",
+      path: "/about-us",
+      items: [
+        {
+          title: "ABOUT US",
+          path: "/about-us",
+        },
+        {
+          title: "OUR TEAM",
+          path: "/about-us/our-team",
+        },
+      ],
+    },
+    {
+      title: "CORPORATE",
+      path: "/corporate",
+      items: [
+        {
+          title: "CORPORATE GOVERNENCE",
+          path: "/corporate",
+        },
+        {
+          title: "CORPORATE DIRECTORY",
+          path: "/corporate/corporate-directory",
+        },
+      ],
+    },
+    {
+      title: "NEWS",
+      path: "/news",
+    },
+    {
+      title: "INVESTORS",
+      path: "/investors",
+      items: [
+        {
+          title: "REPORTS AND DISCLOUSERS",
+          path: "/investors",
+        },
+        {
+          title: "EVENTS AND PRESENTATION",
+          path: "/investors/events-and-presentations",
+        },
+      ],
+    },
+    projectsLinks,
+  ];
 
   return (
-    <div className="">
+    <div>
       {thankModal && <Modal onClose={() => setThankModal(false)} />}
       <div className="footer-section relative z-10 flex justify-center">
         <div className="footer-overly text-center max-w-6xl py-8 z-20 rounded-xl px-4">
@@ -112,7 +186,7 @@ const MenuItem = ({ path, title, items }) => {
       {items && items.length > 0 && (
         <ul className={`${!subOpen && "hidden"} lg:flex flex-col gap-1 pb-2`}>
           {items.map((subNav) => (
-            <li className="text-gray-500 font-xs">
+            <li className="text-gray-500 font-xs uppercase">
               <Link to={subNav.path}>{subNav.title}</Link>
             </li>
           ))}

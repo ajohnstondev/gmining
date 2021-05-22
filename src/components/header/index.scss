@@ -4,6 +4,7 @@
   .link-item {
     position: relative;
     &.link {
+      color: var(--color_s);
       @media (min-width: 1024px) {
         &::after {
           content: "";
@@ -14,46 +15,30 @@
           height: 4px;
           background-color: var(--color_s);
         }
-        // visibility: hidden;
-        // opacity: 0;
-        // transition: 0.25s all ease-in-out;
       }
     }
-    // &::after {
-    //   content: "";
-    //   position: absolute;
-    //   bottom: 3px;
-    //   left: 0px;
-    //   width: 100%;
-    //   height: 4px;
-    //   background-color: var(--color_s);
-    //   visibility: hidden;
-    //   opacity: 0;
-    //   transition: 0.25s all ease-in-out;
-    // }
 
-    // @media (min-width: 1024px) {
-    //   &:hover::after {
-    //     opacity: 1;
-    //     visibility: visible;
-    //     bottom: 0px;
-    //   }
-    // }
-
-    // &.active {
-    //   &::after {
-    //     content: "";
-    //     position: absolute;
-    //     bottom: 3px;
-    //     left: 0px;
-    //     width: 100%;
-    //     height: 4px;
-    //     background-color: var(--color_s);
-    //     visibility: hidden;
-    //     opacity: 0;
-    //     transition: 0.25s all ease-in-out;
-    //   }
-    // }
+    &:not(.link) {
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        width: 100%;
+        height: 4px;
+        background-color: var(--color_s);
+        visibility: hidden;
+        opacity: 0;
+        transition: 0.25s all ease-in-out;
+      }
+      @media (min-width: 1024px) {
+        &:hover::after {
+          opacity: 1;
+          visibility: visible;
+          bottom: -4px;
+        }
+      }
+    }
 
     @media (min-width: 1024px) {
       .dropdown {
@@ -118,6 +103,27 @@
     width: 32px;
     background-color: #606060;
     border-radius: 99px;
+  }
+}
+
+.navbar-search-field {
+  background-color: transparent;
+  border-bottom: 1px solid #606060;
+  outline: none;
+  transition: 0.25s;
+  width: 180px;
+
+  &.inactive {
+    width: 0px;
+  }
+}
+
+.navbar-search-icon {
+  fill: var(--color_s);
+  transition: 0.25s;
+
+  &.inactive {
+    fill: var(--color_p);
   }
 }
 

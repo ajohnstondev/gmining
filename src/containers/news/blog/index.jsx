@@ -9,13 +9,17 @@ import * as styles from "./index.module.scss";
 
 const Blog = ({ data }) => {
   const [page, setPage] = useState(1);
+  let pagLen = 1;
+
   const years = data.map(({ node: { date } }) => {
     let year = new Date(date).getFullYear();
     return year;
   });
+
   const renderPagination = () => {
     const pagination = [];
     let pgCount = Math.ceil(data.length / 4);
+    pagLen = pgCount;
     for (; pgCount > 0; pgCount--) {
       pagination.unshift(pgCount);
     }
@@ -82,13 +86,23 @@ const Blog = ({ data }) => {
             </div>
             <div className={`${styles.pagination}`}>
               <div className="flex items-center">
-                <div className={`${styles.chevronLeft}`}>
+                <div
+                  onClick={() => {
+                    setPage((prev) => (prev - 1 < 1) ? 1 : prev - 1);
+                  }}
+                  className={`${styles.chevronLeft} cursor-pointer`}
+                >
                   <ChevronRight size={18} />
                 </div>
                 <ul className="flex flex-1 justify-center gap-10">
                   {renderPagination()}
                 </ul>
-                <div>
+                <div
+                  className="cursor-pointer"
+                  onClick={() => {
+                    setPage((prev) => (prev + 1 > pagLen) ? pagLen : prev + 1);
+                  }}
+                >
                   <ChevronRight
                     size={18}
                     className={`${styles.chevronRight}`}

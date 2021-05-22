@@ -13,6 +13,7 @@ const TitledContainer = ({
   page,
   setPage,
   setFilter,
+  pagLen,
 }) => {
   return (
     <div
@@ -46,7 +47,14 @@ const TitledContainer = ({
             {children}
             <div className={`tit-pagination`}>
               <div className="flex items-center">
-                <div className={`tit-chevronLeft`}>
+                <div
+                  className={`tit-chevronLeft cursor-pointer`}
+                  onClick={() => {
+                    setPage((prev) => {
+                      return prev - 1 < 1 ? 1 : prev - 1;
+                    });
+                  }}
+                >
                   <ChevronRight size={15} />
                 </div>
                 <ul className="flex flex-1 justify-center gap-10">
@@ -62,7 +70,14 @@ const TitledContainer = ({
                       </li>
                     ))}
                 </ul>
-                <div>
+                <div
+                  className="cursor-pointer"
+                  onClick={() => {
+                    setPage((prev) => {
+                      return prev + 1 > pagLen ? pagLen : prev + 1;
+                    });
+                  }}
+                >
                   <ChevronRight size={15} className={`tit-chevronRight`} />
                 </div>
               </div>

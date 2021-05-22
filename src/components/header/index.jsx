@@ -6,7 +6,7 @@ import Logo from "../../images/logo.png";
 import SearchIcon from "./../../images/search-icon.png";
 import ArrowDownBlack from "../../images/down-arrow-black.png";
 import ArrowDownWhite from "../../images/down-arrow-white.png";
-import navigations from "../../site-data/navigation";
+import { Search } from "../icon";
 
 const languageName = {
   "en-US": "English",
@@ -18,16 +18,89 @@ const Header = ({ inverted }) => {
   const [scroll, setScroll] = useState(false);
   const [isInverted, setInverted] = useState(inverted);
   const [langOpen, setLangOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
 
-  const { site } = useStaticQuery(graphql`
-    query SiteTitleQuery {
+  const { site, projects } = useStaticQuery(graphql`
+    query allProjectPagesQueryAndSiteTitleQuery {
       site {
         siteMetadata {
           title
         }
       }
+
+      projects: allContentfulProject(filter: { node_locale: { eq: "en-US" } }) {
+        edges {
+          node {
+            heading
+            slug
+          }
+        }
+      }
     }
   `);
+
+  let currentEdges = projects.edges;
+  currentEdges = currentEdges.map(({ node }) => {
+    return {
+      title: node.heading,
+      path: `/${node.slug}`,
+    };
+  });
+
+  const projectsLinks = {
+    title: "PROJECTS",
+    path: currentEdges[0].path,
+    items: currentEdges,
+  };
+  const navigations = [
+    {
+      title: "ABOUT",
+      path: "/about-us",
+      items: [
+        {
+          title: "ABOUT US",
+          path: "/about-us",
+        },
+        {
+          title: "OUR TEAM",
+          path: "/about-us/our-team",
+        },
+      ],
+    },
+    {
+      title: "CORPORATE",
+      path: "/corporate",
+      items: [
+        {
+          title: "CORPORATE GOVERNENCE",
+          path: "/corporate",
+        },
+        {
+          title: "CORPORATE DIRECTORY",
+          path: "/corporate/corporate-directory",
+        },
+      ],
+    },
+    {
+      title: "NEWS",
+      path: "/news",
+    },
+    {
+      title: "INVESTORS",
+      path: "/investors",
+      items: [
+        {
+          title: "REPORTS AND DISCLOUSERS",
+          path: "/investors",
+        },
+        {
+          title: "EVENTS AND PRESENTATION",
+          path: "/investors/events-and-presentations",
+        },
+      ],
+    },
+    projectsLinks,
+  ];
 
   function scrollFunction() {
     if (typeof window != "undefined") {
@@ -54,11 +127,11 @@ const Header = ({ inverted }) => {
           onMouseOut={() => setInverted(false)}
           className={`${
             isInverted || inverted ? "bg-white" : "bg-transparent"
-          }   left-0 right-0 top-0 z-10 header-main ${
+          } left-0 right-0 top-0 z-10 header-main ${
             scroll ? "fixed bg-white" : "absolute"
           }`}
         >
-          <div className="py-1 flex flex-wrap items-center justify-between  px-4 md:px-6">
+          <div className="py-1 flex flex-wrap items-center justify-between px-4 md:px-6">
             <Link
               className="flex items-center justify-content no-underline text-white"
               to={`/${currentLocale}/`}
@@ -112,15 +185,28 @@ const Header = ({ inverted }) => {
                     </div>
                   </div>
                 </div>
-                <Link
+                <div
                   className=" block md:inline-block mt-4 md:mt-0 md:ml-10 no-underline text-black font-xs"
                   key="PROJECTS"
-                  to="/"
                 >
-                  <div>
-                    <img src={SearchIcon} />
+                  <div className="flex items-center gap-2">
+                    <button onClick={() => setSearchOpen((prev) => !prev)}>
+                      <Search
+                        size={14}
+                        className={`navbar-search-icon ${
+                          !searchOpen ? "inactive" : ""
+                        }`}
+                      />
+                    </button>
+
+                    <input
+                      placeholder="SEARCH"
+                      className={`font-xs navbar-search-field ${
+                        searchOpen ? "px-2" : "inactive"
+                      }`}
+                    />
                   </div>
-                </Link>
+                </div>
               </div>
             </nav>
           </div>
@@ -140,7 +226,7 @@ const NavListItem = ({ item, inverted, isInverted, scroll, currentLocale }) => {
   return (
     <div>
       <div
-        className={`cursor-pointer lg:hidden block  mt-4 md:mt-0 md:ml-10 no-underline link-item relative ${
+        className={`cursor-pointer lg:hidden block uppercase  mt-4 md:mt-0 md:ml-10 no-underline link-item relative ${
           inverted || isInverted ? "text-text" : "text-white"
         } ${scroll ? "text-text" : "text-white"} `}
         key={item.title}
@@ -182,7 +268,7 @@ const NavListItem = ({ item, inverted, isInverted, scroll, currentLocale }) => {
         )}
       </div>
       <Link
-        className={`cursor-pointer hidden lg:inline-block  mt-4 md:mt-0 md:ml-10 no-underline link-item relative ${
+        className={`cursor-pointer uppercase  hidden lg:inline-block  mt-4 md:mt-0 md:ml-10 no-underline link-item relative ${
           inverted || isInverted ? "text-text" : "text-white"
         } ${scroll ? "text-text" : "text-white"} `}
         key={item.title}

@@ -6,10 +6,12 @@ import "./index.scss";
 
 const Events = ({ data }) => {
   const [page, setPage] = useState(1);
+  let pagLen = 1;
 
   const generatePagination = () => {
     const pagination = [];
     let pgCount = Math.ceil(data.length / 4);
+    pagLen = pgCount;
     for (; pgCount > 0; pgCount--) {
       pagination.unshift(pgCount);
     }
@@ -23,6 +25,7 @@ const Events = ({ data }) => {
       pagination={generatePagination()}
       page={page}
       setPage={setPage}
+      pagLen={pagLen}
     >
       <div className="grid grid-cols-1 lg:grid-cols-2 mb-4 lg:mb-10 gap-4">
         {data.map(
