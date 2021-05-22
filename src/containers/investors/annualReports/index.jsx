@@ -27,7 +27,7 @@ const AnnualReports = ({ data }) => {
         {data.map(({ node: { title, date, linkText, linkUrl } }) => (
           <div className="bg-white p-8 rounded-xl flex flex-col gap-3">
             <h4 className="text-primary">{title}</h4>
-            <p className="text-text font-xs">{date}</p>
+            <p className="text-text font-xs uppercase">{date}</p>
             <Link
               to={linkUrl}
               className="font-xs underline uppercase text-secondary"

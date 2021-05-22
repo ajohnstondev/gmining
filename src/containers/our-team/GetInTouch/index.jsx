@@ -13,7 +13,7 @@ const GetInTouch = () => {
   };
 
   return (
-    <div className="px-4 xl:px-0 pb-12">
+    <div className={`px-4 xl:px-0 ${styles.getInTouchWrapper}`}>
       {thankModal && <Modal onClose={() => setThankModal(false)} />}
       <form
         onSubmit={subscribeHandler}
@@ -24,19 +24,19 @@ const GetInTouch = () => {
           <input
             type="text"
             placeholder="NAME"
-            className={`bg-transparent ${styles.input} pb-1 pl-2 flex-1 outline-none`}
+            className={`bg-transparent ${styles.input} pb-1 pl-2 flex-1 outline-none font-xs`}
           />
           <input
             type="text"
             placeholder="EMAIL ADDRESS"
-            className={`bg-transparent ${styles.input} pb-1 pl-2 flex-1 outline-none`}
+            className={`bg-transparent ${styles.input} pb-1 pl-2 flex-1 outline-none font-xs`}
           />
         </div>
-        <div className="pt-4 mb-6 lg:mb-16 font-xs">
+        <div className="pt-4 mb-6 lg:mb-16">
           <input
             type="text"
             placeholder="MESSAGE"
-            className={`bg-transparent ${styles.input} pb-1 pl-2 flex-1 w-full outline-none`}
+            className={`bg-transparent ${styles.input} pb-1 pl-2 flex-1 w-full outline-none font-xs`}
           />
         </div>
         <div className="flex justify-center">

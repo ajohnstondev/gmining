@@ -6,7 +6,7 @@ import Events from "../../containers/eventsAndPresentation/events";
 import Layout from "../../components/layout";
 
 const CorporateDirectory = ({ data }) => {
-  const { title, heroImage } = data.hero;
+  const { title, heroImage } = data.hero.nodes[0];
 
   return (
     <Layout inverted>
@@ -17,14 +17,15 @@ const CorporateDirectory = ({ data }) => {
 };
 
 export const query = graphql`
-  query EventsAndPresentationQuery {
+  query EventsAndPresentationQuery($locale: String) {
     events: allContentfulEventsPresentationsEvents(
-      filter: { node_locale: { eq: "en-US" } }
+      filter: { node_locale: { eq: $locale } }
     ) {
       edges {
         node {
           title
-          date
+          date(formatString: "MM-DD-YYYY")
+          formattedDate: date(formatString: "MMM DD, YYYY")
           linkTitle
           linkUrl
           image {
@@ -35,11 +36,15 @@ export const query = graphql`
         }
       }
     }
-    hero: contentfulEventsPresentationsHero {
-      title
-      heroImage {
-        file {
-          url
+    hero: allContentfulEventsPresentationsHero(
+      filter: { node_locale: { eq: $locale } }
+    ) {
+      nodes {
+        title
+        heroImage {
+          file {
+            url
+          }
         }
       }
     }

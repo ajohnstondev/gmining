@@ -8,7 +8,7 @@ import AnnualReports from "../../containers/investors/annualReports";
 import "./index.scss";
 
 const CorporateDirectory = ({ data }) => {
-  const { title, heroImage } = data.hero;
+  const { title, heroImage } = data.hero.nodes[0];
 
   return (
     <Layout inverted>
@@ -20,35 +20,40 @@ const CorporateDirectory = ({ data }) => {
 };
 
 export const query = graphql`
-  query ReportsAndFilingsQuery {
+  query ReportsAndFilingsQuery($locale: String) {
     documents: allContentfulReportsFilingsDocuments(
-      filter: { node_locale: { eq: "en-US" } }
+      filter: { node_locale: { eq: $locale } }
     ) {
       edges {
         node {
           title
           type
-          date
+
+          date(formatString: "MMM DD, YYYY")
           link
           tags
         }
       }
     }
-    hero: contentfulReportsFilingsHero {
-      title
-      heroImage {
-        file {
-          url
+    hero: allContentfulReportsFilingsHero(
+      filter: { node_locale: { eq: $locale } }
+    ) {
+      nodes {
+        title
+        heroImage {
+          file {
+            url
+          }
         }
       }
     }
 
     reports: allContentfulReportsFilingsReports(
-      filter: { node_locale: { eq: "en-US" } }
+      filter: { node_locale: { eq: $locale } }
     ) {
       edges {
         node {
-          date
+          date(formatString: "MMM DD, YYYY")
           title
           linkText
           linkUrl
