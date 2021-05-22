@@ -6,41 +6,60 @@ import GoldBox from "../../components/goldbox";
 import Documents from "../../containers/corporate/documents";
 
 const Coporate = ({ data }) => {
-  const { title, heroImage } = data.hero;
-  const { title: title2, content } = data.commitment;
+  const { title, heroImage } = data.hero.nodes[0];
+  const { title: title2, content } = data.commitment.nodes[0];
   return (
     <Layout inverted>
       <Hero title={title} image={heroImage} />
       <GoldBox title={title2} main={content} />
-      <Documents data={data.docs} />
+      <Documents
+        data={
+          data.docs.nodes[0]
+            .childrenContentfulCorporateGovernanceReferenceDocumentsDocumentsJsonNode[0]
+        }
+      />
     </Layout>
   );
 };
 
 export const query = graphql`
-  query CorporateGovernance {
-    hero: contentfulCorporateGovernanceHero {
-      title
-      heroImage {
-        file {
-          url
-        }
+  query CorporateGovernance($locale: String) {
+    hero: allContentfulCorporateGovernanceHero(
+      filter: { node_locale: { eq: $locale } }
+    ) {
+      nodes {
         title
-      }
-    }
-    commitment: contentfulCorporateGovernanceOurCommitment {
-      title
-      content {
-        raw
-      }
-    }
-    docs: contentfulCorporateGovernanceReferenceDocumentsDocumentsJsonNode {
-      items {
-        title
-        items {
-          download_link
-          type
+        heroImage {
+          file {
+            url
+          }
           title
+        }
+      }
+    }
+    commitment: allContentfulCorporateGovernanceOurCommitment(
+      filter: { node_locale: { eq: $locale } }
+    ) {
+      nodes {
+        title
+        content {
+          raw
+        }
+      }
+    }
+    docs: allContentfulCorporateGovernanceReferenceDocuments(
+      filter: { node_locale: { eq: $locale } }
+    ) {
+      nodes {
+        childrenContentfulCorporateGovernanceReferenceDocumentsDocumentsJsonNode {
+          items {
+            title
+            items {
+              download_link
+              title
+              type
+            }
+          }
         }
       }
     }

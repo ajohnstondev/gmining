@@ -19,7 +19,7 @@ const GetInTouch = () => {
         onSubmit={subscribeHandler}
         className={`${styles.footerOverly} px-5 text-center mx-auto max-w-6xl py-8 bg-gray-300 z-20 rounded-lg`}
       >
-        <h3 className=" text-secondary uppercase pb-2">GET IN TOUCH</h3>
+        <h3 className=" text-secondary uppercase mb-5">GET IN TOUCH</h3>
         <div className="flex flex-col lg:flex-row gap-8 py-4 font-xs">
           <input
             type="text"

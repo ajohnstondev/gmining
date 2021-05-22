@@ -7,61 +7,75 @@ import OurStory from "../../containers/about-us/OurStory";
 import LegacyTimeline from "../../containers/about-us/LegacyTimeline";
 
 const AboutUs = ({ data }) => {
-  const { heroBackground, title, subtitle } = data.hero;
+  const { heroBackground, title, subtitle } = data.hero.nodes[0];
 
   return (
     <Layout inverted>
       <Hero title={title} slogan={subtitle} image={heroBackground} />
-      <OurMission data={data.ourmission} />
-      <OurStory data={data.ourstory} />
-      <LegacyTimeline data={data.legacytimeline} />
+      <OurMission data={data.ourmission.nodes[0]} />
+      <OurStory data={data.ourstory.nodes[0]} />
+      <LegacyTimeline data={data.legacytimeline.nodes[0]} />
     </Layout>
   );
 };
 
 export const query = graphql`
-  query AboutQuery {
-    hero: contentfulAboutUsHero {
-      title
-      subtitle
-      heroBackground {
-        file {
-          url
+  query AboutQuery($locale: String) {
+    hero: allContentfulAboutUsHero(filter: { node_locale: { eq: $locale } }) {
+      nodes {
+        title
+        subtitle
+        heroBackground {
+          file {
+            url
+          }
         }
       }
     }
-    legacytimeline: contentfulAboutUsOurLegacy {
-      title
-      timeline {
-        items {
+    legacytimeline: allContentfulAboutUsOurLegacy(
+      filter: { node_locale: { eq: $locale } }
+    ) {
+      nodes {
+        title
+        timeline {
+          items {
+            content
+            title
+            year
+          }
+        }
+        icons {
+          file {
+            url
+          }
+        }
+        content {
           content
-          title
-          year
         }
       }
-      icons {
-        file {
-          url
+    }
+    ourmission: allContentfulAboutUsOurMission(
+      filter: { node_locale: { eq: $locale } }
+    ) {
+      nodes {
+        title
+        content {
+          raw
         }
       }
-      content {
-        content
-      }
     }
-    ourmission: contentfulAboutUsOurMission {
-      title
-      content {
-        raw
-      }
-    }
-    ourstory: contentfulAboutUsOurStory {
-      title
-      content {
-        raw
-      }
-      image {
-        file {
-          url
+    ourstory: allContentfulAboutUsOurStory(
+      filter: { node_locale: { eq: $locale } }
+    ) {
+      nodes {
+        title
+        content {
+          raw
+        }
+        image {
+          file {
+            url
+          }
         }
       }
     }

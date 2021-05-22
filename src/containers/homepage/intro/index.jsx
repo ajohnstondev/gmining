@@ -22,7 +22,9 @@ const Intro = ({ data, stockItem }) => {
             </h4>
             <div className="flex flex-col gap-2">
               <div className="flex">
-                <p className=" w-40 text-primary">Stock Price (CAD):</p>
+                <p className=" w-40 text-primary">
+                  {stockItem.stockPriceTitle}
+                </p>
                 <p className="text-text">
                   {stockItem.stockPrice} {stockItem.stockChangeInValue}(
                   {stockItem.stockChangeInPercent})
@@ -30,12 +32,12 @@ const Intro = ({ data, stockItem }) => {
               </div>
 
               <div className="flex">
-                <p className=" w-40 text-primary">Market Cap (CAD):</p>
+                <p className=" w-40 text-primary">{stockItem.marketCapTitle}</p>
                 <p className="text-text">{stockItem.marketCap}</p>
               </div>
 
               <div className="flex">
-                <p className=" w-40 text-primary">Spot Gold (USD):</p>
+                <p className=" w-40 text-primary">S{stockItem.spotGoldTitle}</p>
                 <p className="text-text flex items-center">
                   {stockItem.spotGold}
                   <span className="pl-3 text-red-600">

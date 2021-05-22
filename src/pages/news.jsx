@@ -6,7 +6,7 @@ import Blog from "../containers/news/blog";
 import Layout from "../components/layout";
 
 const CorporateDirectory = ({ data }) => {
-  const { title, heroImage } = data.hero;
+  const { title, heroImage } = data.hero.nodes[0];
   const { edges } = data.news;
 
   return (
@@ -18,16 +18,18 @@ const CorporateDirectory = ({ data }) => {
 };
 
 export const query = graphql`
-  query NewsQuery {
-    hero: contentfulNewsPageHero {
-      heroImage {
-        file {
-          url
+  query NewsQuery($locale: String) {
+    hero: allContentfulNewsPageHero(filter: { node_locale: { eq: $locale } }) {
+      nodes {
+        heroImage {
+          file {
+            url
+          }
         }
+        title
       }
-      title
     }
-    news: allContentfulNews(filter: { node_locale: { eq: "en-US" } }) {
+    news: allContentfulNews(filter: { node_locale: { eq: $locale } }) {
       edges {
         node {
           ctaText

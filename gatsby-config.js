@@ -62,5 +62,18 @@ module.exports = {
       },
     },
     `gatsby-plugin-offline`,
+    {
+      resolve: `gatsby-plugin-intl`,
+      options: {
+        // language JSON resource path
+        path: `${__dirname}/src/intl`,
+        // supported language
+        languages: [`en-US`, `fr`],
+        // language file path
+        defaultLanguage: `en-US`,
+        // option to redirect to `/en` when connecting `/`
+        redirect: true,
+      },
+    },
   ],
 };

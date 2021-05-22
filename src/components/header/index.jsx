@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { graphql, useStaticQuery, Link } from "gatsby";
-import { navigate } from "gatsby";
+import { graphql, useStaticQuery, Link, navigate } from "gatsby";
+import { IntlContextConsumer, changeLocale } from "gatsby-plugin-intl";
 import "./index.scss";
 import Logo from "../../images/logo.png";
 import SearchIcon from "./../../images/search-icon.png";
 import ArrowDownBlack from "../../images/down-arrow-black.png";
 import ArrowDownWhite from "../../images/down-arrow-white.png";
 import navigations from "../../site-data/navigation";
+
+const languageName = {
+  "en-US": "English",
+  fr: "Français",
+};
 
 const Header = ({ inverted }) => {
   const [isExpanded, toggleExpansion] = useState(false);
@@ -42,75 +47,90 @@ const Header = ({ inverted }) => {
   }, []);
 
   return (
-    <header
-      onMouseOver={() => setInverted(true)}
-      onMouseOut={() => setInverted(false)}
-      className={`${
-        isInverted || inverted ? "bg-white" : "bg-transparent"
-      }   left-0 right-0 top-0 z-10 header-main ${
-        scroll ? "fixed bg-white" : "absolute"
-      }`}
-    >
-      <div className="py-1 flex flex-wrap items-center justify-between  px-4 md:px-6">
-        <Link
-          className="flex items-center justify-content no-underline text-white"
-          to="/"
-        >
-          <img src={Logo} alt="logo" />
-        </Link>
-
-        <button
-          className="block md:hidden flex items-center px-3 py-2 rounded text-white"
-          onClick={() => toggleExpansion(!isExpanded)}
-        >
-          <span className="navbarToggleIcon" />
-        </button>
-
-        <nav
+    <IntlContextConsumer>
+      {({ languages, language: currentLocale }) => (
+        <header
+          onMouseOver={() => setInverted(true)}
+          onMouseOut={() => setInverted(false)}
           className={`${
-            isExpanded ? `block` : `hidden`
-          } md:block md:flex md:items-center w-full md:w-auto font-xs`}
+            isInverted || inverted ? "bg-white" : "bg-transparent"
+          }   left-0 right-0 top-0 z-10 header-main ${
+            scroll ? "fixed bg-white" : "absolute"
+          }`}
         >
-          {navigations.map((item) => (
-            <NavListItem
-              item={item}
-              inverted={inverted}
-              isInverted={isInverted}
-              scroll={scroll}
-            />
-          ))}
-
-          <div className="cursor-pointer flex items-center gap-x-8">
-            <div
-              className="px-3 link-item block md:inline-block mt-4 font-xs md:mt-0 md:ml-10 no-underline text-primary"
-              key="PROJECTS"
-              to="/"
-            >
-              <div className="item" onClick={() => setLangOpen(!langOpen)}>
-                EN
-              </div>
-              <div className={`${!langOpen && "hidden"} flex langDropDown font-xs`}>
-                <Link className="lang">EN</Link>
-                <Link className="lang">FR</Link>
-              </div>
-            </div>
+          <div className="py-1 flex flex-wrap items-center justify-between  px-4 md:px-6">
             <Link
-              className=" block md:inline-block mt-4 md:mt-0 md:ml-10 no-underline text-black font-xs"
-              key="PROJECTS"
-              to="/"
+              className="flex items-center justify-content no-underline text-white"
+              to={`/${currentLocale}/`}
             >
-              <div>
-                <img src={SearchIcon} />
-              </div>
+              <img src={Logo} alt="logo" />
             </Link>
+
+            <button
+              className="block md:hidden flex items-center px-3 py-2 rounded text-white"
+              onClick={() => toggleExpansion(!isExpanded)}
+            >
+              <span className="navbarToggleIcon" />
+            </button>
+
+            <nav
+              className={`${
+                isExpanded ? `block` : `hidden`
+              } md:block md:flex md:items-center w-full md:w-auto font-xs`}
+            >
+              {navigations.map((item) => (
+                <NavListItem
+                  currentLocale={currentLocale}
+                  item={item}
+                  inverted={inverted}
+                  isInverted={isInverted}
+                  scroll={scroll}
+                />
+              ))}
+
+              <div className="cursor-pointer flex items-center gap-x-8">
+                <div
+                  className="px-3 link-item block md:inline-block mt-4 font-xs md:mt-0 md:ml-10 no-underline text-primary"
+                  key="PROJECTS"
+                  to="/"
+                >
+                  <div>
+                    <div className="item">{languageName[currentLocale]}</div>
+                    <div
+                      className={`${
+                        !langOpen && "hidden"
+                      } flex langDropDown font-xs`}
+                    >
+                      {languages.map((language) => (
+                        <a
+                          className="lang"
+                          onClick={() => changeLocale(language)}
+                        >
+                          {languageName[language]}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                <Link
+                  className=" block md:inline-block mt-4 md:mt-0 md:ml-10 no-underline text-black font-xs"
+                  key="PROJECTS"
+                  to="/"
+                >
+                  <div>
+                    <img src={SearchIcon} />
+                  </div>
+                </Link>
+              </div>
+            </nav>
           </div>
-        </nav>
-      </div>
-    </header>
+        </header>
+      )}
+    </IntlContextConsumer>
   );
 };
 
-const NavListItem = ({ item, inverted, isInverted, scroll }) => {
+const NavListItem = ({ item, inverted, isInverted, scroll, currentLocale }) => {
   const [subMenuVisible, setSubMenuVisible] = useState(false);
 
   const toggleDropDown = (e) => {
@@ -152,7 +172,7 @@ const NavListItem = ({ item, inverted, isInverted, scroll }) => {
                 <Link
                   className="subitem block bg-white no-underline text-black py-4 pl-4 pr-8 text-text font-xs"
                   key={item.title}
-                  to={item.path}
+                  to={`${item.path}`}
                   activeClassName="dropdown-active"
                 >
                   {item.title}
@@ -170,7 +190,7 @@ const NavListItem = ({ item, inverted, isInverted, scroll }) => {
         activeClassName="link"
         partiallyActive={true}
         onClick={toggleDropDown}
-        to={item.path}
+        to={`/${currentLocale}${item.path}`}
       >
         <div className="item flex items-center">
           <span>{item.title}</span>
@@ -195,7 +215,7 @@ const NavListItem = ({ item, inverted, isInverted, scroll }) => {
                 <Link
                   className="subitem block bg-white no-underline text-black py-4 pl-4 pr-8 text-text font-xs"
                   key={item.title}
-                  to={item.path}
+                  to={`/${currentLocale}${item.path}`}
                   activeClassName="dropdown-active"
                 >
                   {item.title}

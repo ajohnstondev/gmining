@@ -69,7 +69,7 @@
         width: 80px;
         background-color: transparent;
         position: absolute;
-        top: 50%;
+        top: calc(50% - 18px);
       }
     }
   }
@@ -96,7 +96,7 @@
 
         .event-icon {
           left: 108px;
-          top: 50%;
+          top: calc(50% - 18px);
           transform: translate(-50%, -50%);
         }
 
@@ -135,7 +135,7 @@
 
         .event-icon {
           left: 100%;
-          top: 50%;
+          top: calc(50% - 18px);
           transform: translate(calc(-50% - 108px), -50%);
         }
 

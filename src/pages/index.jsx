@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import GoldBox from "../components/goldbox";
@@ -11,15 +11,22 @@ import {
 } from "./../containers/homepage";
 
 const Home = ({ data }) => {
-  const { title, content, ctaButtonLink, ctaButtonText } = data.presentation;
+  const {
+    title,
+    content,
+    ctaButtonLink,
+    ctaButtonText,
+  } = data.presentation.nodes[0];
+
   return (
     <Layout>
-      <Hero data={data.contentfulHomeHero} />
+      <Hero data={data.allContentfulHomeHero.nodes[0]} />
       <Intro
-        data={data.contentfulHomeIntroduction}
-        stockItem={data.contentfulStockItem}
+        data={data.allContentfulHomeIntroduction.nodes[0]}
+        stockItem={data.allContentfulStockItem.nodes[0]}
       />
-      <MarketingPosition data={data.contentfulHomeMarketPosition} />
+      <MarketingPosition data={data.allContentfulHomeMarketPosition.nodes[0]} />
+      {/* <CoperatePresentation data={data.allContentfulHomeCorporatePresentation} /> */}
       <GoldBox
         title={title}
         main={content}
@@ -27,63 +34,81 @@ const Home = ({ data }) => {
         link={ctaButtonLink}
         blue
       />
-      <Article quickLinks={data.contentfulHomeNewsRelease} news={data.news} />
+      <Article
+        quickLinks={data.allContentfulHomeNewsRelease.nodes[0]}
+        news={data.news}
+      />
     </Layout>
   );
 };
 
 export const query = graphql`
-  query {
-    contentfulHomeHero {
-      title
-      subtitle
-      backgroundImage {
-        file {
-          fileName
-          url
+  query HomepageQuery($locale: String) {
+    allContentfulHomeHero(filter: { node_locale: { eq: $locale } }) {
+      nodes {
+        title
+        subtitle
+        backgroundImage {
+          file {
+            fileName
+            url
+          }
         }
       }
     }
-    contentfulHomeIntroduction {
-      title
-      content {
-        raw
+    allContentfulHomeIntroduction(filter: { node_locale: { eq: $locale } }) {
+      nodes {
+        title
+        content {
+          raw
+        }
       }
     }
-    contentfulStockItem {
-      spotGold
-      stockChangeInPercent
-      stockChangeInValue
-      stockPrice
-      ticker
-      marketCap
-      GoldChangeInPercent
-      goldChangeInValue
+    allContentfulStockItem(filter: { node_locale: { eq: $locale } }) {
+      nodes {
+        spotGoldTitle
+        spotGold
+        stockChangeInPercent
+        stockChangeInValue
+        stockPriceTitle
+        stockPrice
+        ticker
+        marketCap
+        marketCapTitle
+        GoldChangeInPercent
+        goldChangeInValue
+      }
     }
 
-    contentfulHomeMarketPosition {
-      title
-      subtitle
-      content {
-        raw
-      }
-      features {
-        items {
-          content
-          title
+    allContentfulHomeMarketPosition(filter: { node_locale: { eq: $locale } }) {
+      nodes {
+        title
+        subtitle
+        content {
+          raw
+        }
+        features {
+          items {
+            content
+            title
+          }
         }
       }
     }
 
-    presentation: contentfulHomeCorporatePresentation {
-      title
-      content {
-        raw
+    presentation: allContentfulHomeCorporatePresentation(
+      filter: { node_locale: { eq: $locale } }
+    ) {
+      nodes {
+        title
+        content {
+          raw
+        }
+        ctaButtonLink
+        ctaButtonText
       }
-      ctaButtonLink
-      ctaButtonText
     }
-    news: allContentfulNews(filter: { node_locale: { eq: "en-US" } }) {
+    news: allContentfulNews(filter: { node_locale: { eq: $locale } }) {
       edges {
         node {
           ctaText
@@ -97,15 +122,17 @@ export const query = graphql`
       }
     }
 
-    contentfulHomeNewsRelease {
-      ctaLink
-      ctaText
-      title
-      content
-      quickLinks {
-        items {
-          link
-          title
+    allContentfulHomeNewsRelease(filter: { node_locale: { eq: $locale } }) {
+      nodes {
+        ctaLink
+        ctaText
+        title
+        content
+        quickLinks {
+          items {
+            link
+            title
+          }
         }
       }
     }

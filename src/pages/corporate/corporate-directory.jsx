@@ -6,7 +6,7 @@ import Directory from "../../containers/corporate/directory";
 import Layout from "../../components/layout";
 
 const CorporateDirectory = ({ data }) => {
-  const { title, heroImage } = data.hero;
+  const { title, heroImage } = data.hero.nodes[0];
 
   return (
     <Layout inverted>
@@ -17,17 +17,21 @@ const CorporateDirectory = ({ data }) => {
 };
 
 export const query = graphql`
-  query CorporateDirectory {
-    hero: contentfulCorporateDirectoryHero {
-      heroImage {
-        file {
-          url
+  query CorporateDirectory($locale: String) {
+    hero: allContentfulCorporateDirectoryHero(
+      filter: { node_locale: { eq: $locale } }
+    ) {
+      nodes {
+        heroImage {
+          file {
+            url
+          }
         }
+        title
       }
-      title
     }
     offices: allContentfulCorporateDirectoryOffices(
-      filter: { node_locale: { eq: "en-US" } }
+      filter: { node_locale: { eq: $locale } }
     ) {
       edges {
         node {

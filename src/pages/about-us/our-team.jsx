@@ -7,20 +7,20 @@ import Team from "../../containers/our-team/Team";
 import GetInTouch from "../../containers/our-team/GetInTouch";
 
 const OurTeam = ({ data }) => {
-  const { title, heroImage, subtitle } = data.hero;
+  const { title, heroImage, subtitle } = data.hero.nodes[0];
 
   return (
     <Layout inverted>
       <Hero title={title} slogan={subtitle} image={heroImage} />
-      <Team data={data.team} members={data.members.edges} />
+      <Team data={data.team.nodes[0]} members={data.members.edges} />
       <GetInTouch />
     </Layout>
   );
 };
 
 export const query = graphql`
-  query OurTeamQuery {
-    members: allContentfulTeamMember(filter: { node_locale: { eq: "en-US" } }) {
+  query OurTeamQuery($locale: String) {
+    members: allContentfulTeamMember(filter: { node_locale: { eq: $locale } }) {
       edges {
         node {
           name
@@ -37,16 +37,22 @@ export const query = graphql`
         }
       }
     }
-    team: contentfulOurTeamManagementTeam {
-      subheading
-      heading
+    team: allContentfulOurTeamManagementTeam(
+      filter: { node_locale: { eq: $locale } }
+    ) {
+      nodes {
+        subheading
+        heading
+      }
     }
-    hero: contentfulOurTeamHero {
-      title
-      subtitle
-      heroImage {
-        file {
-          url
+    hero: allContentfulOurTeamHero(filter: { node_locale: { eq: $locale } }) {
+      nodes {
+        title
+        subtitle
+        heroImage {
+          file {
+            url
+          }
         }
       }
     }

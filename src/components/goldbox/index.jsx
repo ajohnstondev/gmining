@@ -40,7 +40,7 @@ const GoldBox = ({ title, main, button, link, blue }) => {
               blue && "goldbox-buttonContainer-blue"
             } `}
           >
-            <Link to={link} className="goldbox-button">
+            <Link to={link} className="uppercase goldbox-button">
               {button}
             </Link>
           </div>
