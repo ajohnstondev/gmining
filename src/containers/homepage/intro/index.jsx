@@ -8,11 +8,11 @@ const Intro = ({ data, stockItem }) => {
   return (
     <section className="intro-section py-12 max-w-6xl mx-auto p-4">
       <div class=" grid gap-4 grid-cols-1  sm:grid-cols-1 xl:grid-cols-2 md:grid-cols-2 md:gap-8">
-        <div className="">
+        <div className="p-5 lg:p-0">
           <h3 className="text-secondary uppercase text-center lg:text-left">
             {data.title}
           </h3>
-          <p className="mt-4 text-text text-center lg:text-left">
+          <p className="mt-4 text-text text-left">
             {documentToReactComponents(JSON.parse(data.content.raw))}
           </p>
         </div>

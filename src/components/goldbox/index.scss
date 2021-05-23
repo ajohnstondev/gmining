@@ -17,8 +17,8 @@
 
     .mission-heading {
       top: 0px;
-      padding: 0px 22px;
       @media (min-width: 1024px) {
+        padding: 0px 22px;
         position: absolute;
         transform: translateY(-50%);
         background-color: #fff;

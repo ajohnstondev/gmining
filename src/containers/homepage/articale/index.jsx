@@ -40,7 +40,7 @@ const MarketingPosition = ({ quickLinks, news }) => {
                 })}
             </div>
           </div>
-          <div className="col-span-1">
+          <div className="col-span-2 lg:col-span-1 p-4 lg:p-0">
             <h3 className="text-secondary uppercase pb-2">
               {quickLinks.quickLinksTitle}
             </h3>
