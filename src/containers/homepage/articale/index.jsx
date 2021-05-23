@@ -11,7 +11,9 @@ const MarketingPosition = ({ quickLinks, news }) => {
       <div className="max-w-6xl mx-auto">
         <div class="grid gap-x-24 gap-y-8 grid-cols-1  sm:grid-cols-2 xl:grid-cols-3 md:grid-cols-3 p-4">
           <div className="col-span-2">
-            <h3 className="text-secondary uppercase pb-2">New Releases</h3>
+            <h3 className="text-secondary uppercase pb-2 ml-5 lg:ml-0">
+              New Releases
+            </h3>
 
             <div class="grid gap-4 grid-cols-1  sm:grid-cols-2 xl:grid-cols-2 md:grid-cols-2">
               {news.edges.slice(0, 4)
@@ -40,7 +42,7 @@ const MarketingPosition = ({ quickLinks, news }) => {
           </div>
           <div className="col-span-1">
             <h3 className="text-secondary uppercase pb-2">
-              {quickLinks.title}
+              {quickLinks.quickLinksTitle}
             </h3>
             <div className="border-secondary border-b border-solid mb-2"></div>
 

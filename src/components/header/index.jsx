@@ -179,7 +179,15 @@ const Header = ({ inverted }) => {
                           className="lang"
                           onClick={() => changeLocale(language)}
                         >
-                          {languageName[language]}
+                          <span
+                            className={`${
+                              languageName[currentLocale] === languageName[language]
+                                ? "text-secondary"
+                                : ""
+                            }`}
+                          >
+                            {languageName[language]}
+                          </span>
                         </a>
                       ))}
                     </div>

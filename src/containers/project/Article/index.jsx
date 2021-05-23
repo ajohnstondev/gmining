@@ -7,9 +7,9 @@ const Article = ({ data: { heading, image, content, bottomText } }) => {
   return (
     <div className="py-8 lg:py-20 px-8 xl:px-0">
       <div className="max-w-4xl mx-auto text-text">
-        <h2 className="uppercase text-2xl text-secondary font-semibold text-center mb-10">
+        <h3 className="uppercase text-secondary text-center mb-10">
           {heading}
-        </h2>
+        </h3>
 
         {/* config object used to control classes on rich text dynamically */}
         <RRenderer

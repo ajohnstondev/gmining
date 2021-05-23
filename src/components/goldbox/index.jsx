@@ -25,7 +25,11 @@ const GoldBox = ({ title, main, button, link, blue }) => {
           </h3>
         )}
         {main && (
-          <p className="text-left lg:text-center text-text">
+          <p
+            className={`${
+              blue ? "text-center" : "text-left"
+            } lg:text-center text-text`}
+          >
             <RRenderer
               data={main}
               config={{
@@ -40,7 +44,7 @@ const GoldBox = ({ title, main, button, link, blue }) => {
               blue && "goldbox-buttonContainer-blue"
             } `}
           >
-            <Link to={link} className="uppercase goldbox-button">
+            <Link to={link} className="font-xs uppercase goldbox-button">
               {button}
             </Link>
           </div>

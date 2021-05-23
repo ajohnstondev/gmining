@@ -128,6 +128,7 @@ export const query = graphql`
         ctaText
         title
         content
+        quickLinksTitle
         quickLinks {
           items {
             link

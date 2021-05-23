@@ -63,6 +63,12 @@ module.exports = {
     },
     `gatsby-plugin-offline`,
     {
+      resolve: "gatsby-source-hubspot-forms",
+      options: {
+        apiKey: process.env.HUBSPOT_API_KEY,
+      },
+    },
+    {
       resolve: `gatsby-plugin-intl`,
       options: {
         // language JSON resource path

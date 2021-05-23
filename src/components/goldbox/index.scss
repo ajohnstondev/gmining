@@ -34,9 +34,11 @@
     }
 
     .goldbox-buttonContainer {
+      width: 100%;
       @media (min-width: 1024px) {
         padding: 2px 22px;
         bottom: 0px;
+        width: fit-content;
 
         @media (min-width: 1024px) {
           position: absolute;
@@ -52,11 +54,15 @@
       .goldbox-button {
         background: linear-gradient(to right, #0a4354 0%, #00556f 100%);
         color: #ffffff;
-        width: 350px;
         display: block;
         text-align: center;
         line-height: 48px;
         border-radius: 8px;
+        width: 100%;
+
+        @media (min-width: 1024px) {
+          width: 350px;
+        }
       }
     }
   }

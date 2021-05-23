@@ -26,6 +26,10 @@ body {
 p {
   font-size: 18px;
   line-height: 26px;
+
+  @media (max-width: 767px) {
+    font-size: 16px;
+  }
 }
 
 h1 {
