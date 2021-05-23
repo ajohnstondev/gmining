@@ -28,7 +28,7 @@ function Footer() {
           }
         }
       }
-      form: hubspotForm(id: { eq: "34f08749-a173-484b-818f-369db0f8fd14" }) {
+      form: hubspotForm(id: { eq: "81aa7cc7-7a89-43b0-9280-24df8bb89f84" }) {
         guid
         portalId
         name
@@ -46,6 +46,7 @@ function Footer() {
       }
     }
   `);
+
   const { formFieldGroups: fields, guid: id } = form;
   let currentEdges = projects.edges;
   currentEdges = currentEdges.map(({ node }) => {
