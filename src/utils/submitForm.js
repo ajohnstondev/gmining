@@ -1,3 +1,8 @@
+const path = require("path");
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 export const submitForm = async (id, fields, submittedAt, skipValidation) => {
   const url = `${process.env.HUBSPOT_BASE_URL}/submissions/v3/integration/submit/${process.env.PORTAL_ID}/${id}`;
   const data = {

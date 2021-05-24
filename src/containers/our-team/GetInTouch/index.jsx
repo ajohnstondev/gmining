@@ -75,7 +75,7 @@ const GetInTouch = () => {
                       [e.target.name]: e.target.value,
                     })
                   }
-                  className={`bg-transparent input pb-1 pl-2 outline-none w-full font-xs `}
+                  className={`bg-transparent input pb-1 pl-2 outline-none w-full font-xs`}
                 />
               </div>
             );
