@@ -8,7 +8,7 @@ const MarketingPosition = ({ data }) => {
       <div className="max-w-6xl mx-auto">
         <div className="text-center py-6 border-secondary border-b border-solid">
           <h3 className=" text-secondary uppercase">{data.title}</h3>
-          <h4 className="text-primary -mb-5">{data.subtitle}</h4>
+          <h4 className="text-primary -mb-1">{data.subtitle}</h4>
           <p className="mt-4 text-text">
             {documentToReactComponents(JSON.parse(data.content.raw))}
           </p>

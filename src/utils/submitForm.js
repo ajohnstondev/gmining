@@ -11,7 +11,7 @@ export const submitForm = async (id, fields, submittedAt, skipValidation) => {
     body: JSON.stringify(data),
     headers: {
       "Content-Type": "application/json; charset=utf8",
-      Accept: "application/json",
+      "Accept": "application/json",
       "Access-Control-Allow-Origin": "*",
     },
   })

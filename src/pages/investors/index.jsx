@@ -28,7 +28,6 @@ export const query = graphql`
         node {
           title
           type
-
           date(formatString: "MMM DD, YYYY")
           link
           tags

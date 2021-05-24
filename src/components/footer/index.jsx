@@ -152,8 +152,9 @@ function Footer() {
 
           navigations[4] = projectsLinks;
         }
+
         return (
-          <div className="">
+          <div>
             {thankModal && <Modal onClose={() => setThankModal(false)} />}
             <div className="global-x-spacing footer-section relative z-10 flex justify-center">
               <div className="footer-overly text-center max-w-6xl py-8 z-20 rounded-xl px-4">
@@ -167,14 +168,14 @@ function Footer() {
                   }}
                   className="block lg:flex justify-center max-w-6xl mx-auto gap-3 items-end"
                 >
-                  {fields.map(({ fields }) => {
-                    const { label, fieldType, required, name } = fields[0];
+                  {fields[0].fields.map((field) => {
+                    const { label, fieldType, required, name, placeholder } = field;
                     return (
                       <div className="mb-5 lg:mb-0 flex-1">
                         <input
                           name={name}
                           type={fieldType}
-                          placeholder={label}
+                          placeholder={placeholder}
                           required={required}
                           onChange={(e) =>
                             setForm({

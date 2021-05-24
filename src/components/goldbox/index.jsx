@@ -11,7 +11,7 @@ const GoldBox = ({ title, main, button, link, blue }) => {
       } our-mission-container py-2 lg:py-6 lg:py-0 global-x-spacing`}
     >
       <div
-        className={`max-w-6xl mx-auto py-12 lg:px-24 flex flex-col gap-y-4 lg:gap-y-0 items-center mission-wrapper ${
+        className={`max-w-6xl mx-auto py-12 lg:px-24 flex flex-col gap-y-8 lg:gap-y-0 items-center mission-wrapper ${
           blue && "mission-wrapper-blue"
         }`}
       >
