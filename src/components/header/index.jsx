@@ -198,7 +198,7 @@ const Header = ({ inverted }) => {
 
                 <div className="cursor-pointer flex items-center flex-wrap-reverse lg:flex-wrap gap-x-8 pb-8 lg:pb-0 absolute bottom-0 lg:relative px-4 lg:px-0 w-full lg:w-auto">
                   <div
-                    className="w-full lg:w-auto px-3 link-item block md:inline-block mt-4 font-xs md:mt-0 md:ml-10 no-underline text-primary"
+                    className="w-full lg:w-auto px-3 link-item language-toggle block md:inline-block mt-4 font-xs md:mt-0 md:ml-10 no-underline text-primary "
                     key="LanguageToggle"
                   >
                     <div className="hidden lg:inline-block">
@@ -217,7 +217,7 @@ const Header = ({ inverted }) => {
                               className={`${
                                 languageName[currentLocale] ===
                                 languageName[language]
-                                  ? "text-secondary"
+                                  ? "lg:text-secondary"
                                   : ""
                               }`}
                             >
@@ -235,8 +235,9 @@ const Header = ({ inverted }) => {
                             <span
                               className={`cursor-pointer px-4 ${
                                 languageName[lang] ===
-                                  languageName[currentLocale] &&
-                                "text-secondary"
+                                languageName[currentLocale]
+                                  ? "text-primary lg:text-secondary"
+                                  : "text-text"
                               }`}
                               onClick={() => changeLocale(lang)}
                             >
@@ -292,13 +293,12 @@ const NavListItem = ({ item, inverted, isInverted, scroll, currentLocale }) => {
   return (
     <div>
       <div
-        className={`cursor-pointer lg:hidden block uppercase   mt-4 md:mt-0 md:ml-10 no-underline link-item relative ${className} text-text `}
+        className={`cursor-pointer lg:hidden block uppercase py-2 md:mt-0 md:ml-10 no-underline link-item relative ${className} text-text`}
         key={item.title}
         onClick={toggleDropDown}
       >
         <div className="item flex items-center">
           <span className="px-4 md:px-0">{item.title}</span>
-
           {item?.items && <img src={ArrowDownBlack} className="ml-4" />}
         </div>
         {item.items && (

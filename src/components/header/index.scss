@@ -14,7 +14,7 @@
       nav {
         width: 75%;
         margin-top: 80px;
-        background: white;
+        background: #e9f0f2;
         position: absolute;
         right: 0;
         top: 0;
@@ -24,6 +24,11 @@
   }
   .link-item {
     position: relative;
+    background-color: white;
+    &.language-toggle {
+      background-color: transparent;
+    }
+
     &.link {
       color: var(--color_s);
 
@@ -139,7 +144,7 @@
 }
 
 .navbar-search-icon {
-  fill: var(--color_s);
+  fill: var(--color_p);
   transition: 0.25s;
   @media (min-width: 1024px) {
     &.inactive {
