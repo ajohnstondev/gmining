@@ -1,6 +1,10 @@
 .header-main {
   transition: background 0.3s;
-
+  &.active-nav {
+    @media (max-width: 1023px) {
+      min-height: 100vh;
+    }
+  }
   .link-item {
     position: relative;
     &.link {

@@ -18,6 +18,11 @@ body {
     font-size: 16px;
   }
 }
+button {
+  &:focus {
+    outline: none !important;
+  }
+}
 
 .font-xs {
   font-size: 14px;

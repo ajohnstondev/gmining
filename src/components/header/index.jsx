@@ -150,8 +150,12 @@ const Header = ({ inverted }) => {
         return (
           <header
             onMouseOver={() => setInverted(true)}
-            onMouseOut={() => setInverted(false)}
-            className={`${
+            onMouseOut={() => {
+              setInverted(false);
+            }}
+            className={`
+            ${isExpanded ? "active-nav relative" : ""}
+            ${
               isInverted || inverted ? "bg-white" : "bg-transparent"
             } left-0 right-0 top-0 z-10 header-main ${
               scroll ? "fixed bg-white" : "absolute"
@@ -187,10 +191,10 @@ const Header = ({ inverted }) => {
                   />
                 ))}
 
-                <div className="cursor-pointer flex items-center gap-x-8">
+                <div className=" cursor-pointer flex items-center gap-x-8 absolute bottom-0 lg:relative pb-8 lg:pb-0">
                   <div
                     className="px-3 link-item block md:inline-block mt-4 font-xs md:mt-0 md:ml-10 no-underline text-primary"
-                    key="PROJECTS"
+                    key="LanguageToggle"
                     to="/"
                   >
                     <div>
