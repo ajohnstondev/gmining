@@ -201,7 +201,7 @@ function Footer() {
                 </div>
                 <ul className="=w-full lg:w-9/12 flex flex-col lg:flex-row items-center lg:items-start justify-between lg:pr-12">
                   {navigations.map((item) => {
-                    return <MenuItem {...item} />;
+                    return <MenuItem {...item} currentLocale={currentLocale} />;
                   })}
                 </ul>
                 <div className="lg:pl-4 w-6/12 lg:w-3/12 flex flex-col items-center lg:items-start">
@@ -247,14 +247,14 @@ function Footer() {
   );
 }
 
-const MenuItem = ({ path, title, items }) => {
+const MenuItem = ({ path, title, items, currentLocale }) => {
   const [subOpen, setSubOpen] = useState(false);
 
   const onItemClick = () => {
     if (items && items.length > 0) {
       setSubOpen(!subOpen);
     } else {
-      navigate(path);
+      navigate(`/${currentLocale}${path}`);
     }
   };
 
@@ -277,7 +277,7 @@ const MenuItem = ({ path, title, items }) => {
         <ul className={`${!subOpen && "hidden"} lg:flex flex-col gap-1 pb-2`}>
           {items.map((subNav) => (
             <li className="text-gray-500 font-xs uppercase">
-              <Link to={subNav.path}>{subNav.title}</Link>
+              <Link to={`/${currentLocale}${subNav.path}`}>{subNav.title}</Link>
             </li>
           ))}
         </ul>

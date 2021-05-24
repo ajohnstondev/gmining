@@ -15,7 +15,7 @@ const MarketingPosition = ({ quickLinks, news }) => {
               New Releases
             </h3>
 
-            <div class="grid gap-4 grid-cols-1  sm:grid-cols-2 xl:grid-cols-2 md:grid-cols-2">
+            <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 xl:grid-cols-2 md:grid-cols-2">
               {news.edges.slice(0, 4)
                 .map(({ node: { ctaLink, ctaText, title, date } }) => {
                   return (
@@ -40,7 +40,7 @@ const MarketingPosition = ({ quickLinks, news }) => {
                 })}
             </div>
           </div>
-          <div className="flex  col-span-2 flex-wrap-reverse lg:flex-wrap lg:col-span-1 p-4 lg:p-0">
+          <div className="flex col-span-2 flex-wrap-reverse lg:flex-wrap lg:col-span-1 p-4 lg:p-0">
             <div className="w-full ">
               <h3 className="text-secondary uppercase pb-2">
                 {quickLinks.quickLinksTitle}

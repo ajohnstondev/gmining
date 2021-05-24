@@ -257,6 +257,7 @@ const NavListItem = ({ item, inverted, isInverted, scroll, currentLocale }) => {
 
   const toggleDropDown = (e) => {
     setSubMenuVisible(!subMenuVisible);
+    !item.items && navigate(`/${currentLocale}${item.path}`);
   };
 
   return (
