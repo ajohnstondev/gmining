@@ -24,7 +24,10 @@
   }
   .link-item {
     position: relative;
-    background-color: white;
+    @media (max-width: 1023px) {
+      background-color: white;
+    }
+
     &.language-toggle {
       background-color: transparent;
     }
