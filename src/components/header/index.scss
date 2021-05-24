@@ -52,8 +52,7 @@
           .dropdown-content {
             margin-top: 4px;
             .dropdown-active {
-              background-color: #025068;
-              color: white;
+              color: var(--color_s);
             }
           }
         }

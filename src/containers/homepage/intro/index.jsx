@@ -18,7 +18,7 @@ const Intro = ({ data, stockItem }) => {
         </div>
 
         <div className="lg:border-secondary lg:border lg:border-l-0 lg:border-solid p-2 lg:p-6 lg:pl-0">
-          <div className="bg-gray-200 rounded py-6 px-3 lg:px-6">
+          <div className="bg-gray-200 rounded p-6 lg:px-6">
             <h4 className=" text-primary uppercase mb-2">
               Tsx-v {stockItem.ticker}
             </h4>

@@ -20,11 +20,11 @@ const LegacyTimeline = ({ data: { title, content, timeline, icons } }) => {
               <span className={`event-line`} />
               <img src={icons[0].file.url} alt="" className="event-icon" />
               <div className={`event-detail`}>
-                <h4 className="text-primary">{firstEvent.year}</h4>
+                <h4 className="text-primary">{firstEvent?.year}</h4>
                 <p className="text-secondary font-xs uppercase">
-                  {firstEvent.title}
+                  {firstEvent?.title}
                 </p>
-                <p className="text-text font-xs">{firstEvent.content}</p>
+                <p className="text-text font-xs">{firstEvent?.content}</p>
               </div>
             </div>
           </div>
@@ -63,11 +63,11 @@ const LegacyTimeline = ({ data: { title, content, timeline, icons } }) => {
                 className="event-icon"
               />
               <div className={`event-detail`}>
-                <h4 className="text-primary">{lastEvent.year}</h4>
+                <h4 className="text-primary">{lastEvent?.year}</h4>
                 <h4 className="text-secondary font-xs uppercase">
-                  {lastEvent.title}
+                  {lastEvent?.title}
                 </h4>
-                <p className="text-text font-xs">{lastEvent.content}</p>
+                <p className="text-text font-xs">{lastEvent?.content}</p>
               </div>
             </div>
           </div>
