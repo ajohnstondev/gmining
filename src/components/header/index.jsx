@@ -155,16 +155,14 @@ const Header = ({ inverted }) => {
             onMouseOut={() => {
               setInverted(false);
             }}
-            className={`
-            ${isExpanded ? "active-nav relative" : ""}
-            ${
+            className={`${
               isInverted || inverted ? "bg-white" : "bg-transparent"
             } left-0 right-0 top-0 z-10 header-main ${
-              scroll ? "fixed bg-white" : "absolute"
-            }`}
+              scroll ? "fixed bg-white " : "absolute"
+            } ${isExpanded ? "active-nav relative" : ""}`}
           >
-            <div className="py-1 flex flex-wrap items-center justify-between  md:px-6">
-              <div className="px-4 md:px-0 flex items-center justify-between w-full">
+            <div className="lg:py-1 flex flex-wrap items-center justify-between  md:px-6">
+              <div className="px-4 py-2 md:px-0 flex items-center justify-between w-full lg:w-auto logo-wrapper">
                 <Link
                   className="flex items-center justify-content no-underline text-white"
                   to={`/${currentLocale}/`}
@@ -198,13 +196,12 @@ const Header = ({ inverted }) => {
                   />
                 ))}
 
-                <div className=" cursor-pointer flex items-center gap-x-8 absolute bottom-0 lg:relative pb-8 lg:pb-0">
+                <div className="cursor-pointer flex items-center flex-wrap-reverse lg:flex-wrap gap-x-8 pb-8 lg:pb-0 absolute bottom-0 lg:relative px-4 lg:px-0 w-full lg:w-auto">
                   <div
-                    className="px-3 link-item block md:inline-block mt-4 font-xs md:mt-0 md:ml-10 no-underline text-primary"
+                    className="w-full lg:w-auto px-3 link-item block md:inline-block mt-4 font-xs md:mt-0 md:ml-10 no-underline text-primary"
                     key="LanguageToggle"
-                    to="/"
                   >
-                    <div>
+                    <div className="hidden lg:inline-block">
                       <div className="item">{languageName[currentLocale]}</div>
                       <div
                         className={`${
@@ -230,10 +227,29 @@ const Header = ({ inverted }) => {
                         ))}
                       </div>
                     </div>
+                    <div className="flex justify-center w-full lg:hidden">
+                      {languages.map((lang, idx) => {
+                        return (
+                          <>
+                            {idx !== 0 && " | "}
+                            <span
+                              className={`cursor-pointer px-4 ${
+                                languageName[lang] ===
+                                  languageName[currentLocale] &&
+                                "text-secondary"
+                              }`}
+                              onClick={() => changeLocale(lang)}
+                            >
+                              {languageName[lang]}
+                            </span>
+                          </>
+                        );
+                      })}
+                    </div>
                   </div>
                   <div
-                    className=" block md:inline-block mt-4 md:mt-0 md:ml-10 no-underline text-black font-xs"
-                    key="PROJECTS"
+                    className="w-full lg:w-auto block md:inline-block mt-4 md:mt-0 md:ml-10 no-underline text-black font-xs"
+                    key="Search"
                   >
                     <div className="flex items-center gap-2">
                       <button onClick={() => setSearchOpen((prev) => !prev)}>
@@ -276,14 +292,14 @@ const NavListItem = ({ item, inverted, isInverted, scroll, currentLocale }) => {
   return (
     <div>
       <div
-        className={`cursor-pointer lg:hidden block uppercase mt-4 md:mt-0 md:ml-10 no-underline link-item relative ${className} text-text`}
+        className={`cursor-pointer lg:hidden block uppercase   mt-4 md:mt-0 md:ml-10 no-underline link-item relative ${className} text-text `}
         key={item.title}
         onClick={toggleDropDown}
       >
         <div className="item flex items-center">
           <span className="px-4 md:px-0">{item.title}</span>
 
-          <img src={ArrowDownBlack} className="ml-4" />
+          {item?.items && <img src={ArrowDownBlack} className="ml-4" />}
         </div>
         {item.items && (
           <div

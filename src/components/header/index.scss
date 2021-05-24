@@ -5,6 +5,21 @@
       min-height: 100vh;
       position: fixed;
       z-index: 999;
+      background-color: rgba(96, 96, 96, 0.5) !important;
+      backdrop-filter: blur(10px);
+      .logo-wrapper {
+        background-color: white;
+        min-height: 80px;
+      }
+      nav {
+        width: 75%;
+        margin-top: 80px;
+        background: white;
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+      }
     }
   }
   .link-item {
@@ -114,19 +129,22 @@
   border-bottom: 1px solid #606060;
   outline: none;
   transition: 0.25s;
-  width: 180px;
-
-  &.inactive {
-    width: 0px;
+  width: -webkit-fill-available;
+  @media (min-width: 1024px) {
+    width: 180px;
+    &.inactive {
+      width: 0px;
+    }
   }
 }
 
 .navbar-search-icon {
   fill: var(--color_s);
   transition: 0.25s;
-
-  &.inactive {
-    fill: var(--color_p);
+  @media (min-width: 1024px) {
+    &.inactive {
+      fill: var(--color_p);
+    }
   }
 }
 
