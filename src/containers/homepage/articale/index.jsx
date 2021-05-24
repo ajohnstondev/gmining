@@ -50,7 +50,7 @@ const MarketingPosition = ({ quickLinks, news }) => {
               {quickLinks.quickLinks.items.map((v, i) => {
                 return (
                   <Link
-                    className="text-primary uppercase font-xs	block my-4"
+                    className="text-primary uppercase font-xs no-light block my-4"
                     to={v.link}
                   >
                     {v.title}
@@ -58,7 +58,7 @@ const MarketingPosition = ({ quickLinks, news }) => {
                 );
               })}
             </div>
-            <div className="w-full mb-12 lg:mb-0">
+            <div className="w-full mb-8 lg:mb-0">
               <p className="py-5 text-text">{quickLinks.content}</p>
               <GradientButton>
                 <Link href={quickLinks.ctaLink}>{quickLinks.ctaText}</Link>

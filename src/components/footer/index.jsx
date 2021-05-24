@@ -112,6 +112,7 @@ function Footer() {
     let data = await submitForm(id, getFields(), Date.now(), true);
     setThankModal(true);
   };
+
   return (
     <IntlContextConsumer>
       {({ languages, language: currentLocale }) => {
@@ -195,12 +196,12 @@ function Footer() {
                 </form>
               </div>
             </div>
-            <div className="footer-bar pt-48 md:pt-24 pb-2 lg:pb-12 global-x-spacing">
+            <div className="footer-bar pt-24 md:pt-24 pb-2 lg:pb-12 global-x-spacing">
               <div className="max-w-6xl mx-auto flex flex-wrap flex-col lg:flex-row items-center lg:items-start lg:gap-y-12 gap-y-2">
                 <div className="w-full flex justify-center">
                   <img src={Logo} alt="" />
                 </div>
-                <ul className="=w-full lg:w-9/12 flex flex-col lg:flex-row items-center lg:items-start justify-between lg:pr-12">
+                <ul className="=w-full lg:w-9/12 flex flex-col lg:flex-row items-center lg:items-start justify-between lg:pr-12 mt-4">
                   {navigations.map((item) => {
                     return <MenuItem {...item} currentLocale={currentLocale} />;
                   })}
@@ -236,7 +237,7 @@ function Footer() {
                     })}
                   </div>
                 </div>
-                <div className="text-white font-xs w-full pt-4 mt-8 lg:mt-0 text-center footer-credits">
+                <div className="text-white font-xs w-full pt-4 mt-8 lg:mt-0 text-center footer-credits px-12">
                   2021 G Mining Ventures Corp. All rights Reserved. Legal
                 </div>
               </div>
