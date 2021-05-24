@@ -21,7 +21,7 @@ const CorporateDirectory = ({ data }) => {
 
 export const query = graphql`
   query ReportsAndFilingsQuery($locale: String) {
-    documents: allContentfulReportsFilingsDocuments(
+    documents: allContentfulReportsDisclosuresDocuments(
       filter: { node_locale: { eq: $locale } }
     ) {
       edges {
@@ -48,7 +48,7 @@ export const query = graphql`
       }
     }
 
-    reports: allContentfulReportsFilingsReports(
+    reports: allContentfulReportsDisclosuresReports(
       filter: { node_locale: { eq: $locale } }
     ) {
       edges {
