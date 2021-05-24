@@ -133,13 +133,12 @@ function Footer() {
       {({ languages, language: currentLocale }) => (
         <div className="">
           {thankModal && <Modal onClose={() => setThankModal(false)} />}
-          <div className="footer-section relative z-10 flex justify-center">
+          <div className="global-x-spacing footer-section relative z-10 flex justify-center">
             <div className="footer-overly text-center max-w-6xl py-8 z-20 rounded-xl px-4">
-              <h3 className="text-secondary uppercase -pb-5">
+              <h3 className="text-secondary uppercase mb-6 lg:mb-0">
                 JOIN OUR MAILING LIST
               </h3>
               <form
-                // onSubmit={subscribeHandler}
                 onSubmit={(e) => {
                   e.preventDefault();
                   submitFormData();
@@ -147,12 +146,7 @@ function Footer() {
                 className="block lg:flex justify-center max-w-6xl mx-auto gap-3 items-end"
               >
                 {fields.map(({ fields }) => {
-                  const {
-                    label,
-                    fieldType,
-                    required,
-                    name,
-                  } = fields[0];
+                  const { label, fieldType, required, name } = fields[0];
                   return (
                     <div className="mb-5 lg:mb-0 flex-1">
                       <input
@@ -172,14 +166,13 @@ function Footer() {
                   );
                 })}
 
-                <div>
-                  {/* Here */}
+                <div className="mt-6 lg:mt-0">
                   <GradientButton type="submit">Submit</GradientButton>
                 </div>
               </form>
             </div>
           </div>
-          <div className="footer-bar pt-48 md:pt-32 pb-2 lg:pb-12 px-8 lg:px-8 xl:px-0">
+          <div className="footer-bar pt-48 md:pt-24 pb-2 lg:pb-12 global-x-spacing">
             <div className="max-w-6xl mx-auto flex flex-wrap flex-col lg:flex-row items-center lg:items-start lg:gap-y-12 gap-y-2">
               <div className="w-full flex justify-center">
                 <img src={Logo} alt="" />

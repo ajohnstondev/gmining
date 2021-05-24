@@ -40,12 +40,12 @@ const GetInTouch = () => {
     });
   };
   const submitFormData = async () => {
-    let data = await submitForm(id, getFields(), Date.now(), true);
+    await submitForm(id, getFields(), Date.now(), true);
     setThankModal(true);
   };
 
   return (
-    <div className={`px-4 xl:px-0 ${styles.getInTouchWrapper}`}>
+    <div className={`global-x-spacing ${styles.getInTouchWrapper}`}>
       {thankModal && <Modal onClose={() => setThankModal(false)} />}
       <form
         onSubmit={(e) => {
@@ -55,15 +55,9 @@ const GetInTouch = () => {
         className={`${styles.footerOverly} px-5 text-center mx-auto max-w-6xl py-8 bg-gray-300 z-20 rounded-lg`}
       >
         <h3 className=" text-secondary uppercase mb-5">GET IN TOUCH</h3>
-        <div className="grid lg:grid-cols-2 gap-8 py-4 font-xs">
+        <div className="lg:grid lg:grid-cols-2 gap-8 py-4 font-xs">
           {fields.map(({ fields }, index) => {
-            const {
-              label,
-
-              fieldType,
-              required,
-              name,
-            } = fields[0];
+            const { label, fieldType, required, name } = fields[0];
             return (
               <div
                 className={`mb-5 lg:mb-0 w-full input-wrapper ${
@@ -87,25 +81,6 @@ const GetInTouch = () => {
             );
           })}
         </div>
-        {/* <div className="flex flex-col lg:flex-row gap-8 py-4 font-xs">
-          <input
-            type="text"
-            placeholder="NAME"
-            className={`bg-transparent ${styles.input} pb-1 pl-2 flex-1 outline-none font-xs`}
-          />
-          <input
-            type="text"
-            placeholder="EMAIL ADDRESS"
-            className={`bg-transparent ${styles.input} pb-1 pl-2 flex-1 outline-none font-xs`}
-          />
-        </div>
-        <div className="pt-4 mb-6 lg:mb-16">
-          <input
-            type="text"
-            placeholder="MESSAGE"
-            className={`bg-transparent ${styles.input} pb-1 pl-2 flex-1 w-full outline-none font-xs`}
-          />
-        </div> */}
         <div className="flex justify-center ">
           <GradientButton long type="submit">
             SUBMIT

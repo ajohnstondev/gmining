@@ -6,7 +6,7 @@ import { DownAngle } from "../../../components/icon";
 
 const Intro = ({ data, stockItem }) => {
   return (
-    <section className="intro-section py-12 max-w-6xl mx-auto p-4">
+    <section className="intro-section py-12 max-w-6xl mx-auto py-4 global-x-spacing">
       <div class=" grid gap-4 grid-cols-1  sm:grid-cols-1 xl:grid-cols-2 md:grid-cols-2 md:gap-8">
         <div className="p-5 lg:p-0">
           <h3 className="text-secondary uppercase text-center lg:text-left">
@@ -18,13 +18,13 @@ const Intro = ({ data, stockItem }) => {
         </div>
 
         <div className="lg:border-secondary lg:border lg:border-l-0 lg:border-solid p-2 lg:p-6 lg:pl-0">
-          <div className="bg-gray-200 rounded p-6">
+          <div className="bg-gray-200 rounded py-6 px-3 lg:px-6">
             <h4 className=" text-primary uppercase mb-2">
               Tsx-v {stockItem.ticker}
             </h4>
-            <div className="flex flex-col gap-2">
-              <div className="flex">
-                <p className=" w-40 text-primary">
+            <div className="flex flex-col lg:gap-2 gap-1">
+              <div className="flex gap-1">
+                <p className=" lg:w-40 text-text  lg:text-primary">
                   {stockItem.stockPriceTitle}
                 </p>
                 <p className="text-text">
@@ -33,14 +33,18 @@ const Intro = ({ data, stockItem }) => {
                 </p>
               </div>
 
-              <div className="flex">
-                <p className=" w-40 text-primary">{stockItem.marketCapTitle}</p>
+              <div className="flex gap-1">
+                <p className="lg:w-40 text-text lg:text-primary">
+                  {stockItem.marketCapTitle}
+                </p>
                 <p className="text-text">{stockItem.marketCap}</p>
               </div>
 
-              <div className="flex">
-                <p className=" w-40 text-primary">S{stockItem.spotGoldTitle}</p>
-                <p className="text-text flex items-center">
+              <div className="flex gap-1 flex-wrap">
+                <p className="lg:w-40  text-text lg:text-primary">
+                  {stockItem.spotGoldTitle}
+                </p>
+                <p className="text-text lg:text-primary flex items-center">
                   {stockItem.spotGold}
                   <span className="pl-3 text-red-600">
                     <DownAngle size={14} color="red" />

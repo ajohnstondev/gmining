@@ -27,6 +27,10 @@ p {
   font-size: 18px;
   line-height: 26px;
 
+  &.slim {
+    line-height: 18px;
+  }
+
   @media (max-width: 767px) {
     font-size: 16px;
   }
@@ -72,4 +76,13 @@ h2,
 h3,
 h4 {
   font-family: "Lato", sans-serif;
+}
+.global-x-spacing {
+  padding-right: 37px;
+  padding-left: 37px;
+
+  @media (min-width: 1024px) {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
 }

@@ -37,7 +37,7 @@ const Blog = ({ data }) => {
 
   return (
     <div className="py-8 lg:py-24">
-      <div className="px-6 lg:px-8 px-0 max-w-6xl mx-auto">
+      <div className="global-x-spacing px-0 max-w-6xl mx-auto">
         <h3 className="text-secondary border-b border-secondary pb-4 mb-4 lg:mb-8">
           SORT BY DATE
         </h3>

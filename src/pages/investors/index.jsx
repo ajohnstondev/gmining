@@ -35,7 +35,7 @@ export const query = graphql`
         }
       }
     }
-    hero: allContentfulReportsFilingsHero(
+    hero: allContentfulReportsDisclosuresHero(
       filter: { node_locale: { eq: $locale } }
     ) {
       nodes {

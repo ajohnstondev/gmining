@@ -8,7 +8,7 @@ const GoldBox = ({ title, main, button, link, blue }) => {
     <div
       className={`${
         blue && "bg-primary"
-      } our-mission-container py-2 lg:py-6 lg:py-0 px-8 xl:px-0`}
+      } our-mission-container py-2 lg:py-6 lg:py-0 global-x-spacing`}
     >
       <div
         className={`max-w-6xl mx-auto py-12 lg:px-24 flex flex-col gap-y-4 lg:gap-y-0 items-center mission-wrapper ${
@@ -17,7 +17,7 @@ const GoldBox = ({ title, main, button, link, blue }) => {
       >
         {title && (
           <h3
-            className={`uppercase mission-heading ${
+            className={`text-center uppercase mission-heading ${
               blue ? "text-primary" : "text-secondary"
             } ${blue && "mission-heading-blue"}`}
           >

@@ -4,7 +4,7 @@ import "./index.module.scss";
 
 const MarketingPosition = ({ data }) => {
   return (
-    <section className="intro-section bg-secondary p-12 text-center lg:px-4">
+    <section className="intro-section bg-secondary py-12 text-center global-x-spacing">
       <div className="max-w-6xl mx-auto">
         <div className="text-center py-6 border-secondary border-b border-solid">
           <h3 className=" text-secondary uppercase">{data.title}</h3>
@@ -19,7 +19,7 @@ const MarketingPosition = ({ data }) => {
               return (
                 <div>
                   <h1 className="text-primary mb-4">{v.title}</h1>
-                  <p className="font-xs text-text">{v.content}</p>
+                  <p className="font-xs text-text slim">{v.content}</p>
                 </div>
               );
             })}

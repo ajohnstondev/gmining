@@ -6,7 +6,7 @@ import * as styles from "./index.module.scss";
 const Documents = ({ data }) => {
   const DOCUMENTS = data.items;
   return (
-    <div className={`${styles.documentsContainer} px-4 lg:px-8 xl:px-0`}>
+    <div className={`${styles.documentsContainer} global-x-spacing`}>
       <div className="max-w-6xl mx-auto">
         <h3 className="text-secondary uppercase text-center pb-2 lg:pb-0">
           Refrence Documents

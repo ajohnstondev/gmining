@@ -7,11 +7,13 @@ const LegacyTimeline = ({ data: { title, content, timeline, icons } }) => {
   const lastEvent = timeline.items.pop();
 
   return (
-    <div className="py-24">
+    <div className="py-8 lg:py-24">
       <div className="max-w-6xl mx-auto flex flex-col items-center">
         <h3 className="text-secondary uppercase">{title}</h3>
-        <p className="w-10/12 text-center text-text pt-6">{content.content}</p>
-        <div className={`w-full mt-24 timeline-container`}>
+        <p className="global-x-spacing lg:w-10/12 text-center text-text pt-6">
+          {content.content}
+        </p>
+        <div className={`w-full mt-8 lg:mt-24 timeline-container`}>
           {/* FIRST START */}
           <div className={`flex first-event timeline-event`}>
             <div className={`event-container`}>

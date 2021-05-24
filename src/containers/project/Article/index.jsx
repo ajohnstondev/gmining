@@ -5,7 +5,7 @@ import "./index.scss";
 
 const Article = ({ data: { heading, image, content, bottomText } }) => {
   return (
-    <div className="py-8 lg:py-20 px-8 xl:px-0">
+    <div className="py-8 lg:py-20 global-x-spacing">
       <div className="max-w-4xl mx-auto text-text">
         <h3 className="uppercase text-secondary text-center mb-10">
           {heading}
