@@ -3,12 +3,15 @@
   &.active-nav {
     @media (max-width: 1023px) {
       min-height: 100vh;
+      position: fixed;
+      z-index: 999;
     }
   }
   .link-item {
     position: relative;
     &.link {
       color: var(--color_s);
+
       @media (min-width: 1024px) {
         &::after {
           content: "";
@@ -60,6 +63,7 @@
       margin-top: 4px;
       .dropdown-active {
         color: var(--color_s);
+        background-color: #f4f0e9;
       }
     }
     .item {

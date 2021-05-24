@@ -5,7 +5,7 @@ import { useLocation } from "@reach/router";
 
 import "./index.scss";
 import Logo from "../../images/logo.png";
-import SearchIcon from "./../../images/search-icon.png";
+import CrossIcon from "../../images/crossicon.png";
 import ArrowDownBlack from "../../images/down-arrow-black.png";
 import ArrowDownWhite from "../../images/down-arrow-white.png";
 import { Search } from "../icon";
@@ -163,21 +163,26 @@ const Header = ({ inverted }) => {
               scroll ? "fixed bg-white" : "absolute"
             }`}
           >
-            <div className="py-1 flex flex-wrap items-center justify-between px-4 md:px-6">
-              <Link
-                className="flex items-center justify-content no-underline text-white"
-                to={`/${currentLocale}/`}
-              >
-                <img src={Logo} alt="logo" />
-              </Link>
+            <div className="py-1 flex flex-wrap items-center justify-between  md:px-6">
+              <div className="px-4 md:px-0 flex items-center justify-between w-full">
+                <Link
+                  className="flex items-center justify-content no-underline text-white"
+                  to={`/${currentLocale}/`}
+                >
+                  <img src={Logo} alt="logo" />
+                </Link>
 
-              <button
-                className="block md:hidden flex items-center px-3 py-2 rounded text-white"
-                onClick={() => toggleExpansion(!isExpanded)}
-              >
-                <span className="navbarToggleIcon" />
-              </button>
-
+                <button
+                  className="block md:hidden flex items-center px-3 py-2 rounded text-white"
+                  onClick={() => toggleExpansion(!isExpanded)}
+                >
+                  {isExpanded ? (
+                    <img src={CrossIcon} />
+                  ) : (
+                    <span className="navbarToggleIcon" />
+                  )}
+                </button>
+              </div>
               <nav
                 className={`${
                   isExpanded ? `block` : `hidden`
@@ -271,21 +276,14 @@ const NavListItem = ({ item, inverted, isInverted, scroll, currentLocale }) => {
   return (
     <div>
       <div
-        className={`cursor-pointer lg:hidden block uppercase  mt-4 md:mt-0 md:ml-10 no-underline link-item relative ${className} text-text `}
+        className={`cursor-pointer lg:hidden block uppercase mt-4 md:mt-0 md:ml-10 no-underline link-item relative ${className} text-text`}
         key={item.title}
         onClick={toggleDropDown}
       >
         <div className="item flex items-center">
-          <span>{item.title}</span>
-          {item.items && (
-            <span>
-              {!scroll && !inverted && !isInverted ? (
-                <img src={ArrowDownWhite} className="ml-4" />
-              ) : (
-                <img src={ArrowDownBlack} className="ml-4" />
-              )}
-            </span>
-          )}
+          <span className="px-4 md:px-0">{item.title}</span>
+
+          <img src={ArrowDownBlack} className="ml-4" />
         </div>
         {item.items && (
           <div
@@ -296,7 +294,7 @@ const NavListItem = ({ item, inverted, isInverted, scroll, currentLocale }) => {
             <div className="dropdown-content">
               {item.items?.map((item) => (
                 <Link
-                  className="subitem block bg-white no-underline text-black py-4 pl-4 pr-8 text-text font-xs"
+                  className="subitem  block bg-white no-underline text-black py-4 pr-4 pl-8 text-text font-xs"
                   key={item.title}
                   to={`/${currentLocale}${item.path}`}
                   activeClassName="dropdown-active"
