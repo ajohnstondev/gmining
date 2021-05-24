@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { graphql, useStaticQuery, Link, navigate } from "gatsby";
 import { IntlContextConsumer, changeLocale } from "gatsby-plugin-intl";
+import { useLocation } from "@reach/router";
+
 import "./index.scss";
 import Logo from "../../images/logo.png";
 import SearchIcon from "./../../images/search-icon.png";
@@ -258,21 +260,19 @@ const Header = ({ inverted }) => {
 
 const NavListItem = ({ item, inverted, isInverted, scroll, currentLocale }) => {
   const [subMenuVisible, setSubMenuVisible] = useState(false);
+  const location = useLocation();
 
   const toggleDropDown = (e) => {
     setSubMenuVisible(!subMenuVisible);
     !item.items && navigate(`/${currentLocale}${item.path}`);
   };
 
+  let className = location.pathname.includes(item.path) ? "link" : "";
   return (
     <div>
       <div
-        className={`cursor-pointer lg:hidden block uppercase  mt-4 md:mt-0 md:ml-10 no-underline link-item relative ${
-          inverted || isInverted ? "text-text" : "text-white"
-        } ${scroll ? "text-text" : "text-white"} `}
+        className={`cursor-pointer lg:hidden block uppercase  mt-4 md:mt-0 md:ml-10 no-underline link-item relative ${className} text-text `}
         key={item.title}
-        activeClassName="link"
-        partiallyActive={true}
         onClick={toggleDropDown}
       >
         <div className="item flex items-center">

@@ -53,16 +53,15 @@
       &:hover {
         .dropdown {
           display: block;
-          .dropdown-content {
-            margin-top: 4px;
-            .dropdown-active {
-              color: var(--color_s);
-            }
-          }
         }
       }
     }
-
+    .dropdown-content {
+      margin-top: 4px;
+      .dropdown-active {
+        color: var(--color_s);
+      }
+    }
     .item {
       padding: 10px 0;
       @media (min-width: 1024px) {
@@ -84,9 +83,6 @@
 .header-main:hover {
   background-color: white;
   transition: background 0.3s;
-  .link-item {
-    color: #606060;
-  }
 }
 
 .navbarToggleIcon {

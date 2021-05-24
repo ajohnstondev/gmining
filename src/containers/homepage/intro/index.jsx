@@ -19,7 +19,7 @@ const Intro = ({ data, stockItem }) => {
 
         <div className="lg:border-secondary lg:border lg:border-l-0 lg:border-solid p-2 lg:p-6 lg:pl-0">
           <div className="bg-gray-200 rounded p-6 lg:px-6">
-            <h4 className=" text-primary uppercase mb-2">
+            <h4 className="text-primary uppercase mb-2">
               Tsx-v {stockItem.ticker}
             </h4>
             <div className="flex flex-col lg:gap-2 gap-1">
@@ -44,7 +44,7 @@ const Intro = ({ data, stockItem }) => {
                 <p className="lg:w-40  text-text lg:text-primary">
                   {stockItem.spotGoldTitle}
                 </p>
-                <p className="text-text lg:text-primary flex items-center">
+                <p className="text-text flex items-center">
                   {stockItem.spotGold}
                   <span className="pl-3 text-red-600">
                     <DownAngle size={14} color="red" />
