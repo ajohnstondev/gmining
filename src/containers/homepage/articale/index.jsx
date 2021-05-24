@@ -40,27 +40,30 @@ const MarketingPosition = ({ quickLinks, news }) => {
                 })}
             </div>
           </div>
-          <div className="col-span-2 lg:col-span-1 p-4 lg:p-0">
-            <h3 className="text-secondary uppercase pb-2">
-              {quickLinks.quickLinksTitle}
-            </h3>
-            <div className="border-secondary border-b border-solid mb-2"></div>
+          <div className="flex  col-span-2 flex-wrap-reverse lg:flex-wrap lg:col-span-1 p-4 lg:p-0">
+            <div className="w-full ">
+              <h3 className="text-secondary uppercase pb-2">
+                {quickLinks.quickLinksTitle}
+              </h3>
+              <div className="border-secondary border-b border-solid mb-2"></div>
 
-            {quickLinks.quickLinks.items.map((v, i) => {
-              return (
-                <Link
-                  className="text-primary uppercase font-xs	block my-4"
-                  to={v.link}
-                >
-                  {v.title}
-                </Link>
-              );
-            })}
-
-            <p className="py-5 text-text">{quickLinks.content}</p>
-            <GradientButton>
-              <Link href={quickLinks.ctaLink}>{quickLinks.ctaText}</Link>
-            </GradientButton>
+              {quickLinks.quickLinks.items.map((v, i) => {
+                return (
+                  <Link
+                    className="text-primary uppercase font-xs	block my-4"
+                    to={v.link}
+                  >
+                    {v.title}
+                  </Link>
+                );
+              })}
+            </div>
+            <div className="w-full mb-12 lg:mb-0">
+              <p className="py-5 text-text">{quickLinks.content}</p>
+              <GradientButton>
+                <Link href={quickLinks.ctaLink}>{quickLinks.ctaText}</Link>
+              </GradientButton>
+            </div>
           </div>
         </div>
         <div class="flex flex-wrap p-4"></div>

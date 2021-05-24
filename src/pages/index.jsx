@@ -6,7 +6,6 @@ import {
   Hero,
   Intro,
   MarketingPosition,
-  CoperatePresentation,
   Article,
 } from "./../containers/homepage";
 

@@ -19,16 +19,20 @@ const Header = ({ inverted }) => {
   const [isInverted, setInverted] = useState(inverted);
   const [langOpen, setLangOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
-
-  const { site, projects } = useStaticQuery(graphql`
-    query allProjectPagesQueryAndSiteTitleQuery {
+  const {
+    projectsFr,
+    contentFulNavigationsFr,
+    projectsEn,
+    contentFulNavigationsEn,
+  } = useStaticQuery(graphql`
+    query allProjectPagesQueryAndSiteTitleQueryFrench {
       site {
         siteMetadata {
           title
         }
       }
 
-      projects: allContentfulProject(filter: { node_locale: { eq: "en-US" } }) {
+      projectsFr: allContentfulProject(filter: { node_locale: { eq: "fr" } }) {
         edges {
           node {
             heading
@@ -36,71 +40,54 @@ const Header = ({ inverted }) => {
           }
         }
       }
+      contentFulNavigationsFr: allContentfulNavigation(
+        filter: { node_locale: { eq: "fr" } }
+      ) {
+        nodes {
+          links {
+            links {
+              items {
+                path
+                title
+                items {
+                  path
+                  title
+                }
+              }
+            }
+          }
+        }
+      }
+      projectsEn: allContentfulProject(
+        filter: { node_locale: { eq: "en-US" } }
+      ) {
+        edges {
+          node {
+            heading
+            slug
+          }
+        }
+      }
+      contentFulNavigationsEn: allContentfulNavigation(
+        filter: { node_locale: { eq: "en-US" } }
+      ) {
+        nodes {
+          links {
+            links {
+              items {
+                path
+                title
+                items {
+                  path
+                  title
+                }
+              }
+            }
+          }
+        }
+      }
     }
   `);
-
-  let currentEdges = projects.edges;
-  currentEdges = currentEdges.map(({ node }) => {
-    return {
-      title: node.heading,
-      path: `/${node.slug}`,
-    };
-  });
-
-  const projectsLinks = {
-    title: "PROJECTS",
-    path: currentEdges[0].path,
-    items: currentEdges,
-  };
-  const navigations = [
-    {
-      title: "ABOUT",
-      path: "/about-us",
-      items: [
-        {
-          title: "ABOUT US",
-          path: "/about-us",
-        },
-        {
-          title: "OUR TEAM",
-          path: "/about-us/our-team",
-        },
-      ],
-    },
-    {
-      title: "CORPORATE",
-      path: "/corporate",
-      items: [
-        {
-          title: "CORPORATE GOVERNENCE",
-          path: "/corporate",
-        },
-        {
-          title: "CORPORATE DIRECTORY",
-          path: "/corporate/corporate-directory",
-        },
-      ],
-    },
-    {
-      title: "NEWS",
-      path: "/news",
-    },
-    {
-      title: "INVESTORS",
-      path: "/investors",
-      items: [
-        {
-          title: "REPORTS AND DISCLOUSERS",
-          path: "/investors",
-        },
-        {
-          title: "EVENTS AND PRESENTATION",
-          path: "/investors/events-and-presentations",
-        },
-      ],
-    },
-    projectsLinks,
-  ];
 
   function scrollFunction() {
     if (typeof window != "undefined") {
@@ -121,105 +108,146 @@ const Header = ({ inverted }) => {
 
   return (
     <IntlContextConsumer>
-      {({ languages, language: currentLocale }) => (
-        <header
-          onMouseOver={() => setInverted(true)}
-          onMouseOut={() => setInverted(false)}
-          className={`${
-            isInverted || inverted ? "bg-white" : "bg-transparent"
-          } left-0 right-0 top-0 z-10 header-main ${
-            scroll ? "fixed bg-white" : "absolute"
-          }`}
-        >
-          <div className="py-1 flex flex-wrap items-center justify-between px-4 md:px-6">
-            <Link
-              className="flex items-center justify-content no-underline text-white"
-              to={`/${currentLocale}/`}
-            >
-              <img src={Logo} alt="logo" />
-            </Link>
+      {({ languages, language: currentLocale }) => {
+        let navigations;
 
-            <button
-              className="block md:hidden flex items-center px-3 py-2 rounded text-white"
-              onClick={() => toggleExpansion(!isExpanded)}
-            >
-              <span className="navbarToggleIcon" />
-            </button>
+        if (currentLocale === "fr") {
+          let currentEdges = projectsFr.edges;
+          currentEdges = currentEdges.map(({ node }) => {
+            return {
+              title: node.heading,
+              path: `/${node.slug}`,
+            };
+          });
 
-            <nav
-              className={`${
-                isExpanded ? `block` : `hidden`
-              } md:block md:flex md:items-center w-full md:w-auto font-xs`}
-            >
-              {navigations.map((item) => (
-                <NavListItem
-                  currentLocale={currentLocale}
-                  item={item}
-                  inverted={inverted}
-                  isInverted={isInverted}
-                  scroll={scroll}
-                />
-              ))}
+          const projectsLinks = {
+            title: "PROJECTS",
+            path: currentEdges[0].path,
+            items: currentEdges,
+          };
+          navigations = contentFulNavigationsFr.nodes[0].links.links.items;
 
-              <div className="cursor-pointer flex items-center gap-x-8">
-                <div
-                  className="px-3 link-item block md:inline-block mt-4 font-xs md:mt-0 md:ml-10 no-underline text-primary"
-                  key="PROJECTS"
-                  to="/"
-                >
-                  <div>
-                    <div className="item">{languageName[currentLocale]}</div>
-                    <div
-                      className={`${
-                        !langOpen && "hidden"
-                      } flex langDropDown font-xs`}
-                    >
-                      {languages.map((language) => (
-                        <a
-                          className="lang"
-                          onClick={() => changeLocale(language)}
-                        >
-                          <span
-                            className={`${
-                              languageName[currentLocale] === languageName[language]
-                                ? "text-secondary"
-                                : ""
-                            }`}
+          navigations[4] = projectsLinks;
+        } else {
+          let currentEdges = projectsEn.edges;
+          currentEdges = currentEdges.map(({ node }) => {
+            return {
+              title: node.heading,
+              path: `/${node.slug}`,
+            };
+          });
+
+          const projectsLinks = {
+            title: "PROJECTS",
+            path: currentEdges[0].path,
+            items: currentEdges,
+          };
+          navigations = contentFulNavigationsEn.nodes[0].links.links.items;
+
+          navigations[4] = projectsLinks;
+        }
+
+        return (
+          <header
+            onMouseOver={() => setInverted(true)}
+            onMouseOut={() => setInverted(false)}
+            className={`${
+              isInverted || inverted ? "bg-white" : "bg-transparent"
+            } left-0 right-0 top-0 z-10 header-main ${
+              scroll ? "fixed bg-white" : "absolute"
+            }`}
+          >
+            <div className="py-1 flex flex-wrap items-center justify-between px-4 md:px-6">
+              <Link
+                className="flex items-center justify-content no-underline text-white"
+                to={`/${currentLocale}/`}
+              >
+                <img src={Logo} alt="logo" />
+              </Link>
+
+              <button
+                className="block md:hidden flex items-center px-3 py-2 rounded text-white"
+                onClick={() => toggleExpansion(!isExpanded)}
+              >
+                <span className="navbarToggleIcon" />
+              </button>
+
+              <nav
+                className={`${
+                  isExpanded ? `block` : `hidden`
+                } md:block md:flex md:items-center w-full md:w-auto font-xs`}
+              >
+                {navigations.map((item) => (
+                  <NavListItem
+                    currentLocale={currentLocale}
+                    item={item}
+                    inverted={inverted}
+                    isInverted={isInverted}
+                    scroll={scroll}
+                  />
+                ))}
+
+                <div className="cursor-pointer flex items-center gap-x-8">
+                  <div
+                    className="px-3 link-item block md:inline-block mt-4 font-xs md:mt-0 md:ml-10 no-underline text-primary"
+                    key="PROJECTS"
+                    to="/"
+                  >
+                    <div>
+                      <div className="item">{languageName[currentLocale]}</div>
+                      <div
+                        className={`${
+                          !langOpen && "hidden"
+                        } flex langDropDown font-xs`}
+                      >
+                        {languages.map((language) => (
+                          <a
+                            className="lang"
+                            onClick={() => changeLocale(language)}
                           >
-                            {languageName[language]}
-                          </span>
-                        </a>
-                      ))}
+                            <span
+                              className={`${
+                                languageName[currentLocale] ===
+                                languageName[language]
+                                  ? "text-secondary"
+                                  : ""
+                              }`}
+                            >
+                              {languageName[language]}
+                            </span>
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className=" block md:inline-block mt-4 md:mt-0 md:ml-10 no-underline text-black font-xs"
+                    key="PROJECTS"
+                  >
+                    <div className="flex items-center gap-2">
+                      <button onClick={() => setSearchOpen((prev) => !prev)}>
+                        <Search
+                          size={14}
+                          className={`navbar-search-icon ${
+                            !searchOpen ? "inactive" : ""
+                          }`}
+                        />
+                      </button>
+
+                      <input
+                        placeholder="SEARCH"
+                        className={`font-xs navbar-search-field ${
+                          searchOpen ? "px-2" : "inactive"
+                        }`}
+                      />
                     </div>
                   </div>
                 </div>
-                <div
-                  className=" block md:inline-block mt-4 md:mt-0 md:ml-10 no-underline text-black font-xs"
-                  key="PROJECTS"
-                >
-                  <div className="flex items-center gap-2">
-                    <button onClick={() => setSearchOpen((prev) => !prev)}>
-                      <Search
-                        size={14}
-                        className={`navbar-search-icon ${
-                          !searchOpen ? "inactive" : ""
-                        }`}
-                      />
-                    </button>
-
-                    <input
-                      placeholder="SEARCH"
-                      className={`font-xs navbar-search-field ${
-                        searchOpen ? "px-2" : "inactive"
-                      }`}
-                    />
-                  </div>
-                </div>
-              </div>
-            </nav>
-          </div>
-        </header>
-      )}
+              </nav>
+            </div>
+          </header>
+        );
+      }}
     </IntlContextConsumer>
   );
 };
@@ -265,7 +293,7 @@ const NavListItem = ({ item, inverted, isInverted, scroll, currentLocale }) => {
                 <Link
                   className="subitem block bg-white no-underline text-black py-4 pl-4 pr-8 text-text font-xs"
                   key={item.title}
-                  to={`${item.path}`}
+                  to={`/${currentLocale}${item.path}`}
                   activeClassName="dropdown-active"
                 >
                   {item.title}
