@@ -5,7 +5,7 @@ import * as styles from "./index.module.scss";
 const Hero = ({ data }) => {
   return (
     <section className={`${styles.heroSection} relative`}>
-      <video loop autoplay="autoplay" muted>
+      <video autoplay="autoplay" muted>
         <source src={data.backgroundImage?.file?.url} type="video/mp4" />
       </video>
       <div className={`absolute top-0 right-0 left-0 bottom-0 ${styles.overlay}`}/>

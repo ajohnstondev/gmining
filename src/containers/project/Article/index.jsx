@@ -17,7 +17,7 @@ const Article = ({ data: { heading, image, content, bottomText } }) => {
           config={{
             p: "mt-1 mb-2",
             span: "disc-bullet",
-            h4: "text-primary text-xl mb-4",
+            h4: "text-primary mb-4",
           }}
         />
         <div className="border-t-2 border-secondary mt-6 pt-6">
