@@ -28,7 +28,9 @@ const MarketingPosition = ({ quickLinks, news }) => {
                           {shortenText(title, 30)}
                         </div>
                       </h4>
-                      <p className="uppercase font-xs mb-3 text-text">{date}</p>
+                      <p className="uppercase font-xs my-3 lg:mb-3 text-text">
+                        {date}
+                      </p>
                       <Link
                         className="text-secondary underline uppercase font-xs"
                         to={ctaLink}
@@ -45,8 +47,7 @@ const MarketingPosition = ({ quickLinks, news }) => {
               <h3 className="text-secondary uppercase pb-2">
                 {quickLinks.quickLinksTitle}
               </h3>
-              <div className="border-secondary border-b border-solid mb-2"></div>
-
+              <div className="border-secondary border-b border-solid mb-2" />
               {quickLinks.quickLinks.items.map((v, i) => {
                 return (
                   <Link

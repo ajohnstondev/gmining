@@ -25,7 +25,6 @@ const Home = ({ data }) => {
         stockItem={data.allContentfulStockItem.nodes[0]}
       />
       <MarketingPosition data={data.allContentfulHomeMarketPosition.nodes[0]} />
-      {/* <CoperatePresentation data={data.allContentfulHomeCorporatePresentation} /> */}
       <GoldBox
         title={title}
         main={content}
