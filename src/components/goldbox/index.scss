@@ -50,19 +50,18 @@
           }
         }
       }
-
-      .goldbox-button {
-        background: linear-gradient(to right, #0a4354 0%, #00556f 100%);
-        color: #ffffff;
-        display: block;
-        text-align: center;
-        line-height: 48px;
-        border-radius: 8px;
-        width: 100%;
-
-        @media (min-width: 1024px) {
-          width: 350px;
-        }
+    }
+    .goldbox-button {
+      background: linear-gradient(to right, #0a4354 0%, #00556f 100%);
+      color: #ffffff;
+      display: block;
+      text-align: center;
+      line-height: 48px;
+      border-radius: 8px;
+      width: 100%;
+      box-shadow: 4px 4px 12px 0px rgba(27, 27, 27, 0.4);
+      @media (min-width: 1024px) {
+        width: 350px;
       }
     }
   }
