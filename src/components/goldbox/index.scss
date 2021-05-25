@@ -39,15 +39,12 @@
         padding: 2px 22px;
         bottom: 0px;
         width: fit-content;
+        position: absolute;
+        transform: translateY(50%);
+        background-color: white;
 
-        @media (min-width: 1024px) {
-          position: absolute;
-          transform: translateY(50%);
-          background-color: white;
-
-          &.goldbox-buttonContainer-blue {
-            background-color: #c9dcde;
-          }
+        &.goldbox-buttonContainer-blue {
+          background-color: #c9dcde;
         }
       }
     }
