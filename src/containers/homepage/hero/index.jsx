@@ -6,10 +6,7 @@ const Hero = ({ data }) => {
   return (
     <section className={`${styles.heroSection} relative`}>
       <video loop autoplay="autoplay" muted>
-        <source
-          src="https://traversymedia.com/downloads/video.mov"
-          type="video/mp4"
-        />
+        <source src={data.backgroundImage?.file?.url} type="video/mp4" />
       </video>
       <div className={`absolute top-0 right-0 left-0 bottom-0 ${styles.overlay}`}/>
       <div className="max-w-6xl mx-auto px-4 relative">

@@ -157,7 +157,7 @@ const Header = ({ inverted }) => {
             }}
             className={`${
               isInverted || inverted ? "bg-white" : "bg-transparent"
-            } left-0 right-0 top-0 z-10 header-main ${
+            } left-0 right-0 top-0 z-50 header-main ${
               scroll ? "fixed bg-white " : "absolute"
             } ${isExpanded ? "active-nav relative" : ""}`}
           >
