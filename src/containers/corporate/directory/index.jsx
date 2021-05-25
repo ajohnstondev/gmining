@@ -7,7 +7,7 @@ import * as styles from "./index.module.scss";
 const Directory = ({ data }) => {
   return (
     <div className="py-16">
-      <div className="px-4 lg:px-8 xl:px-0 max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-x-32 lg:gap-y-12">
+      <div className="global-x-spacing max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-x-32 lg:gap-y-12">
         {data &&
           data.map(
             ({

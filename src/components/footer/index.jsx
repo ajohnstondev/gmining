@@ -169,10 +169,16 @@ function Footer() {
                   }}
                   className="block lg:flex justify-center max-w-6xl mx-auto gap-3 items-end"
                 >
-                  {fields[0].fields.map((field) => {
-                    const { label, fieldType, required, name, placeholder } = field;
+                  {fields[0].fields.map((field, index) => {
+                    const {
+                      label,
+                      fieldType,
+                      required,
+                      name,
+                      placeholder,
+                    } = field;
                     return (
-                      <div className="mb-5 lg:mb-0 flex-1">
+                      <div className="mb-5 lg:mb-0 flex-1" key={label}>
                         <input
                           name={name}
                           type={fieldType}

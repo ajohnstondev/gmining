@@ -8,7 +8,7 @@ const Intro = ({ data, stockItem }) => {
   return (
     <section className="intro-section py-12 max-w-6xl mx-auto py-4 global-x-spacing">
       <div class=" grid gap-4 grid-cols-1  sm:grid-cols-1 xl:grid-cols-2 md:grid-cols-2 md:gap-8">
-        <div className="p-5 lg:p-0">
+        <div className="">
           <h3 className="text-secondary uppercase text-center lg:text-left">
             {data.title}
           </h3>
@@ -17,7 +17,7 @@ const Intro = ({ data, stockItem }) => {
           </p>
         </div>
 
-        <div className="lg:border-secondary lg:border lg:border-l-0 lg:border-solid p-2 lg:p-6 lg:pl-0">
+        <div className="lg:border-secondary lg:border lg:border-l-0 lg:border-solid lg:p-6 lg:pl-0">
           <div className="bg-gray-200 rounded p-6 lg:px-6">
             <h4 className="text-primary uppercase mb-2">
               Tsx-v {stockItem.ticker}

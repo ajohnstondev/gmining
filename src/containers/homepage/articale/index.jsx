@@ -28,7 +28,7 @@ const MarketingPosition = ({ quickLinks, news }) => {
                           {shortenText(title, 30)}
                         </div>
                       </h4>
-                      <p className="uppercase font-xs py-4 text-text">{date}</p>
+                      <p className="uppercase font-xs mb-3 text-text">{date}</p>
                       <Link
                         className="text-secondary underline uppercase font-xs"
                         to={ctaLink}
@@ -40,8 +40,8 @@ const MarketingPosition = ({ quickLinks, news }) => {
                 })}
             </div>
           </div>
-          <div className="flex col-span-2 flex-wrap-reverse lg:flex-wrap lg:col-span-1 p-4 lg:p-0">
-            <div className="w-full ">
+          <div className="flex col-span-2 flex-wrap-reverse lg:flex-wrap lg:col-span-1 lg:p-0">
+            <div className="w-full">
               <h3 className="text-secondary uppercase pb-2">
                 {quickLinks.quickLinksTitle}
               </h3>
