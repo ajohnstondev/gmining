@@ -159,7 +159,7 @@ function Footer() {
             {thankModal && <Modal onClose={() => setThankModal(false)} />}
             <div className="global-x-spacing footer-section relative z-10 flex justify-center">
               <div className="footer-overly text-center max-w-6xl py-8 z-20 rounded-xl px-4">
-                <h3 className="text-secondary uppercase mb-6 lg:mb-0">
+                <h3 className="text-primary uppercase mb-6 lg:mb-0">
                   JOIN OUR MAILING LIST
                 </h3>
                 <form
