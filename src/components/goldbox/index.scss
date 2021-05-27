@@ -24,7 +24,7 @@
         background-color: #fff;
 
         &.mission-heading-blue {
-          background-color: #c9dcde;
+          background-color: #e9f0f2;
         }
       }
     }
@@ -41,11 +41,11 @@
         width: fit-content;
         position: absolute;
         transform: translateY(50%);
-        background-color: white;
+        // background-color: white;
 
-        &.goldbox-button-container-blue {
-          background-color: #c9dcde;
-        }
+        // &.goldbox-button-container-blue {
+        //   background-color: #c9dcde;
+        // }
       }
     }
     .goldbox-button {

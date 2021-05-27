@@ -18,6 +18,7 @@ exports.onCreatePage = ({ page, actions }) => {
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
   const projectTemplate = path.resolve(`src/templates/project.jsx`);
+  const newsTemplate = path.resolve(`src/templates/news.jsx`);
   const result = await graphql(`
     query {
       allContentfulProject {
@@ -27,8 +28,25 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      news: allContentfulNews {
+        edges {
+          node {
+            ctaLink
+          }
+        }
+      }
     }
   `);
+
+  result.data.news.edges.forEach((edge) => {
+    createPage({
+      path: edge.node.ctaLink,
+      component: newsTemplate,
+      context: {
+        slug: edge.node.ctaLink,
+      },
+    });
+  });
 
   result.data.allContentfulProject.edges.forEach((edge) => {
     createPage({

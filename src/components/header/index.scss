@@ -1,5 +1,8 @@
 .header-main {
   transition: background 0.3s;
+  &.shadow {
+    box-shadow: 5px 5px 10px #00000029;
+  }
   &.active-nav {
     @media (max-width: 1023px) {
       min-height: 100vh;

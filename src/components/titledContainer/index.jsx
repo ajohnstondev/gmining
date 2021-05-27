@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "gatsby";
 
 import "./index.scss";
 import { ChevronRight } from "../icon";
@@ -26,40 +27,44 @@ const TitledContainer = ({
         <h3 className=" text-secondary border-b uppercase border-secondary pb-4 mb-4 lg:mb-8">
           {title}
         </h3>
-        <div className={`justify-between lg:flex`}>
+        <div className="justify-between lg:flex gap-12">
           {sideList && (
-            <div className=" mb-6 lg:mb-0">
+            <div className="lg:w-3/12 mb-6 lg:mb-0">
               <ul className="flex lg:flex-col lg:gap-3 gap-x-12 gap-y-3 flex-wrap">
                 {sideList.map((text) => (
                   <li
                     className={`${
                       sideNoWrap && "w-full"
-                    } font-xs text-primary uppercase cursor-pointer`}
-                    onClick={() => setFilter(text)}
+                    } font-xs text-primary uppercase cursor-pointer tit-shortText`}
+                    onClick={() => !text.ctaLink && setFilter(text)}
                   >
-                    {text}
+                    {text.title ? (
+                      <Link to={`/${text.ctaLink}`}>{text.title}</Link>
+                    ) : (
+                      text
+                    )}
                   </li>
                 ))}
               </ul>
             </div>
           )}
-          <div className={`${sideList || "full-blogContainer"} blogContainer`}>
+          <div className={sideList ? "flex-1" : "full-blogContainer"}>
             {children}
-            <div className={`tit-pagination`}>
-              <div className="flex items-center">
-                <div
-                  className={`tit-chevronLeft cursor-pointer`}
-                  onClick={() => {
-                    setPage((prev) => {
-                      return prev - 1 < 1 ? 1 : prev - 1;
-                    });
-                  }}
-                >
-                  <ChevronRight size={15} />
-                </div>
-                <ul className="flex flex-1 justify-center gap-10">
-                  {pagination &&
-                    pagination.map((num) => (
+            {pagination && (
+              <div className="tit-pagination">
+                <div className="flex items-center">
+                  <div
+                    className="tit-chevronLeft cursor-pointer"
+                    onClick={() => {
+                      setPage((prev) => {
+                        return prev - 1 < 1 ? 1 : prev - 1;
+                      });
+                    }}
+                  >
+                    <ChevronRight size={15} />
+                  </div>
+                  <ul className="flex flex-1 justify-center gap-10">
+                    {pagination.map((num) => (
                       <li
                         className={`font-xs text-secondary cursor-pointer ${
                           num === page && "underline"
@@ -69,19 +74,20 @@ const TitledContainer = ({
                         {num}
                       </li>
                     ))}
-                </ul>
-                <div
-                  className="cursor-pointer"
-                  onClick={() => {
-                    setPage((prev) => {
-                      return prev + 1 > pagLen ? pagLen : prev + 1;
-                    });
-                  }}
-                >
-                  <ChevronRight size={15} className={`tit-chevronRight`} />
+                  </ul>
+                  <div
+                    className="cursor-pointer"
+                    onClick={() => {
+                      setPage((prev) => {
+                        return prev + 1 > pagLen ? pagLen : prev + 1;
+                      });
+                    }}
+                  >
+                    <ChevronRight size={15} className="tit-chevronRight" />
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>

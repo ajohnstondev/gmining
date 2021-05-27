@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "gatsby";
+import { IntlContextConsumer } from "gatsby-plugin-intl";
 import uniq from "lodash.uniq";
 
 import shortenText from "../../../utils/shortenText";
@@ -36,84 +37,98 @@ const Blog = ({ data }) => {
   };
 
   return (
-    <div className="py-8 lg:py-24">
-      <div className="global-x-spacing px-0 max-w-6xl mx-auto">
-        <h3 className="text-secondary border-b border-secondary pb-4 mb-4 lg:mb-8">
-          SORT BY DATE
-        </h3>
-        <div className={`justify-between lg:flex`}>
-          <div className=" mb-6 lg:mb-0">
-            <ul className="flex lg:flex-col lg:gap-3 gap-x-12 gap-y-3 flex-wrap">
-              {uniq(years).map((year) => {
-                return <li className="text-primary font-xs">{year}</li>;
-              })}
-            </ul>
-          </div>
-          <div className={` ${styles.blogContainer}`}>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-8">
-              {data
-                .slice((page - 1) * 4, (page - 1) * 4 + 4)
-                .map(
-                  ({
-                    node: { content, ctaLink, ctaText, title, formattedDate },
-                  }) => (
-                    <div
-                      className={`${styles.article} flex flex-col gap-3 rounded-lg py-5 lg:py-10 px-6`}
-                    >
-                      <h4 className="text-primary capitalize h-20">
-                        <div className="md:hidden lg:block">
-                          {shortenText(title, 50)}
-                        </div>
-                        <div className="hidden md:block lg:hidden">
-                          {shortenText(title, 80)}
-                        </div>
-                      </h4>
-                      <h4 className="uppercase text-text font-xs">
-                        {formattedDate}
-                      </h4>
-                      <p className="flex-1 text-text">
-                        <RRenderer data={content} />
-                      </p>
-                      <Link
-                        to={ctaLink}
-                        className="font-xs text-secondary underline uppercase"
-                      >
-                        {ctaText}
-                      </Link>
-                    </div>
-                  )
-                )}
-            </div>
-            <div className={`${styles.pagination}`}>
-              <div className="flex items-center">
-                <div
-                  onClick={() => {
-                    setPage((prev) => (prev - 1 < 1) ? 1 : prev - 1);
-                  }}
-                  className={`${styles.chevronLeft} cursor-pointer`}
-                >
-                  <ChevronRight size={18} />
+    <IntlContextConsumer>
+      {({ languages, language: currentLocale }) => {
+        return (
+          <div className="py-8 lg:py-24">
+            <div className="global-x-spacing px-0 max-w-6xl mx-auto">
+              <h3 className="text-secondary border-b border-secondary pb-4 mb-4 lg:mb-8">
+                SORT BY DATE
+              </h3>
+              <div className={`justify-between lg:flex`}>
+                <div className=" mb-6 lg:mb-0">
+                  <ul className="flex lg:flex-col lg:gap-3 gap-x-12 gap-y-3 flex-wrap">
+                    {uniq(years).map((year) => {
+                      return <li className="text-primary font-xs">{year}</li>;
+                    })}
+                  </ul>
                 </div>
-                <ul className="flex flex-1 justify-center gap-10">
-                  {renderPagination()}
-                </ul>
-                <div
-                  className="cursor-pointer"
-                  onClick={() => {
-                    setPage((prev) => (prev + 1 > pagLen) ? pagLen : prev + 1);
-                  }}
-                >
-                  <ChevronRight
-                    size={18}
-                    className={`${styles.chevronRight}`}
-                  />
+                <div className={` ${styles.blogContainer}`}>
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-8">
+                    {data
+                      .slice((page - 1) * 4, (page - 1) * 4 + 4)
+                      .map(
+                        ({
+                          node: {
+                            content,
+                            ctaLink,
+                            ctaText,
+                            title,
+                            formattedDate,
+                          },
+                        }) => (
+                          <div
+                            className={`${styles.article} flex flex-col gap-3 rounded-lg py-5 lg:py-10 px-6`}
+                          >
+                            <h4 className="text-primary capitalize h-20">
+                              <div className="md:hidden lg:block">
+                                {shortenText(title, 50)}
+                              </div>
+                              <div className="hidden md:block lg:hidden">
+                                {shortenText(title, 80)}
+                              </div>
+                            </h4>
+                            <h4 className="uppercase text-text font-xs">
+                              {formattedDate}
+                            </h4>
+                            <p className="flex-1 text-text">
+                              <RRenderer data={content} />
+                            </p>
+                            <Link
+                              to={`/${currentLocale}/${ctaLink}`}
+                              className="font-xs text-secondary underline uppercase"
+                            >
+                              {ctaText}
+                            </Link>
+                          </div>
+                        )
+                      )}
+                  </div>
+                  <div className={styles.pagination}>
+                    <div className="flex items-center">
+                      <div
+                        onClick={() => {
+                          setPage((prev) => (prev - 1 < 1 ? 1 : prev - 1));
+                        }}
+                        className={`${styles.chevronLeft} cursor-pointer`}
+                      >
+                        <ChevronRight size={18} />
+                      </div>
+                      <ul className="flex flex-1 justify-center gap-10">
+                        {renderPagination()}
+                      </ul>
+                      <div
+                        className="cursor-pointer"
+                        onClick={() => {
+                          setPage((prev) =>
+                            prev + 1 > pagLen ? pagLen : prev + 1
+                          );
+                        }}
+                      >
+                        <ChevronRight
+                          size={18}
+                          className={styles.chevronRight}
+                        />
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
+        );
+      }}
+    </IntlContextConsumer>
   );
 };
 

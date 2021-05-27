@@ -1,9 +1,3 @@
-.blogContainer {
-  @media (min-width: 1024px) {
-    width: 700px;
-  }
-}
-
 .full-blogContainer {
   width: 100%;
 }
@@ -15,4 +9,11 @@
 .tit-chevronLeft {
   fill: var(--color_s);
   transform: rotate(180deg);
+}
+
+.tit-shortText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
 }

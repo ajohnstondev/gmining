@@ -9,6 +9,7 @@ import CrossIcon from "../../images/crossicon.png";
 import ArrowDownBlack from "../../images/down-arrow-black.png";
 import ArrowDownWhite from "../../images/down-arrow-white.png";
 import { Search } from "../icon";
+import shortenText from "../../utils/shortenText";
 
 const languageName = {
   "en-US": "English",
@@ -26,6 +27,7 @@ const Header = ({ inverted }) => {
     contentFulNavigationsFr,
     projectsEn,
     contentFulNavigationsEn,
+    moreNews,
   } = useStaticQuery(graphql`
     query allProjectPagesQueryAndSiteTitleQueryFrench {
       site {
@@ -67,6 +69,19 @@ const Header = ({ inverted }) => {
           node {
             heading
             slug
+          }
+        }
+      }
+
+      moreNews: allContentfulNews(
+        filter: { node_locale: { eq: "en-US" } }
+        limit: 3
+        sort: { fields: createdAt, order: DESC }
+      ) {
+        edges {
+          node {
+            title
+            ctaLink
           }
         }
       }
@@ -147,6 +162,15 @@ const Header = ({ inverted }) => {
           navigations = contentFulNavigationsEn.nodes[0].links.links.items;
 
           navigations[4] = projectsLinks;
+
+          const newLinks = moreNews.edges.map(
+            ({ node: { title, ctaLink } }) => ({
+              path: `/${ctaLink}`,
+              title: shortenText(title, 20),
+            })
+          );
+
+          navigations[2].items = newLinks;
         }
 
         return (
@@ -156,9 +180,9 @@ const Header = ({ inverted }) => {
               setInverted(false);
             }}
             className={`${
-              isInverted || inverted ? "bg-white" : "bg-transparent"
+              isInverted || inverted ? "bg-white shadow" : "bg-transparent"
             } left-0 right-0 top-0 z-50 header-main ${
-              scroll ? "fixed bg-white " : "absolute"
+              scroll ? "fixed bg-white shadow" : "absolute"
             } ${isExpanded ? "active-nav relative" : ""}`}
           >
             <div className="lg:py-1 flex flex-wrap items-center justify-between  md:px-6">
@@ -171,7 +195,7 @@ const Header = ({ inverted }) => {
                 </Link>
 
                 <button
-                  className="block md:hidden flex items-center px-3 py-2 rounded text-white"
+                  className="lg:hidden flex items-center px-3 py-2 rounded text-white"
                   onClick={() => toggleExpansion(!isExpanded)}
                 >
                   {isExpanded ? (
@@ -184,7 +208,7 @@ const Header = ({ inverted }) => {
               <nav
                 className={`${
                   isExpanded ? `block` : `hidden`
-                } md:block md:flex md:items-center w-full md:w-auto font-xs`}
+                }  lg:flex md:items-center w-full md:w-auto font-xs`}
               >
                 {navigations.map((item) => (
                   <NavListItem
@@ -195,7 +219,6 @@ const Header = ({ inverted }) => {
                     scroll={scroll}
                   />
                 ))}
-
                 <div className="cursor-pointer flex items-center flex-wrap-reverse lg:flex-wrap gap-x-8 pb-8 lg:pb-0 absolute bottom-0 lg:relative px-4 lg:px-0 w-full lg:w-auto">
                   <div
                     className="w-full lg:w-auto px-3 link-item language-toggle block md:inline-block mt-4 font-xs md:mt-0 md:ml-10 no-underline text-primary "
