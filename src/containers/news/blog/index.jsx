@@ -6,7 +6,7 @@ import uniq from "lodash.uniq";
 import shortenText from "../../../utils/shortenText";
 import RRenderer from "../../../components/richtextRenderer";
 import { ChevronRight } from "../../../components/icon";
-import * as styles from "./index.module.scss";
+import "./index.scss";
 
 const Blog = ({ data }) => {
   const [page, setPage] = useState(1);
@@ -45,7 +45,7 @@ const Blog = ({ data }) => {
               <h3 className="text-secondary border-b border-secondary pb-4 mb-4 lg:mb-8">
                 SORT BY DATE
               </h3>
-              <div className={`justify-between lg:flex`}>
+              <div className="justify-between lg:flex">
                 <div className=" mb-6 lg:mb-0">
                   <ul className="flex lg:flex-col lg:gap-3 gap-x-12 gap-y-3 flex-wrap">
                     {uniq(years).map((year) => {
@@ -53,7 +53,7 @@ const Blog = ({ data }) => {
                     })}
                   </ul>
                 </div>
-                <div className={` ${styles.blogContainer}`}>
+                <div className="blog-container">
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-8">
                     {data
                       .slice((page - 1) * 4, (page - 1) * 4 + 4)
@@ -67,9 +67,7 @@ const Blog = ({ data }) => {
                             formattedDate,
                           },
                         }) => (
-                          <div
-                            className={`${styles.article} flex flex-col gap-3 rounded-lg py-5 lg:py-10 px-6`}
-                          >
+                          <div className="article flex flex-col gap-3 rounded-lg py-5 lg:py-10 px-6">
                             <h4 className="text-primary capitalize h-20">
                               <div className="md:hidden lg:block">
                                 {shortenText(title, 50)}
@@ -94,13 +92,13 @@ const Blog = ({ data }) => {
                         )
                       )}
                   </div>
-                  <div className={styles.pagination}>
+                  <div className="pagination">
                     <div className="flex items-center">
                       <div
                         onClick={() => {
                           setPage((prev) => (prev - 1 < 1 ? 1 : prev - 1));
                         }}
-                        className={`${styles.chevronLeft} cursor-pointer`}
+                        className="chevron-left cursor-pointer"
                       >
                         <ChevronRight size={18} />
                       </div>
@@ -117,7 +115,7 @@ const Blog = ({ data }) => {
                       >
                         <ChevronRight
                           size={18}
-                          className={styles.chevronRight}
+                          className="chevron-right"
                         />
                       </div>
                     </div>

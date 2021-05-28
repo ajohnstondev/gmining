@@ -3,13 +3,13 @@ import Slider from "react-slick";
 
 import { ChevronRight, ChevronLeft } from "../../../components/icon";
 import Bio from "../Bio";
-import * as styles from "./index.module.scss";
+import "./index.scss";
 
 const RightArrow = ({ onClick }) => {
   return (
-    <div className={styles.rightArrow} onClick={onClick}>
+    <div className="right-arrow" onClick={onClick}>
       <button>
-        <ChevronRight className={`${styles.icon}`} />
+        <ChevronRight className="icon" />
       </button>
     </div>
   );
@@ -17,9 +17,9 @@ const RightArrow = ({ onClick }) => {
 
 const LeftArrow = ({ onClick }) => {
   return (
-    <div className={styles.leftArrow} onClick={onClick}>
+    <div className="left-arrow" onClick={onClick}>
       <button>
-        <ChevronLeft className={`${styles.icon}`} />
+        <ChevronLeft className="icon" />
       </button>
     </div>
   );
@@ -96,13 +96,13 @@ const Team = ({ data: { heading, subheading }, members }) => {
                     idx
                   ) => (
                     <div
-                      className={`${styles.teamCardContainer} ${
-                        activeMember === idx && styles.active
+                      className={`team-card-container ${
+                        activeMember === idx && "active"
                       }`}
                       onClick={() => setActiveMember(idx)}
                     >
-                      <div className={`flex flex-col items-center ${styles.card}`}>
-                        <div className={`w-4/12 lg:w-7/12 flex justify-center ${styles.cardImage}`}>
+                      <div className="flex flex-col items-center card">
+                        <div className="w-4/12 lg:w-7/12 flex justify-center card-image">
                           <img
                             alt={name}
                             src={image?.file?.url}
@@ -110,10 +110,10 @@ const Team = ({ data: { heading, subheading }, members }) => {
                           />
                         </div>
                         <div className="pt-4">
-                          <h4 className={`${styles.cardTitle} text-center text-primary`}>
+                          <h4 className="card-title text-center text-primary">
                             {name}
                           </h4>
-                          <p className={`${styles.cardPosition} text-center w-8/12 mx-auto text-text font-xs opacity-50`}>
+                          <p className="card-position text-center w-8/12 mx-auto text-text font-xs opacity-50">
                             {position}
                           </p>
                         </div>
@@ -124,7 +124,7 @@ const Team = ({ data: { heading, subheading }, members }) => {
           </Slider>
         </div>
       </div>
-      <div className={`${styles.coloredStripe}`} />
+      <div className="colored-stripe" />
       <Bio
         {...members.filter(
           ({ node: { isBoardOfDirectors } }) => isBoardOfDirectors === directors

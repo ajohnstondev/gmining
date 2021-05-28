@@ -1,8 +1,8 @@
-import { Link } from "gatsby";
 import React from "react";
+import { Link } from "gatsby";
 
 import RRenderer from "../../../components/richtextRenderer";
-import * as styles from "./index.module.scss";
+import "./index.scss";
 
 const Directory = ({ data }) => {
   return (
@@ -37,9 +37,7 @@ const Directory = ({ data }) => {
                   </ul>
                 )}
                 {(email || phone || phone2 || websiteUrl) && (
-                  <div
-                    className={`lg:py-6 lg:px-8 py-2 px-6 rounded-xl ${styles.contactLocation}`}
-                  >
+                  <div className="contact-location lg:py-6 lg:px-8 py-2 px-6 rounded-xl">
                     {email && (
                       <div className="flex gap-2">
                         <span className="text-text">e:</span>

@@ -4,7 +4,7 @@ import { graphql, useStaticQuery } from "gatsby";
 import { submitForm } from "../../../utils/submitForm";
 import Modal from "../../../components/Modal";
 import GradientButton from "../../../components/gradientButton";
-import * as styles from "./index.module.scss";
+import "./index.scss";
 
 const GetInTouch = () => {
   const [thankModal, setThankModal] = useState(false);
@@ -45,14 +45,14 @@ const GetInTouch = () => {
   };
 
   return (
-    <div className={`global-x-spacing ${styles.getInTouchWrapper}`}>
+    <div className="global-x-spacing get-in-touch-wrapper">
       {thankModal && <Modal onClose={() => setThankModal(false)} />}
       <form
         onSubmit={(e) => {
           e.preventDefault();
           submitFormData();
         }}
-        className={`${styles.footerOverly} px-5 text-center mx-auto max-w-6xl py-8 bg-gray-300 z-20 rounded-lg`}
+        className="footer-overly px-5 text-center mx-auto max-w-6xl py-8 bg-gray-300 z-20 rounded-lg"
       >
         <h3 className=" text-secondary uppercase mb-5">GET IN TOUCH</h3>
         <div className="lg:grid lg:grid-cols-2 gap-8 py-4 font-xs">

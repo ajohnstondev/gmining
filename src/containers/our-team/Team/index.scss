@@ -1,4 +1,4 @@
-.teamCardContainer {
+.team-card-container {
   padding: 0px 10px;
   &.active {
     position: relative;
@@ -25,7 +25,7 @@
       height: 140px;
     }
 
-    .cardTitle {
+    .card-title {
       overflow: hidden;
       text-overflow: ellipsis;
       display: -webkit-box;
@@ -33,7 +33,7 @@
       -webkit-box-orient: vertical;
     }
 
-    .cardPosition {
+    .card-position {
       overflow: hidden;
       text-overflow: ellipsis;
       display: -webkit-box;
@@ -60,7 +60,7 @@
   }
 }
 
-.coloredStripe {
+.colored-stripe {
   background-color: #f4f0e9;
   height: 180px;
   transform: translateY(calc(-100%));
@@ -68,7 +68,7 @@
   z-index: -1;
 }
 
-.rightArrow {
+.right-arrow {
   position: absolute;
 
   right: 10px;
@@ -94,7 +94,7 @@
   }
 }
 
-.leftArrow {
+.left-arrow {
   position: absolute;
 
   left: 10px;

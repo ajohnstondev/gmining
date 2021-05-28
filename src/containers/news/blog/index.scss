@@ -1,4 +1,4 @@
-.blogContainer {
+.blog-container {
   @media (min-width: 1024px) {
     width: 700px;
   }
@@ -8,11 +8,11 @@
   }
 }
 
-.chevronRight {
+.chevron-right {
   fill: var(--color_s);
 }
 
-.chevronLeft {
+.chevron-left {
   fill: var(--color_s);
   transform: rotate(180deg);
 }

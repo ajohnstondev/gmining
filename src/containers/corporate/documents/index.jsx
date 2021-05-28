@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "gatsby";
 
-import * as styles from "./index.module.scss";
+import "./index.scss";
 
 const Documents = ({ data }) => {
   const DOCUMENTS = data.items;
   return (
-    <div className={`${styles.documentsContainer} global-x-spacing`}>
+    <div className="documents-container global-x-spacing">
       <div className="max-w-6xl mx-auto">
         <h3 className="text-secondary uppercase text-center pb-2 lg:pb-0">
           Refrence Documents
@@ -29,6 +29,7 @@ const Documents = ({ data }) => {
                           <Link
                             to={download_link}
                             className="text-secondary underline uppercase font-xs"
+                            download
                           >
                             Download Now
                           </Link>

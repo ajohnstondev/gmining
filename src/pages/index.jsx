@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { graphql } from "gatsby";
+import { saveAs } from "file-saver";
 import Layout from "../components/layout";
 import GoldBox from "../components/goldbox";
+import Modal from "../components/Modal";
 import {
   Hero,
   Intro,
   MarketingPosition,
   Article,
-} from "./../containers/homepage";
-import Modal from "../components/Modal";
-import { saveAs } from "file-saver";
+} from "../containers/homepage";
 
 const Home = ({ data }) => {
   const [modalOpen, setModalOpen] = useState(false);
