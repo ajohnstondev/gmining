@@ -15,7 +15,7 @@ module.exports = {
       }),
       backgroundColor: {
         secondary: "#F4F0E9",
-        primary: "#C9DCDE",
+        primary: "#E9F0F2",
       },
     },
   },
