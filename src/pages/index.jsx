@@ -28,7 +28,9 @@ const Home = ({ data }) => {
       const blob = await downloadResult.blob();
       saveAs(blob, file.fileName);
     }
-    setModalOpen(true);
+    setTimeout(() => {
+      setModalOpen(true);      
+    }, 1000);
   };
 
   return (

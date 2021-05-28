@@ -47,21 +47,15 @@ const GoldBox = ({
           </p>
         )}
         {button && (
-          <div
-            className={`goldbox-button-container ${
-              blue ? "goldbox-button-container-blue" : ""
-            }`}
-          >
-            {
-              <button
-                onClick={() => {
-                  onDownloadClick(file || link || "/");
-                }}
-                className="font-xs uppercase goldbox-button"
-              >
-                {button}
-              </button>
-            }
+          <div className={`goldbox-button-container ${blue && "goldbox-button-container-blue"}`}>
+            <button
+              onClick={() => {
+                onDownloadClick(file || link || "/");
+              }}
+              className="font-xs uppercase goldbox-button"
+            >
+              {button}
+            </button>
           </div>
         )}
       </div>
