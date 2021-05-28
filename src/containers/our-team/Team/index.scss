@@ -21,7 +21,7 @@
 
   .card {
     height: 260px;
-    .cardImage {
+    .card-image {
       height: 140px;
     }
 
@@ -43,7 +43,7 @@
 
     @media (min-width: 1024px) {
       height: 300px;
-      .cardImage {
+      .card-image {
         height: 180px;
         img {
           width: 100%;
