@@ -19,11 +19,11 @@ const Documents = ({ data }) => {
               {items && items.length > 0 && (
                 <ul className="flex flex-col gap-2">
                   {items.map(({ title, type, download_link }) => (
-                    <li className="bg-white rounded-lg py-4 px-6 grid grid-cols-6 justify-between lg:flex lg:items-start lg:items-center gap-6 lg:gap-8 ">
+                    <li className="bg-white rounded-lg py-4 px-6 grid grid-cols-6 justify-between lg:flex lg:items-start gap-6 lg:gap-0 ">
                       <span className="col-span-1 font-bold text-text">
                         {type}
                       </span>
-                      <span className="col-span-5 gap-x-8 flex-1 flex flex-col lg:flex-row">
+                      <span className="col-span-5 gap-x-8 flex-1 flex flex-col lg:flex-row lg:pl-8">
                         <span className="text-text flex-1">{title}</span>
                         <span>
                           <Link
