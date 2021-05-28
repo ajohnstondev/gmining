@@ -9,6 +9,7 @@ import {
   Article,
 } from "./../containers/homepage";
 import Modal from "../components/Modal";
+import { saveAs } from "file-saver";
 
 const Home = ({ data }) => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -23,31 +24,11 @@ const Home = ({ data }) => {
 
   const openThankModal = async (file) => {
     if (typeof window != "undefined") {
-      fetch(file.url, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/octet-stream",
-        },
-      })
-        .then((response) => response.blob())
-        .then((blob) => {
-          // Create blob link to download
-          const url = window.URL.createObjectURL(new Blob([blob]));
-          const link = document.createElement("a");
-          link.href = url;
-          link.setAttribute("download", `${file.fileName}`);
-
-          // Append to html link element page
-          document.body.appendChild(link);
-
-          // Start download
-          link.click();
-
-          // Clean up and remove the link
-          link.parentNode.removeChild(link);
-        });
+      const downloadResult = await fetch(file.url);
+      const blob = await downloadResult.blob();
+      saveAs(blob, file.fileName);
     }
-    // setModalOpen(true);
+    setModalOpen(true);
   };
 
   return (

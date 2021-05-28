@@ -52,16 +52,16 @@ const GoldBox = ({
               blue ? "goldbox-button-container-blue" : ""
             }`}
           >
-            <a
-              href={file.url || link || "/"}
-              onClick={() => {
-                onDownloadClick(file || link || "/");
-              }}
-              className="font-xs uppercase goldbox-button"
-              download
-            >
-              {button}
-            </a>
+            {
+              <button
+                onClick={() => {
+                  onDownloadClick(file || link || "/");
+                }}
+                className="font-xs uppercase goldbox-button"
+              >
+                {button}
+              </button>
+            }
           </div>
         )}
       </div>
