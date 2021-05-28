@@ -63,10 +63,10 @@ const TitledContainer = ({
                   >
                     <ChevronRight size={15} />
                   </div>
-                  <ul className="flex flex-1 justify-center gap-10">
+                  <ul className="flex flex-1 justify-center">
                     {pagination.map((num) => (
                       <li
-                        className={`font-xs text-secondary cursor-pointer ${
+                        className={`font-xs text-secondary cursor-pointer px-5 ${
                           num === page && "underline"
                         }`}
                         onClick={() => setPage(num)}

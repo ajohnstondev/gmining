@@ -45,9 +45,7 @@ const News = ({ data, pageContext }) => {
 
   return (
     <Layout inverted>
-      <div
-        className="mt-16 lg:mt-10"
-      />
+      <div className="mt-16 lg:mt-10"/>
       <TitledContainer sideList={genereateSideList()} title="News Release">
         <div className="px-6 py-8 bg-primary rounded-lg">
           <h4 className="text-primary mb-2">{title}</h4>

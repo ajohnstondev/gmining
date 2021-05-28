@@ -11,7 +11,7 @@
 .modal-modal {
   position: fixed;
   height: 260px;
-  width: 560px;
+  width: calc(100% - 20px);
   background-color: #eff6f7;
   top: 50%;
   left: 50%;
@@ -21,6 +21,10 @@
   align-items: center;
   justify-content: center;
   padding: 0px 60px;
+
+  @media(min-width: 768px){
+  width: 560px;
+  }
 
   .modal-content {
     padding: 4px 24px;

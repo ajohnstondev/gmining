@@ -11,7 +11,6 @@ const Article = ({ data: { heading, image, content, bottomText } }) => {
           {heading}
         </h3>
 
-        {/* config object used to control classes on rich text dynamically */}
         <RRenderer
           data={content}
           config={{

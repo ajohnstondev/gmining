@@ -3,7 +3,15 @@ import { Link } from "gatsby";
 import RRenderer from "../richtextRenderer";
 import "./index.scss";
 
-const GoldBox = ({ title, main, button, link, blue }) => {
+const GoldBox = ({
+  title,
+  main,
+  button,
+  link,
+  onDownloadClick,
+  file,
+  blue,
+}) => {
   return (
     <div
       className={`${
@@ -18,8 +26,8 @@ const GoldBox = ({ title, main, button, link, blue }) => {
         {title && (
           <h3
             className={`text-center uppercase mission-heading ${
-              blue ? "text-primary" : "text-secondary"
-            } ${blue && "mission-heading-blue"}`}
+              blue ? "text-primary mission-heading-blue" : "text-secondary"
+            }`}
           >
             {title}
           </h3>
@@ -44,9 +52,16 @@ const GoldBox = ({ title, main, button, link, blue }) => {
               blue ? "goldbox-button-container-blue" : ""
             }`}
           >
-            <Link to={link} className="font-xs uppercase goldbox-button">
+            <a
+              href={file.url || link || "/"}
+              onClick={() => {
+                onDownloadClick(file || link || "/");
+              }}
+              className="font-xs uppercase goldbox-button"
+              download
+            >
               {button}
-            </Link>
+            </a>
           </div>
         )}
       </div>

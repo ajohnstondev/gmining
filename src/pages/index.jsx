@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import GoldBox from "../components/goldbox";
@@ -8,17 +8,51 @@ import {
   MarketingPosition,
   Article,
 } from "./../containers/homepage";
+import Modal from "../components/Modal";
 
 const Home = ({ data }) => {
+  const [modalOpen, setModalOpen] = useState(false);
+
   const {
     title,
     content,
     ctaButtonLink,
     ctaButtonText,
+    downloadDocument,
   } = data.presentation.nodes[0];
+
+  const openThankModal = async (file) => {
+    if (typeof window != "undefined") {
+      fetch(file.url, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/octet-stream",
+        },
+      })
+        .then((response) => response.blob())
+        .then((blob) => {
+          // Create blob link to download
+          const url = window.URL.createObjectURL(new Blob([blob]));
+          const link = document.createElement("a");
+          link.href = url;
+          link.setAttribute("download", `${file.fileName}`);
+
+          // Append to html link element page
+          document.body.appendChild(link);
+
+          // Start download
+          link.click();
+
+          // Clean up and remove the link
+          link.parentNode.removeChild(link);
+        });
+    }
+    // setModalOpen(true);
+  };
 
   return (
     <Layout>
+      {modalOpen && <Modal onClose={() => setModalOpen(false)} />}
       <Hero data={data.allContentfulHomeHero.nodes[0]} />
       <Intro
         data={data.allContentfulHomeIntroduction.nodes[0]}
@@ -30,6 +64,8 @@ const Home = ({ data }) => {
         main={content}
         button={ctaButtonText}
         link={ctaButtonLink}
+        file={downloadDocument.file}
+        onDownloadClick={openThankModal}
         blue
       />
       <Article
@@ -104,6 +140,12 @@ export const query = graphql`
         }
         ctaButtonLink
         ctaButtonText
+        downloadDocument {
+          file {
+            url
+            fileName
+          }
+        }
       }
     }
     news: allContentfulNews(filter: { node_locale: { eq: $locale } }) {

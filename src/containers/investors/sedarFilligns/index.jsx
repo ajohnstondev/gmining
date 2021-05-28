@@ -50,8 +50,8 @@ const SedarFillings = ({ data }) => {
           })
           .slice((page - 1) * numPerPage, (page - 1) * numPerPage + numPerPage)
           .map(({ node: { date, link, title, type } }) => (
-            <li className="reports-file-single rounded-lg py-4 px-6 flex items-start lg:items-center gap-3 lg:gap-10">
-              <span className="font-bold text-text">{type}</span>
+            <li className="reports-file-single rounded-lg py-4 px-6 flex items-start lg:items-center lg:gap-10">
+              <span className="pr-3 font-bold text-text">{type}</span>
               <span className="lg:items-center gap-x-10 flex-1 flex flex-col lg:flex-row">
                 <span className="font-xs order-1 uppercase">{date}</span>
                 <span className="flex items-center lg:order-2">
