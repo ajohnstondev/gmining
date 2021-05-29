@@ -167,7 +167,7 @@ function Footer() {
                     e.preventDefault();
                     submitFormData();
                   }}
-                  className="block lg:flex justify-center max-w-6xl mx-auto gap-3 items-end"
+                  className="block lg:flex justify-center max-w-6xl mx-auto items-end"
                 >
                   {fields[0].fields.map((field, index) => {
                     const {
@@ -178,7 +178,7 @@ function Footer() {
                       placeholder,
                     } = field;
                     return (
-                      <div className="mb-5 lg:mb-0 flex-1" key={label}>
+                      <div className="mb-5 lg:mb-0 flex-1 pr-3" key={label}>
                         <input
                           name={name}
                           type={fieldType}
@@ -190,7 +190,7 @@ function Footer() {
                               [e.target.name]: e.target.value,
                             })
                           }
-                          className={`bg-transparent input pb-1 pl-2 outline-none w-full font-xs `}
+                          className="bg-transparent input pb-1 pl-2 outline-none w-full font-xs"
                         />
                       </div>
                     );
@@ -203,16 +203,16 @@ function Footer() {
               </div>
             </div>
             <div className="footer-bar pt-24 md:pt-24 pb-2 lg:pb-12 global-x-spacing">
-              <div className="max-w-6xl mx-auto flex flex-wrap flex-col lg:flex-row items-center lg:items-start lg:gap-y-12 gap-y-2">
-                <div className="w-full flex justify-center">
+              <div className="max-w-6xl mx-auto flex flex-wrap flex-col lg:flex-row items-center lg:items-start">
+                <div className="w-full flex justify-center lg:pb-12 pb-2">
                   <img src={Logo} alt="" />
                 </div>
-                <ul className="=w-full lg:w-9/12 flex flex-col lg:flex-row items-center lg:items-start justify-between lg:pr-12 mt-4">
+                <ul className="=w-full lg:w-9/12 flex flex-col lg:flex-row items-center lg:items-start justify-between lg:pr-12 mt-4 lg:pb-12 pb-2">
                   {navigations.map((item) => {
                     return <MenuItem {...item} currentLocale={currentLocale} />;
                   })}
                 </ul>
-                <div className="lg:pl-4 w-6/12 lg:w-3/12 flex flex-col items-center lg:items-start">
+                <div className="lg:pl-4 w-6/12 lg:w-3/12 flex flex-col items-center lg:items-start lg:pb-12 pb-2">
                   <div className="w-full flex items-center">
                     <div>
                       <Search color="#fff" size={14} />
@@ -272,19 +272,19 @@ const MenuItem = ({ path, title, items, currentLocale }) => {
         onClick={onItemClick}
         className="cursor-pointer text-white font-xs pb-4"
       >
-        <div className="flex items-center gap-x-2 justify-center lg:justify-start">
-          {title}
+        <div className="flex items-center justify-center lg:justify-start">
+          <span className="pr-2">{title}</span>
           {items && items.length > 0 && (
-            <div className={`${!subOpen && "rotate"} lg:hidden`}>
+            <div className={`${!subOpen && "rotate"}  lg:hidden`}>
               <DownAngleLine size={10} color="#fff" />
             </div>
           )}
         </div>
       </div>
       {items && items.length > 0 && (
-        <ul className={`${!subOpen && "hidden"} lg:flex flex-col gap-1 pb-2`}>
+        <ul className={`${!subOpen && "hidden"} lg:flex flex-col pb-2`}>
           {items.map((subNav) => (
-            <li className="text-gray-500 font-xs uppercase">
+            <li className="text-gray-500 font-xs uppercase pb-1">
               <Link to={`/${currentLocale}${subNav.path}`}>{subNav.title}</Link>
             </li>
           ))}
