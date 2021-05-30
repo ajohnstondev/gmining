@@ -21,13 +21,13 @@ const Directory = ({ data }) => {
                 websiteUrl,
               },
             }) => (
-              <div className="flex flex-col gap-6">
-                <div>
+              <div className="flex flex-col">
+                <div className="mb-6">
                   <h3 className="text-secondary uppercase">{name}</h3>
                   {subtitle && <h4 className="text-primary">{subtitle}</h4>}
                 </div>
                 {address && (
-                  <ul className="flex-1">
+                  <ul className="flex-1 mb-6">
                     <RRenderer
                       data={address}
                       config={{
@@ -39,25 +39,25 @@ const Directory = ({ data }) => {
                 {(email || phone || phone2 || websiteUrl) && (
                   <div className="contact-location lg:py-6 lg:px-8 py-2 px-6 rounded-xl">
                     {email && (
-                      <div className="flex gap-2">
+                      <div className="flex">
                         <span className="text-text">e:</span>
-                        <span className="text-text">{email}</span>
+                        <span className="text-text pl-2">{email}</span>
                       </div>
                     )}
                     {phone && (
-                      <div className="flex gap-2">
+                      <div className="flex">
                         <span className="text-text">t: </span>
-                        <span className="text-text">{phone}</span>
+                        <span className="text-text pl-2">{phone}</span>
                       </div>
                     )}
                     {phone2 && (
-                      <div className="flex gap-2">
+                      <div className="flex">
                         <span className="text-text">t: </span>
-                        <span className="text-text">{phone2}</span>
+                        <span className="text-text pl-2">{phone2}</span>
                       </div>
                     )}
                     {websiteUrl && (
-                      <div className="flex gap-2">
+                      <div className="flex">
                         <Link
                           to={websiteUrl}
                           className="underline text-secondary"

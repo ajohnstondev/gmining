@@ -27,15 +27,15 @@ const TitledContainer = ({
         <h3 className=" text-secondary border-b uppercase border-secondary pb-4 mb-4 lg:mb-8">
           {title}
         </h3>
-        <div className="justify-between lg:flex gap-12">
+        <div className="justify-between lg:flex">
           {sideList && (
             <div className="lg:w-3/12 mb-6 lg:mb-0">
-              <ul className="flex lg:flex-col lg:gap-3 gap-x-12 gap-y-3 flex-wrap">
+              <ul className="flex lg:flex-col flex-wrap">
                 {sideList.map((text) => (
                   <li
                     className={`${
                       sideNoWrap && "w-full"
-                    } font-xs text-primary uppercase cursor-pointer tit-shortText`}
+                    } font-xs text-primary uppercase cursor-pointer tit-shortText mb-3`}
                     onClick={() => !text.ctaLink && setFilter(text)}
                   >
                     {text.title ? (
@@ -48,7 +48,7 @@ const TitledContainer = ({
               </ul>
             </div>
           )}
-          <div className={sideList ? "flex-1" : "full-blogContainer"}>
+          <div className={sideList ? "flex-1 lg:pl-12" : "full-blogContainer"}>
             {children}
             {pagination && (
               <div className="tit-pagination">
@@ -56,9 +56,7 @@ const TitledContainer = ({
                   <div
                     className="tit-chevronLeft cursor-pointer"
                     onClick={() => {
-                      setPage((prev) => {
-                        return prev - 1 < 1 ? 1 : prev - 1;
-                      });
+                      setPage((prev) => prev - 1 < 1 ? 1 : prev - 1);
                     }}
                   >
                     <ChevronRight size={15} />
@@ -78,9 +76,7 @@ const TitledContainer = ({
                   <div
                     className="cursor-pointer"
                     onClick={() => {
-                      setPage((prev) => {
-                        return prev + 1 > pagLen ? pagLen : prev + 1;
-                      });
+                      setPage((prev) => prev + 1 > pagLen ? pagLen : prev + 1);
                     }}
                   >
                     <ChevronRight size={15} className="tit-chevronRight" />

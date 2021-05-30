@@ -1,5 +1,9 @@
 .get-in-touch-wrapper {
   padding-bottom: 20px;
+  .footer-overly {
+    width: 100%;
+    background-color: #e9f0f2;
+  }
 }
 .see-button {
   background: linear-gradient(to right, #c59425 0%, #e9b949 100%);
@@ -7,11 +11,6 @@
   @media (max-width: 767px) {
     width: 100%;
   }
-}
-
-.footer-overly {
-  width: 100%;
-  background-color: #e9f0f2;
 }
 
 .input {
