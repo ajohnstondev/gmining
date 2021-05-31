@@ -43,14 +43,14 @@ const SedarFillings = ({ data }) => {
       setFilter={setFilter}
       pagLen={pagLen}
     >
-      <ul className="flex flex-col gap-2 mb-6 lg:mb-10">
+      <ul className="flex flex-col mb-6 lg:mb-10">
         {data
           .filter(({ node: { tags } }) => {
             return !filter || tags === filter;
           })
           .slice((page - 1) * numPerPage, (page - 1) * numPerPage + numPerPage)
           .map(({ node: { date, link, title, type } }) => (
-            <li className="reports-file-single rounded-lg py-4 px-6 flex items-start lg:items-center">
+            <li className="reports-file-single rounded-lg py-4 px-6 flex mb-2 items-start lg:items-center">
               <span className="pr-3 font-bold text-text">{type}</span>
               <span className="lg:items-center flex-1 flex flex-col lg:flex-row lg:pl-10">
                 <span className="font-xs order-1 uppercase">{date}</span>

@@ -17,7 +17,7 @@ const Documents = ({ data }) => {
               <h4 className="text-primary mb-3">{title}</h4>
 
               {items && items.length > 0 && (
-                <ul className="flex flex-col gap-2">
+                <ul className="flex flex-col">
                   {items.map(({ title, type, download_link }) => (
                     <li className="bg-white rounded-lg py-4 px-6 grid grid-cols-6 justify-between lg:flex lg:items-start gap-6 lg:gap-0 mb-2">
                       <span className="col-span-1 font-bold text-text">

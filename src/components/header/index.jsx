@@ -9,7 +9,6 @@ import CrossIcon from "../../images/crossicon.png";
 import ArrowDownBlack from "../../images/down-arrow-black.png";
 import ArrowDownWhite from "../../images/down-arrow-white.png";
 import { Search } from "../icon";
-import shortenText from "../../utils/shortenText";
 
 const languageName = {
   "en-US": "English",
@@ -27,7 +26,6 @@ const Header = ({ inverted }) => {
     contentFulNavigationsFr,
     projectsEn,
     contentFulNavigationsEn,
-    moreNews,
   } = useStaticQuery(graphql`
     query allProjectPagesQueryAndSiteTitleQueryFrench {
       site {
@@ -73,18 +71,6 @@ const Header = ({ inverted }) => {
         }
       }
 
-      moreNews: allContentfulNews(
-        filter: { node_locale: { eq: "en-US" } }
-        limit: 3
-        sort: { fields: createdAt, order: DESC }
-      ) {
-        edges {
-          node {
-            title
-            ctaLink
-          }
-        }
-      }
       contentFulNavigationsEn: allContentfulNavigation(
         filter: { node_locale: { eq: "en-US" } }
       ) {
@@ -162,15 +148,6 @@ const Header = ({ inverted }) => {
           navigations = contentFulNavigationsEn.nodes[0].links.links.items;
 
           navigations[4] = projectsLinks;
-
-          const newLinks = moreNews.edges.map(
-            ({ node: { title, ctaLink } }) => ({
-              path: `/${ctaLink}`,
-              title: shortenText(title, 20),
-            })
-          );
-
-          navigations[2].items = newLinks;
         }
 
         return (
@@ -275,7 +252,7 @@ const Header = ({ inverted }) => {
                     className="w-full lg:w-auto block md:inline-block mt-4 md:mt-0 md:ml-10 no-underline text-black font-xs"
                     key="Search"
                   >
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center ">
                       <button onClick={() => setSearchOpen((prev) => !prev)}>
                         <Search
                           size={14}
@@ -287,7 +264,7 @@ const Header = ({ inverted }) => {
 
                       <input
                         placeholder="SEARCH"
-                        className={`font-xs navbar-search-field ${
+                        className={`font-xs navbar-search-field ml-2 ${
                           searchOpen ? "px-2" : "inactive"
                         }`}
                       />
@@ -333,7 +310,7 @@ const NavListItem = ({ item, inverted, isInverted, scroll, currentLocale }) => {
             <div className="dropdown-content">
               {item.items?.map((item) => (
                 <Link
-                  className="subitem  block bg-white no-underline text-black py-4 pr-4 pl-8 text-text font-xs"
+                  className="subitem block bg-white no-underline py-4 pr-4 pl-8 text-text font-xs"
                   key={item.title}
                   to={`/${currentLocale}${item.path}`}
                   activeClassName="dropdown-active"
@@ -348,7 +325,7 @@ const NavListItem = ({ item, inverted, isInverted, scroll, currentLocale }) => {
       <Link
         className={`cursor-pointer uppercase  hidden lg:inline-block  mt-4 md:mt-0 md:ml-10 no-underline link-item relative ${
           inverted || isInverted ? "text-text" : "text-white"
-        } ${scroll ? "text-text" : "text-white"} `}
+        } ${scroll ? "text-text" : "text-white"}`}
         key={item.title}
         activeClassName="link"
         partiallyActive={true}
@@ -376,7 +353,7 @@ const NavListItem = ({ item, inverted, isInverted, scroll, currentLocale }) => {
             <div className="dropdown-content">
               {item.items?.map((item) => (
                 <Link
-                  className="subitem block bg-white no-underline text-black py-4 pl-4 pr-8 text-text font-xs"
+                  className="subitem block bg-white no-underline py-4 pl-4 pr-8 text-text font-xs"
                   key={item.title}
                   to={`/${currentLocale}${item.path}`}
                   activeClassName="dropdown-active"
