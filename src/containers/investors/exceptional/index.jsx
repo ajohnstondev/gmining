@@ -2,7 +2,7 @@ import React from "react";
 
 import RRenderer from "../../../components/richtextRenderer";
 
-const ExceptionalContent = ({ data: { title, content } }) => {
+const ExceptionalContent = ({ data: { title, content, image } }) => {
   return (
     <div className="py-8 lg:py-20 global-x-spacing">
       <div className="max-w-4xl mx-auto text-text">
@@ -15,6 +15,11 @@ const ExceptionalContent = ({ data: { title, content } }) => {
             span: "disc-bullet",
             h4: "text-primary mb-4",
           }}
+        />
+
+        <img
+          src={image.file.url}
+          className="mt-12 w-full"
         />
       </div>
     </div>
