@@ -32,7 +32,12 @@ const OurBusinessModel = ({ data }) => {
 
   return (
     <Layout inverted>
-      <Hero title={title} slogan={subtitle} image={heroImage} data={data.hero.nodes[0]}/>
+      <Hero
+        title={title}
+        slogan={subtitle}
+        image={heroImage}
+        data={data.hero.nodes[0]}
+      />
       <BusinessModel data={data.model.nodes[0]} />
       <GoldBox
         title={title}
@@ -63,27 +68,22 @@ export const query = graphql`
       }
     }
 
-    model: allContentfulBusinessModel(
+    model: allContentfulOurBusinessModelBusinessModel(
       filter: { node_locale: { eq: $locale } }
     ) {
       nodes {
         title
-        modelLogo {
+        description {
+          raw
+        }
+        modelImage {
           file {
             url
           }
         }
-        description {
-          raw
-        }
-        childrenContentfulBusinessModelModelDetailsJsonNode {
-          cards
-          list
-          footerText
-          duration
-        }
       }
     }
+
     presentation: allContentfulHomeCorporatePresentation(
       filter: { node_locale: { eq: $locale } }
     ) {

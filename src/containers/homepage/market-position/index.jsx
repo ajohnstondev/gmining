@@ -13,7 +13,9 @@ const MarketingPosition = ({ data }) => {
           </p>
         </div>
         <div className="py-6 ">
-          <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 md:grid-cols-4 text-center">
+          <div
+            class={`grid gap-4 mx-auto grid-cols-1 sm:grid-cols-2 xl:grid-cols-${data.features.items.length} md:grid-cols-3 text-center`}
+          >
             {data.features.items.map((v, i) => {
               return (
                 <div>

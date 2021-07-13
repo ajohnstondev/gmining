@@ -8,38 +8,76 @@ import OurOperationals from "../../containers/about-us/OurOperational";
 import { MarketingPosition } from "./../../containers/homepage";
 
 const OurPurposeAndValue = ({ data }) => {
-  const { title, heroBackground, subtitle } = data.hero;
+  const { heroBackground, title, subtitle } = data.hero.nodes[0];
   return (
     <Layout inverted>
       <Hero title={title} slogan={subtitle} image={heroBackground} />
-      <MarketingPosition data={data.contentfulHomeMarketPosition} />
+      <MarketingPosition data={data.marketposition.nodes[0]} />
       <Description />
-      <OurValues />
-      <OurOperationals />
+      <OurValues data={data.ourvalues.nodes[0]} />
+      <OurOperationals data={data.operationalstandards.nodes[0]}/>
     </Layout>
   );
 };
 
 export const query = graphql`
-  query {
-    contentfulHomeMarketPosition {
-      title
-      subtitle
-      content {
-        raw
-      }
-      features {
-        items {
-          content
-          title
+  query OurPurposeAndValues($locale: String) {
+    hero: allContentfulOurPurposeAndValuesHero(
+      filter: { node_locale: { eq: $locale } }
+    ) {
+      nodes {
+        title
+        subtitle
+        heroBackground {
+          file {
+            url
+          }
         }
       }
     }
-    hero: contentfulOurPurposeAndValuesHero {
-      title
-      heroBackground {
-        file {
-          url
+
+    marketposition: allContentfulMarketPositionOurPurposeAndValues(
+      filter: { node_locale: { eq: $locale } }
+    ) {
+      nodes {
+        title
+        subtitle
+        content {
+          raw
+        }
+        features {
+          items {
+            title
+            content
+          }
+        }
+      }
+    }
+
+    ourvalues: allContentfulOurPurposeAndValuesOurValues(
+      filter: { node_locale: { eq: $locale } }
+    ) {
+      nodes {
+        title
+        shortDescription
+        content {
+          raw
+        }
+        values {
+          items {
+            title
+          }
+        }
+      }
+    }
+
+    operationalstandards: allContentfulOperationalStandardsOurPurposeAndValues(
+      filter: { node_locale: { eq: $locale } }
+    ) {
+      nodes {
+        title
+        content {
+          raw
         }
       }
     }
