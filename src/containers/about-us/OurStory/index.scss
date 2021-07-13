@@ -1,14 +1,14 @@
-.storyContainer {
+.story-container {
   background-color: #e9f0f2;
 
-  .ourStoryImageContainer {
+  .our-story-image-container {
     @media (min-width: 1024px) {
       height: 420px;
       width: 400px;
       overflow: hidden;
       border-radius: 12px;
 
-      .ourStoryImage {
+      .our-story-image {
         transform: scale(2.5);
       }
     }
