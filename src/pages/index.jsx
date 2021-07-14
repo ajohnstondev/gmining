@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { graphql } from "gatsby";
 import { saveAs } from "file-saver";
 import Layout from "../components/layout";
@@ -13,6 +13,7 @@ import {
 
 const Home = ({ data }) => {
   const [modalOpen, setModalOpen] = useState(false);
+  const [stockItem, setStockItem] = useState(null);
 
   const {
     title,
@@ -33,13 +34,59 @@ const Home = ({ data }) => {
     }, 1000);
   };
 
+  useEffect(() => {
+    async function fetchData() {
+      const url = process.env.GATSBY_STOCK_TRACK_URL;
+      const apikey = process.env.GATSBY_STOCK_API_KEY;
+      const stockSymbol = process.env.GATSBY_STOCK_SYMBOL;
+      const spotSymbol = process.env.GATSBY_SPOT_SYMBOL;
+
+      const stock = await fetch(`${url}&symbol=${stockSymbol}&apikey=${apikey}`, {
+        headers: { 'Content-Type': 'application/json' },
+      })
+        .then(re=>re.json())
+        .then(res => res["Global Quote"]);
+
+      const spot = await fetch(`${url}&symbol=${spotSymbol}&apikey=${apikey}`, {
+        headers: { 'Content-Type': 'application/json' },
+      })
+        .then(re=>re.json())
+        .then(res => res["Global Quote"]);
+      
+      const markCap = stock["06. volume"].split(".");
+      markCap[0] = markCap[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      const {
+        ticker,
+        stockPriceTitle,
+        marketCapTitle,
+        spotGoldTitle
+      } = data.allContentfulStockItem.nodes[0];
+
+      setStockItem({
+        ticker,
+        stockPriceTitle,
+        marketCapTitle,
+        spotGoldTitle,
+        stockPrice: stock["05. price"],
+        stockChangeInValue: stock["09. change"],
+        stockChangeInPercent: stock["10. change percent"],
+        marketCap: markCap.join("."),
+        spotGold: spot["05. price"],
+        goldChangeInValue: spot["09. change"],
+        goldChangeInPercent: spot["10. change percent"]
+      });
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <Layout>
       {modalOpen && <Modal onClose={() => setModalOpen(false)} />}
       <Hero data={data.allContentfulHomeHero.nodes[0]} />
       <Intro
         data={data.allContentfulHomeIntroduction.nodes[0]}
-        stockItem={data.allContentfulStockItem.nodes[0]}
+        stockItem={stockItem}
       />
       <MarketingPosition data={data.allContentfulHomeMarketPosition.nodes[0]} />
       <GoldBox
@@ -83,17 +130,10 @@ export const query = graphql`
     }
     allContentfulStockItem(filter: { node_locale: { eq: $locale } }) {
       nodes {
-        spotGoldTitle
-        spotGold
-        stockChangeInPercent
-        stockChangeInValue
-        stockPriceTitle
-        stockPrice
         ticker
-        marketCap
         marketCapTitle
-        GoldChangeInPercent
-        goldChangeInValue
+        spotGoldTitle
+        stockPriceTitle
       }
     }
 
