@@ -1,12 +1,11 @@
 import React from "react";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import "./index.scss";
 import { DownAngle } from "../../../components/icon";
 
 const Intro = ({ data, stockItem }) => {
   return (
     <section className="intro-section py-12 max-w-6xl mx-auto py-4 global-x-spacing">
-      <div class=" grid gap-4 grid-cols-1  sm:grid-cols-1 xl:grid-cols-2 md:grid-cols-2 md:gap-8">
+      <div class="grid py-6 gap-4 grid-cols-1 sm:grid-cols-1 xl:grid-cols-2 md:grid-cols-2 md:gap-8">
         <div className="">
           <h3 className="text-secondary uppercase text-center lg:text-left">
             {data.title}

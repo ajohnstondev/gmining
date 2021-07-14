@@ -13,9 +13,9 @@ const OurPurposeAndValue = ({ data }) => {
     <Layout inverted>
       <Hero title={title} slogan={subtitle} image={heroBackground} />
       <MarketingPosition data={data.marketposition.nodes[0]} />
-      <Description />
+      <Description data={data.heading.nodes[0]} />
       <OurValues data={data.ourvalues.nodes[0]} />
-      <OurOperationals data={data.operationalstandards.nodes[0]}/>
+      <OurOperationals data={data.operationalstandards.nodes[0]} />
     </Layout>
   );
 };
@@ -33,6 +33,13 @@ export const query = graphql`
             url
           }
         }
+      }
+    }
+    heading: allContentfulOurPurposeAndValuesHeading(
+      filter: { node_locale: { eq: $locale } }
+    ) {
+      nodes {
+        title
       }
     }
 

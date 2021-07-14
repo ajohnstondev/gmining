@@ -6,21 +6,23 @@ const OurValues = ({ data }) => {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8 lg:py-16">
-      <h1 className="text-3xl text-secondary uppercase font-light py-2" style={{fontFamily:"Lato"}}>{title}</h1>
+      <h1
+        className="text-3xl text-secondary uppercase font-light py-2"
+        style={{ fontFamily: "Lato" }}
+      >
+        {title}
+      </h1>
       <div className="block md:flex">
         <div className="w-full lg:w-6/12 pr-6 lg:pr-24">
           <RRenderer
             data={content}
             config={{
-              p: "text-base lg:text-md leading-5",
+              p: "text-text",
             }}
           />
         </div>
         <div className="w-full lg:w-6/12">
-          <p className="text-base lg:text-md leading-5 uppercase pb-4 text-primary">
-            {shortDescription}
-          </p>
-
+          <p className="uppercase pb-4 text-primary">{shortDescription}</p>
           <div className="items-center grid gap-4 grid-cols-1 sm:grid-cols-2 xl:grid-cols-2 md:grid-cols-2">
             {values.items.map((v, i) => {
               return (
