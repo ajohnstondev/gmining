@@ -8,7 +8,7 @@ const OurValues = () => {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
           congue et urna in ornare. Cras egestas lobortis tincidunt.
         </h1>
-        
+
       </div>
     </div>
   );
