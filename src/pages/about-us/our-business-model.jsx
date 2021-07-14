@@ -40,7 +40,7 @@ const OurBusinessModel = ({ data }) => {
       />
       <BusinessModel data={data.model.nodes[0]} />
       <GoldBox
-        title={title}
+        title={data.presentation.nodes[0].title}
         main={content}
         button={ctaButtonText}
         link={ctaButtonLink}
