@@ -1,6 +1,6 @@
 import React from "react";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-
+import "./index.scss";
 import { DownAngle } from "../../../components/icon";
 
 const Intro = ({ data, stockItem }) => {
