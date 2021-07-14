@@ -6,7 +6,7 @@ const OurValues = ({ data }) => {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8 lg:py-16">
-      <h1 className="text-3xl text-secondary font-light py-2">{title}</h1>
+      <h1 className="text-3xl text-secondary uppercase font-light py-2" style={{fontFamily:"Lato"}}>{title}</h1>
       <div className="block md:flex">
         <div className="w-full lg:w-6/12 pr-6 lg:pr-24">
           <RRenderer

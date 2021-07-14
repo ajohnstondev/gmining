@@ -19,7 +19,7 @@ const MarketingPosition = ({ data }) => {
             {data.features.items.map((v, i) => {
               return (
                 <div>
-                  <h1 className="text-primary mb-4">{v.title}</h1>
+                  <h1 className="text-primary font-normal mb-4">{v.title}</h1>
                   <p className="font-xs text-text slim">{v.content}</p>
                 </div>
               );
