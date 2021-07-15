@@ -5,7 +5,7 @@ import "./index.scss";
 const Hero = ({ data }) => {
   return (
     <section className="hero-section relative">
-      <video autoplay="autoplay" muted loop>
+      <video className="video" playsInline autoPlay muted loop>
         <source src={data.backgroundImage?.file?.url} type="video/mp4" />
       </video>
       <div className="absolute top-0 right-0 left-0 bottom-0 overlay" />
