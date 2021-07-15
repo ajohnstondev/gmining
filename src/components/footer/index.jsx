@@ -245,7 +245,7 @@ function Footer() {
                   </div>
                   <Link to="http://www.gminingservices.com/" className="w-full flex items-center pt-8">
                     <span className="uppercase font-xs text-white mr-2" style={{whiteSpace:"nowrap"}}>
-                      Vist our friends at
+                      Visit our friends at
                     </span>
                     <img src={GMS} className="w-24 md:w-32" alt="" />
                   </Link>
