@@ -46,7 +46,10 @@ const LegacyTimeline = ({ data: { title, content, timeline, icons } }) => {
                       <p className="text-secondary font-xs uppercase">
                         {title}
                       </p>
-                      <p className="text-text font-xs">{details}</p>
+                      <p
+                        className="text-text font-xs"
+                        dangerouslySetInnerHTML={{ __html: details }}
+                      />
                     </div>
                   </div>
                 </div>

@@ -205,7 +205,7 @@ function Footer() {
             <div className="footer-bar pt-24 md:pt-24 pb-2 lg:pb-12 global-x-spacing">
               <div className="max-w-6xl mx-auto flex flex-wrap flex-col lg:flex-row items-center lg:items-start">
                 <div className="w-full flex justify-center lg:pb-12 pb-2">
-                  <img src={Logo} alt="" />
+                  <Link to="http://www.gminingservices.com/"><img src={Logo} alt="" /></Link>
                 </div>
                 <ul className="=w-full lg:w-9/12 flex flex-col lg:flex-row items-center lg:items-start justify-between lg:pr-12 mt-4 lg:pb-12 pb-2">
                   {navigations.map((item) => {

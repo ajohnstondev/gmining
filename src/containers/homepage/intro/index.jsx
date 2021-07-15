@@ -22,7 +22,7 @@ const Intro = ({ data, stockItem }) => {
               </h4>
               <div className="flex flex-col lg:gap-2 gap-1">
                 <div className="flex gap-1">
-                  <p className="lg:w-40 text-text lg:text-primary">
+                  <p className="lg:w-40 text-text lg:text-primary mr-2 sm:mr-0">
                     {stockItem.stockPriceTitle}
                   </p>
                   <p className="text-text">
@@ -32,14 +32,14 @@ const Intro = ({ data, stockItem }) => {
                 </div>
 
                 <div className="flex gap-1">
-                  <p className="lg:w-40 text-text lg:text-primary">
+                  <p className="lg:w-40 text-text lg:text-primary mr-2 sm:mr-0">
                     {stockItem.marketCapTitle}
                   </p>
                   <p className="text-text">{stockItem.marketCap}</p>
                 </div>
 
                 <div className="flex gap-1 flex-wrap">
-                  <p className="lg:w-40 text-text lg:text-primary">
+                  <p className="lg:w-40 text-text lg:text-primary mr-2 sm:mr-0">
                     {stockItem.spotGoldTitle}
                   </p>
                   <p className="text-text flex items-center">
