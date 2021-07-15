@@ -5,8 +5,9 @@ import { IntlContextConsumer, changeLocale } from "gatsby-plugin-intl";
 import { submitForm } from "../../utils/submitForm";
 import Modal from "../Modal";
 import GradientButton from "../gradientButton";
-import Logo from "../../images/white-log.png";
 import { Search, DownAngleLine } from "../icon";
+import Logo from "../../images/white-log.png";
+import GMS from "../../images/GMS-white.png";
 import "./index.scss";
 
 const languageName = {
@@ -205,14 +206,14 @@ function Footer() {
             <div className="footer-bar pt-24 md:pt-24 pb-2 lg:pb-12 global-x-spacing">
               <div className="max-w-6xl mx-auto flex flex-wrap flex-col lg:flex-row items-center lg:items-start">
                 <div className="w-full flex justify-center lg:pb-12 pb-2">
-                  <Link to="http://www.gminingservices.com/"><img src={Logo} alt="" /></Link>
+                  <img src={Logo} alt="" />
                 </div>
                 <ul className="=w-full lg:w-9/12 flex flex-col lg:flex-row items-center lg:items-start justify-between lg:pr-12 mt-4 lg:pb-12 pb-2">
                   {navigations.map((item) => {
                     return <MenuItem {...item} currentLocale={currentLocale} />;
                   })}
                 </ul>
-                <div className="lg:pl-4 w-6/12 lg:w-3/12 flex flex-col items-center lg:items-start lg:pb-12 pb-2">
+                <div className="lg:pl-4 w-9/12 lg:w-3/12 flex flex-col items-center lg:items-start lg:pb-12 pb-2">
                   <div className="w-full flex items-center">
                     <div>
                       <Search color="#fff" size={14} />
@@ -242,6 +243,12 @@ function Footer() {
                       );
                     })}
                   </div>
+                  <Link to="http://www.gminingservices.com/" className="w-full flex items-center pt-8">
+                    <span className="uppercase font-xs text-white mr-2" style={{whiteSpace:"nowrap"}}>
+                      Vist our friends at
+                    </span>
+                    <img src={GMS} className="w-24 md:w-32" alt="" />
+                  </Link>
                 </div>
                 <div className="text-white font-xs w-full pt-4 mt-8 lg:mt-0 text-center footer-credits px-12">
                   2021 G Mining Ventures Corp. All rights Reserved. Legal
