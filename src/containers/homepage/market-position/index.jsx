@@ -20,7 +20,10 @@ const MarketingPosition = ({ data }) => {
               return (
                 <div>
                   <h1 className="text-primary font-normal mb-4">{v.title}</h1>
-                  <p className="font-xs text-text slim">{v.content}</p>
+                  <p
+                    className="font-xs text-text slim"
+                    dangerouslySetInnerHTML={{ __html: v.content }}
+                  />
                 </div>
               );
             })}

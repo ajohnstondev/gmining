@@ -20,7 +20,10 @@ const OurTeam = ({ data }) => {
 
 export const query = graphql`
   query OurTeamQuery($locale: String) {
-    members: allContentfulTeamMember(filter: { node_locale: { eq: $locale } }) {
+    members: allContentfulTeamMember(
+      filter: { node_locale: { eq: $locale } }
+      sort: { fields: order }
+    ) {
       edges {
         node {
           name
