@@ -3,7 +3,7 @@ import { Link } from "gatsby";
 import { IntlContextConsumer } from "gatsby-plugin-intl";
 import uniq from "lodash.uniq";
 
-import shortenText from "../../../utils/shortenText";
+import { shortenText } from "../../../utils/functions";
 import RRenderer from "../../../components/richtextRenderer";
 import { ChevronRight } from "../../../components/icon";
 import "./index.scss";

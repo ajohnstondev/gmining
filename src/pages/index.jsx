@@ -10,6 +10,7 @@ import {
   MarketingPosition,
   Article,
 } from "../containers/homepage";
+import { commaDelineation } from '../utils/functions';
 
 const Home = ({ data }) => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -36,25 +37,24 @@ const Home = ({ data }) => {
 
   useEffect(() => {
     async function fetchData() {
-      const url = process.env.GATSBY_STOCK_TRACK_URL;
-      const apikey = process.env.GATSBY_STOCK_API_KEY;
-      const stockSymbol = process.env.GATSBY_STOCK_SYMBOL;
-      const spotSymbol = process.env.GATSBY_SPOT_SYMBOL;
-
-      const stock = await fetch(`${url}&symbol=${stockSymbol}&apikey=${apikey}`, {
+      const stock = await fetch(`${
+        process.env.GATSBY_STOCK_TRACK_URL}&symbol=${
+        process.env.GATSBY_STOCK_SYMBOL}&apikey=${
+        process.env.GATSBY_STOCK_API_KEY}`, {
         headers: { 'Content-Type': 'application/json' },
       })
         .then(re=>re.json())
         .then(res => res["Global Quote"]);
 
-      const spot = await fetch(`${url}&symbol=${spotSymbol}&apikey=${apikey}`, {
-        headers: { 'Content-Type': 'application/json' },
+      const spot = await fetch(process.env.GATSBY_GOLD_API_URL, {
+        headers: {
+          'Content-Type': 'application/json',
+          'x-access-token': process.env.GATSBY_GOLD_API_KEY
+        },
       })
         .then(re=>re.json())
-        .then(res => res["Global Quote"]);
-      
-      const markCap = stock["06. volume"].split(".");
-      markCap[0] = markCap[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        .then(res => res["price"]);
+
       const {
         ticker,
         stockPriceTitle,
@@ -67,13 +67,11 @@ const Home = ({ data }) => {
         stockPriceTitle,
         marketCapTitle,
         spotGoldTitle,
-        stockPrice: stock["05. price"],
-        stockChangeInValue: stock["09. change"],
+        stockPrice: Number(stock["05. price"]).toFixed(2),
+        stockChangeInValue: Number(stock["09. change"]).toFixed(2),
         stockChangeInPercent: stock["10. change percent"],
-        marketCap: markCap.join("."),
-        spotGold: spot["05. price"],
-        goldChangeInValue: spot["09. change"],
-        goldChangeInPercent: spot["10. change percent"]
+        marketCap: commaDelineation(stock["06. volume"]),
+        spotGold: commaDelineation(Number(spot).toFixed(2))
       });
     };
 

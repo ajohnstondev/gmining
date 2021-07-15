@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "gatsby";
 
-import shortenText from "../../../utils/shortenText";
+import { shortenText } from "../../../utils/functions";
 import GradientButton from "../../../components/gradientButton";
 import "./index.scss";
 

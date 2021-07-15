@@ -44,13 +44,13 @@ const Intro = ({ data, stockItem }) => {
                   </p>
                   <p className="text-text flex items-center">
                     {stockItem.spotGold}
-                    <span className="pl-3 text-red-600">
+                    {/* <span className="pl-3 text-red-600">
                       <DownAngle size={14} color="red" />
                     </span>
                     <span className="pl-2 text-red-600 truncate">
                       {stockItem.goldChangeInValue} (
                       {stockItem.goldChangeInPercent})
-                    </span>
+                    </span> */}
                   </p>
                 </div>
               </div>
