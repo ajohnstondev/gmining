@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "gatsby";
 import RRenderer from "../richtextRenderer";
 import "./index.scss";
 
@@ -15,12 +14,12 @@ const GoldBox = ({
   return (
     <div
       className={`${
-        blue && "bg-primary"
-      } our-mission-container py-2 lg:py-6  global-x-spacing`}
+        blue ? "bg-primary" : ""
+      } our-mission-container py-2 lg:py-24 global-x-spacing`}
     >
       <div
-        className={`max-w-6xl mx-auto py-12 lg:px-24 flex flex-col  items-center mission-wrapper ${
-          blue && "mission-wrapper-blue"
+        className={`max-w-6xl mx-auto py-12 lg:px-24 flex flex-col items-center mission-wrapper ${
+          blue ? "mission-wrapper-blue" : ""
         }`}
       >
         {title && (
