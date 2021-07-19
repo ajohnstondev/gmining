@@ -13,7 +13,7 @@ const OurStory = ({ data: { title, content, image } }) => {
           <RRenderer
             data={content}
             config={{
-              p: "text-text mb-4",
+              p: "text-text mb-4 whitespace-pre-wrap",
             }}
           />
         </div>
