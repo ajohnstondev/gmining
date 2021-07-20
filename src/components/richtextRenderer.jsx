@@ -34,7 +34,7 @@ const Text = ({ data, config }) => {
 
       [BLOCKS.LIST_ITEM]: (node, children) => {
         return (
-          <li className={`${config && config.li || "disc-bullet"}`}>
+          <li className={`${(config && config.li) || "disc-bullet"}`}>
             <span className="flex-1">{children}</span>
           </li>
         );

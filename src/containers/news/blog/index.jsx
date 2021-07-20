@@ -79,14 +79,14 @@ const Blog = ({ data }) => {
                             <h4 className="uppercase text-text font-xs">
                               {formattedDate}
                             </h4>
-                            <p className="flex-1 text-text">
+                            <p className="flex-1 text-text read-more-content">
                               <RRenderer data={content} />
                             </p>
                             <Link
                               to={`/${currentLocale}/${ctaLink}`}
                               className="font-xs text-secondary underline uppercase"
                             >
-                              {ctaText}
+                              {ctaText || "Read the Article"}
                             </Link>
                           </div>
                         )
@@ -113,10 +113,7 @@ const Blog = ({ data }) => {
                           );
                         }}
                       >
-                        <ChevronRight
-                          size={18}
-                          className="chevron-right"
-                        />
+                        <ChevronRight size={18} className="chevron-right" />
                       </div>
                     </div>
                   </div>
