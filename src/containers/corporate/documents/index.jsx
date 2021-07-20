@@ -1,10 +1,14 @@
 import React from "react";
-import { Link } from "gatsby";
+import { saveAs } from "file-saver";
 
 import "./index.scss";
 
 const Documents = ({ data }) => {
   const DOCUMENTS = data.items;
+  function onDownload(link, title, type) {
+    if (link != "" || link != "/") saveAs(link, title+'.'+type);
+  }
+
   return (
     <div className="documents-container global-x-spacing">
       <div className="max-w-6xl mx-auto">
@@ -26,13 +30,12 @@ const Documents = ({ data }) => {
                       <span className="col-span-5 gap-x-8 flex-1 flex flex-col lg:flex-row lg:pl-8">
                         <span className="text-text flex-1">{title}</span>
                         <span>
-                          <Link
-                            to={download_link}
+                          <button
                             className="text-secondary underline uppercase font-xs"
-                            download
+                            onClick={()=>onDownload(download_link, title, type)}
                           >
                             Download Now
-                          </Link>
+                          </button>
                         </span>
                       </span>
                     </li>

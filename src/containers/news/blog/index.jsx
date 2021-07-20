@@ -10,6 +10,7 @@ import "./index.scss";
 
 const Blog = ({ data }) => {
   const [page, setPage] = useState(1);
+  const [filteredYear,setFilteredYear] = useState("")
   let pagLen = 1;
 
   const years = data.map(({ node: { date } }) => {
@@ -17,9 +18,15 @@ const Blog = ({ data }) => {
     return year;
   });
 
+  const filteredData = data.filter((item) => {
+    let year = (new Date(item.node.date).getFullYear()).toString();
+    return year.includes(filteredYear);
+  });
+
   const renderPagination = () => {
     const pagination = [];
-    let pgCount = Math.ceil(data.length / 4);
+    let pgCount = Math.ceil(filteredData.length / 4);
+
     pagLen = pgCount;
     for (; pgCount > 0; pgCount--) {
       pagination.unshift(pgCount);
@@ -43,20 +50,25 @@ const Blog = ({ data }) => {
           <div className="py-8 lg:py-24">
             <div className="global-x-spacing px-0 max-w-6xl mx-auto">
               <h3 className="text-secondary border-b border-secondary pb-4 mb-4 lg:mb-8">
-                SORT BY DATE
+                FILTER BY DATE
               </h3>
               <div className="justify-between lg:flex">
                 <div className=" mb-6 lg:mb-0">
                   <ul className="flex lg:flex-col lg:gap-3 gap-x-12 gap-y-3 flex-wrap">
-                    {uniq(years).map((year) => {
-                      return <li className="text-primary font-xs">{year}</li>;
-                    })}
+                    {uniq(years).map((year) => (
+                      <li
+                        className="text-primary font-xs cursor-pointer"
+                        onClick={()=>setFilteredYear(year)}
+                      >
+                        {year}
+                      </li>
+                    ))}
                   </ul>
                 </div>
                 <div className="blog-container">
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-8">
-                    {data
-                      .slice((page - 1) * 4, (page - 1) * 4 + 4)
+                    {filteredData
+                      .slice((page - 1) * 4, page * 4)
                       .map(
                         ({
                           node: {
