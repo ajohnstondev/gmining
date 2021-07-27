@@ -30,8 +30,8 @@ const SedarFillings = ({ data }) => {
   const generateDates = () => {
     const allDates = [];
 
-    data.forEach(({ node: { tags } }) => {
-      !allDates.includes(tags) && tags && allDates.push(tags);
+    data.forEach(({ node: { date } }) => {
+      !allDates.includes(date) && date && allDates.push(date);
     });
 
     return allDates;
