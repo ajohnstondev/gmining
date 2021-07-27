@@ -31,7 +31,8 @@ const SedarFillings = ({ data }) => {
     const allDates = [];
 
     data.forEach(({ node: { date } }) => {
-      !allDates.includes(date) && date && allDates.push(date);
+      const year = new Date(date).getFullYear().toString();
+      !allDates.includes(year) && year && allDates.push(year);
     });
 
     return allDates;
@@ -51,7 +52,7 @@ const SedarFillings = ({ data }) => {
       <ul className="flex flex-col mb-6 lg:mb-10">
         {data
           .filter(({ node: { date } }) => {
-            return !filter || date === filter;
+            return !filter || filter === new Date(date).getFullYear().toString();
           })
           .slice((page - 1) * numPerPage, (page - 1) * numPerPage + numPerPage)
           .map(({ node: { date, link, title, type } }) => (
