@@ -11,7 +11,7 @@ const Documents = ({ data }) => {
 
   return (
     <div className="documents-container global-x-spacing">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-78 mx-auto">
         <h3 className="text-secondary uppercase text-center pb-2 lg:pb-0">
           Refrence Documents
         </h3>

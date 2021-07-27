@@ -52,7 +52,7 @@ const GetInTouch = () => {
           e.preventDefault();
           submitFormData();
         }}
-        className="footer-overly px-5 text-center mx-auto max-w-6xl py-8 bg-gray-300 z-20 rounded-lg"
+        className="footer-overly px-5 text-center mx-auto max-w-78 py-8 bg-gray-300 z-20 rounded-lg"
       >
         <h3 className=" text-secondary uppercase mb-5">GET IN TOUCH</h3>
         <div className="lg:grid lg:grid-cols-2 gap-8 py-4 font-xs">

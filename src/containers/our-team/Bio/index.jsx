@@ -5,7 +5,7 @@ import "./index.scss";
 const Bio = ({ node: { name, role, position, image, bio } }) => {
   return (
     <div className="bio-container">
-      <div className="global-x-spacing max-w-6xl mx-auto flex gap-12 items-center">
+      <div className="global-x-spacing max-w-78 mx-auto flex gap-12 items-center">
         <div className="w-full lg:w-8/12">
           {name && <h4 className="hidden lg:block text-primary">{name}</h4>}
           {position && (

@@ -18,7 +18,7 @@ const GoldBox = ({
       } our-mission-container py-2 lg:py-24 global-x-spacing`}
     >
       <div
-        className={`max-w-6xl mx-auto py-12 lg:px-24 flex flex-col items-center mission-wrapper ${
+        className={`max-w-78 mx-auto py-12 lg:px-24 flex flex-col items-center mission-wrapper ${
           blue ? "mission-wrapper-blue" : ""
         }`}
       >

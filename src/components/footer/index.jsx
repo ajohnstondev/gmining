@@ -159,7 +159,7 @@ function Footer() {
           <div>
             {thankModal && <Modal onClose={() => setThankModal(false)} />}
             <div className="global-x-spacing footer-section relative z-10 flex justify-center">
-              <div className="footer-overly text-center max-w-6xl py-8 z-20 rounded-xl px-4">
+              <div className="footer-overly text-center max-w-78 py-8 z-20 rounded-xl px-4">
                 <h3 className="text-primary uppercase mb-6 lg:mb-0">
                   JOIN OUR MAILING LIST
                 </h3>
@@ -168,7 +168,7 @@ function Footer() {
                     e.preventDefault();
                     submitFormData();
                   }}
-                  className="block lg:flex justify-center max-w-6xl mx-auto items-end"
+                  className="block lg:flex justify-center max-w-78 mx-auto items-end"
                 >
                   {fields[0].fields.map((field, index) => {
                     const {
@@ -204,7 +204,7 @@ function Footer() {
               </div>
             </div>
             <div className="footer-bar pt-24 md:pt-24 pb-2 lg:pb-12 global-x-spacing">
-              <div className="max-w-6xl mx-auto flex flex-wrap flex-col lg:flex-row items-center lg:items-start">
+              <div className="max-w-78 mx-auto flex flex-wrap flex-col lg:flex-row items-center lg:items-start">
                 <div className="w-full flex justify-center lg:pb-12 pb-2">
                   <img src={Logo} alt="" />
                 </div>

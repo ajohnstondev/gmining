@@ -10,26 +10,15 @@ import RRenderer from "../components/richtextRenderer";
 import "./news.scss";
 
 const News = ({ data, pageContext }) => {
-  const { title, date, content } = data.news;
+  const { title, date, content, author } = data.news;
   const { edges } = data.otherNews;
 
   const generateDate = (theDate) => {
     const rDate = new Date(theDate);
 
-    const mapMonth = {
-      "1": "Jan",
-      "2": "Feb",
-      "3": "Mar",
-      "4": "Apr",
-      "5": "May",
-      "6": "June",
-      "7": "July",
-      "8": "Aug",
-      "9": "Sep",
-      "10": "Oct",
-      "11": "Nov",
-      "12": "Dec",
-    };
+    const mapMonth = [
+      "Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sep", "Oct", "Nov","Dec"
+    ];
 
     return `${
       mapMonth[rDate.getMonth()]
@@ -52,9 +41,11 @@ const News = ({ data, pageContext }) => {
           <span className="text-text font-xs block uppercase">
             {generateDate(date)}
           </span>
-          <span className="text-text font-xs block uppercase mt-2">
-            Author Name
-          </span>
+          {author && (
+            <span className='text-text font-xs block uppercase mt-2'>
+              {author}
+            </span>
+          )}
         </div>
         <div className="pt-4 lg:pt-8 px-2 lg:px-8">
           <RRenderer
@@ -80,6 +71,7 @@ const News = ({ data, pageContext }) => {
 export const query = graphql`
   query SingleNewsPageQuery($slug: String) {
     news: contentfulNews(ctaLink: { eq: $slug }) {
+      author
       ctaLink
       ctaText
       title

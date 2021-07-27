@@ -13,6 +13,11 @@ module.exports = {
         "3/4": "75%",
         "3/5": "60%",
         full: "100%",
+        "48": "12rem",
+      },
+      maxWidth: {
+        "52": "13rem",
+        "78": "78rem",
       },
       borderColor: (theme) => ({
         ...theme("colors"),

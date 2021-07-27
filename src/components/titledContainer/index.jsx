@@ -10,6 +10,7 @@ const TitledContainer = ({
   sideNoWrap,
   children,
   bgColor,
+  filter,
   pagination,
   page,
   setPage,
@@ -23,7 +24,7 @@ const TitledContainer = ({
       }}
       className="py-8 lg:py-24"
     >
-      <div className="global-x-spacing px-0 max-w-6xl mx-auto">
+      <div className="global-x-spacing px-0 max-w-78 mx-auto">
         <h3 className=" text-secondary border-b uppercase border-secondary pb-4 mb-4 lg:mb-8">
           {title}
         </h3>
@@ -36,12 +37,19 @@ const TitledContainer = ({
                     className={`${
                       sideNoWrap && "w-full"
                     } font-xs text-primary uppercase cursor-pointer tit-shortText mb-3`}
-                    onClick={() => !text.ctaLink && setFilter(text)}
+                    onClick={() => {
+                      if (!text.ctaLink) {
+                        setFilter(text);
+                        setPage(1);
+                      }
+                    }}
                   >
                     {text.title ? (
                       <Link to={`/${text.ctaLink}`}>{text.title}</Link>
                     ) : (
-                      text
+                      <div className={text === filter && 'font-bold'}>
+                        {text}
+                      </div>
                     )}
                   </li>
                 ))}

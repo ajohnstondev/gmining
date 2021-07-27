@@ -5,7 +5,7 @@ import RRenderer from "../../../components/richtextRenderer";
 const OurStory = ({ data: { title, content, image } }) => {
   return (
     <div className="story-container lg:py-24 pt-16">
-      <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-8 justify-between items-center">
+      <div className="max-w-78 mx-auto flex flex-col lg:flex-row gap-8 justify-between items-center">
         <div className="global-x-spacing lg:w-1/2">
           <h3 className="text-center lg:text-left mb-4 text-secondary uppercase">
             {title}

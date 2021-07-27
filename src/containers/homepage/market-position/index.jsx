@@ -4,7 +4,7 @@ import RRenderer from "../../../components/richtextRenderer";
 const MarketingPosition = ({ data }) => {
   return (
     <section className="intro-section bg-secondary py-12 text-center global-x-spacing">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-78 mx-auto">
         <div className="text-center py-6 border-secondary border-b border-solid">
           <h3 className="text-secondary uppercase">{data.title}</h3>
           <h4 className="text-primary my-3">{data.subtitle}</h4>

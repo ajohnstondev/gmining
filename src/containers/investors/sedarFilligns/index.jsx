@@ -14,7 +14,12 @@ const SedarFillings = ({ data }) => {
 
   const generatePagination = () => {
     const pagination = [];
-    let pgCount = Math.ceil(data.length / numPerPage);
+    let pgCount = Math.ceil(
+      data.filter(({ node: { date } }) => {
+        return !filter || date === filter;
+      }).length / numPerPage
+    );
+
     pagLen = pgCount;
     for (; pgCount > 0; pgCount--) {
       pagination.unshift(pgCount);
@@ -22,20 +27,20 @@ const SedarFillings = ({ data }) => {
     return pagination;
   };
 
-  const generateTags = () => {
-    const allTags = [];
+  const generateDates = () => {
+    const allDates = [];
 
     data.forEach(({ node: { tags } }) => {
-      !allTags.includes(tags) && tags && allTags.push(tags);
+      !allDates.includes(tags) && tags && allDates.push(tags);
     });
 
-    return allTags;
+    return allDates;
   };
 
   return (
     <TitledContainer
       title="Sedar Filings"
-      sideList={generateTags()}
+      sideList={generateDates()}
       sideNoWrap
       pagination={generatePagination()}
       page={page}
@@ -45,16 +50,18 @@ const SedarFillings = ({ data }) => {
     >
       <ul className="flex flex-col mb-6 lg:mb-10">
         {data
-          .filter(({ node: { tags } }) => {
-            return !filter || tags === filter;
+          .filter(({ node: { date } }) => {
+            return !filter || date === filter;
           })
           .slice((page - 1) * numPerPage, (page - 1) * numPerPage + numPerPage)
           .map(({ node: { date, link, title, type } }) => (
             <li className="reports-file-single rounded-lg py-4 px-6 flex mb-2 items-start lg:items-center">
-              <span className="pr-3 font-bold text-text">{type}</span>
+              <span className="pr-3 font-bold text-text w-8/12 lg:w-1/2">
+                {type}
+              </span>
               <span className="lg:items-center flex-1 flex flex-col lg:flex-row lg:pl-10">
                 <span className="font-xs order-1 uppercase">{date}</span>
-                <span className="flex items-center lg:order-2 lg:pl-10">
+                <span className="flex-1 flex items-center lg:order-2 lg:pl-10">
                   <Link
                     to={link}
                     className="text-primary underline uppercase font-xs"

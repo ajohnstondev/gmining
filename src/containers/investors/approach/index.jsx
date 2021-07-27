@@ -5,7 +5,7 @@ import "./index.scss";
 const Approach = ({ data }) => {
   return (
     <div className="bg-secondary py-20 global-x-spacing">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-78 mx-auto">
         <h3 className="text-secondary text-center mb-3 uppercase">{data.title}</h3>
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 py-8 text-text">
           <div>

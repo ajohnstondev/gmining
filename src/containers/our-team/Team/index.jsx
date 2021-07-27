@@ -53,7 +53,7 @@ const Team = ({ data: { heading, subheading }, members }) => {
   };
   return (
     <div className="pt-10 pb-10 lg:pb-20">
-      <div className=" max-w-6xl mx-auto">
+      <div className=" max-w-78 mx-auto">
         <p className="text-center text-text uppercase mb-8 font-xs">
           <span
             className={`cursor-pointer ${

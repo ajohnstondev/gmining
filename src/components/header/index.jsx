@@ -33,7 +33,6 @@ const Header = ({ inverted }) => {
           title
         }
       }
-
       projectsFr: allContentfulProject(filter: { node_locale: { eq: "fr" } }) {
         edges {
           node {
@@ -124,7 +123,7 @@ const Header = ({ inverted }) => {
           });
 
           const projectsLinks = {
-            title: "PROJECTS",
+            title: "PROJETS",
             path: currentEdges[0].path,
             items: currentEdges,
           };

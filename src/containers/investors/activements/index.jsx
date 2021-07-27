@@ -3,7 +3,7 @@ import React from "react";
 const Achivements = ({ data }) => {
   return (
     <div className="bg-primary py-12 global-x-spacing">
-      <div className="max-w-6xl mx-auto grid lg:grid-cols-2 items-center">
+      <div className="max-w-78 mx-auto grid lg:grid-cols-2 items-center">
         <div className="order-1 lg:border-r border-primary pt-4">
           <h3 className="text-center text-primary">{data.primaryStockTitle}</h3>
         </div>
