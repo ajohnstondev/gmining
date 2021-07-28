@@ -12,6 +12,9 @@
       &.mission-wrapper-blue {
         border: 1px solid var(--color_p);
       }
+      &>div {
+        display: contents;
+      }
     }
     position: relative;
 
