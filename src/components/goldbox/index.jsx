@@ -47,7 +47,7 @@ const GoldBox = ({
           </p>
         )}
 
-        <div style={{display:"contents"}}>
+        <div>
           <div className="container-goldbox-btn">
             {button && (
               <button
