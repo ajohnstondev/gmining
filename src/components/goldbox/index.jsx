@@ -45,7 +45,7 @@ const GoldBox = ({
             />
           </p>
         )}
-        <div className="container-goldbox-btn">
+        {/* <div className="container-goldbox-btn"> */}
           {button && (
             <button
               onClick={() => {
@@ -56,7 +56,7 @@ const GoldBox = ({
               {button}
             </button>
           )}
-        </div>
+        {/* </div> */}
       </div>
     </div>
   );
