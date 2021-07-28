@@ -45,8 +45,8 @@ const GoldBox = ({
             />
           </p>
         )}
-        <div className="container-goldbox-btn">
-          <div>
+        <div className="content">
+          <div className="container-goldbox-btn">
             {button && (
               <button
                 onClick={() => {
