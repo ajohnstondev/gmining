@@ -33,7 +33,7 @@
       font-weight: 600;
     }
 
-    .goldbox-button-container {
+    .goldbox-btn-container {
       width: 100%;
       @media (min-width: 1024px) {
         padding: 2px 22px;
@@ -41,11 +41,6 @@
         width: fit-content;
         position: absolute;
         transform: translateY(50%);
-        // background-color: white;
-
-        // &.goldbox-button-container-blue {
-        //   background-color: #c9dcde;
-        // }
       }
     }
     .goldbox-button {

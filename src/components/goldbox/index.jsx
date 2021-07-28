@@ -46,7 +46,7 @@ const GoldBox = ({
           </p>
         )}
         {button && (
-          <div className="goldbox-button-container">
+          <div className="goldbox-btn-container">
             <button
               onClick={() => {
                 onDownloadClick(file || link || "/");
