@@ -5,6 +5,7 @@ import Layout from "../../components/layout";
 import Hero from "../../components/hero";
 import BusinessModel from "../../containers/about-us/BusinessModel";
 import GoldBox from "./../../components/goldbox";
+import SEO from "../../components/seo";
 
 const OurBusinessModel = ({ data }) => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -32,6 +33,7 @@ const OurBusinessModel = ({ data }) => {
 
   return (
     <Layout inverted>
+      <SEO title="Our business Model" />
       <Hero
         title={title}
         slogan={subtitle}

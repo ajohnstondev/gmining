@@ -15,21 +15,21 @@ if (!spaceId || !accessToken) {
 
 module.exports = {
   siteMetadata: {
-    title: `G Mining`,
-    description: `G Mining Web site`,
+    title: `G Mining Ventures`,
+    description: `THE NEW APPROACH TO PROJECT DEVELOPMENT`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-tailwind`,
+        name: `Gmining Ventures`,
         short_name: `starter`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#4dc0b5`,
         display: `minimal-ui`,
-        icon: `src/images/tailwind-icon.png`,
+        icon: `static/favicon/favicon-16x16.png`,
       },
     },
     {

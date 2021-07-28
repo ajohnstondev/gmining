@@ -10,7 +10,8 @@ import {
   MarketingPosition,
   Article,
 } from "../containers/homepage";
-import { commaDelineation } from '../utils/functions';
+import { commaDelineation } from "../utils/functions";
+import SEO from "../components/seo";
 
 const Home = ({ data }) => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -31,35 +32,35 @@ const Home = ({ data }) => {
       saveAs(blob, file.fileName);
     }
     setTimeout(() => {
-      setModalOpen(true);      
+      setModalOpen(true);
     }, 1000);
   };
 
   useEffect(() => {
     async function fetchData() {
-      const stock = await fetch(`${
-        process.env.GATSBY_STOCK_TRACK_URL}&symbol=${
-        process.env.GATSBY_STOCK_SYMBOL}&apikey=${
-        process.env.GATSBY_STOCK_API_KEY}`, {
-        headers: { 'Content-Type': 'application/json' },
-      })
-        .then(re=>re.json())
-        .then(res => res["Global Quote"]);
+      const stock = await fetch(
+        `${process.env.GATSBY_STOCK_TRACK_URL}&symbol=${process.env.GATSBY_STOCK_SYMBOL}&apikey=${process.env.GATSBY_STOCK_API_KEY}`,
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      )
+        .then((re) => re.json())
+        .then((res) => res["Global Quote"]);
 
       const spot = await fetch(process.env.GATSBY_GOLD_API_URL, {
         headers: {
-          'Content-Type': 'application/json',
-          'x-access-token': process.env.GATSBY_GOLD_API_KEY
+          "Content-Type": "application/json",
+          "x-access-token": process.env.GATSBY_GOLD_API_KEY,
         },
       })
-        .then(re=>re.json())
-        .then(res => res["price"]);
+        .then((re) => re.json())
+        .then((res) => res["price"]);
 
       const {
         ticker,
         stockPriceTitle,
         marketCapTitle,
-        spotGoldTitle
+        spotGoldTitle,
       } = data.allContentfulStockItem.nodes[0];
 
       setStockItem({
@@ -71,15 +72,16 @@ const Home = ({ data }) => {
         stockChangeInValue: Number(stock["09. change"]).toFixed(2),
         stockChangeInPercent: stock["10. change percent"],
         marketCap: commaDelineation(stock["06. volume"]),
-        spotGold: commaDelineation(Number(spot).toFixed(2))
+        spotGold: commaDelineation(Number(spot).toFixed(2)),
       });
-    };
+    }
 
     fetchData();
   }, []);
 
   return (
     <Layout>
+      <SEO title="Home" />
       {modalOpen && <Modal onClose={() => setModalOpen(false)} />}
       <Hero data={data.allContentfulHomeHero.nodes[0]} />
       <Intro

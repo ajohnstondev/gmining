@@ -8,6 +8,7 @@ import RRenderer from "../components/richtextRenderer";
 
 //Assets
 import "./news.scss";
+import SEO from "../components/seo";
 
 const News = ({ data, pageContext }) => {
   const { title, date, content, author } = data.news;
@@ -34,7 +35,8 @@ const News = ({ data, pageContext }) => {
 
   return (
     <Layout inverted>
-      <div className="mt-16 lg:mt-10"/>
+      <SEO title={title} />
+      <div className="mt-16 lg:mt-10" />
       <TitledContainer sideList={genereateSideList()} title="News Release">
         <div className="px-6 py-8 bg-primary rounded-lg">
           <h4 className="text-primary mb-2">{title}</h4>
@@ -42,7 +44,7 @@ const News = ({ data, pageContext }) => {
             {generateDate(date)}
           </span>
           {author && (
-            <span className='text-text font-xs block uppercase mt-2'>
+            <span className="text-text font-xs block uppercase mt-2">
               {author}
             </span>
           )}

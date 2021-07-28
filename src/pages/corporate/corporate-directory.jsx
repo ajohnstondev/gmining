@@ -4,12 +4,14 @@ import { graphql } from "gatsby";
 import Hero from "../../components/hero";
 import Directory from "../../containers/corporate/directory";
 import Layout from "../../components/layout";
+import SEO from "../../components/seo";
 
 const CorporateDirectory = ({ data }) => {
   const { title, heroImage } = data.hero.nodes[0];
 
   return (
     <Layout inverted>
+      <SEO title="Corporae directory" />
       <Hero title={title} image={heroImage} />
       <Directory data={data.offices.edges} />
     </Layout>

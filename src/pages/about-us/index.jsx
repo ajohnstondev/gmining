@@ -5,12 +5,14 @@ import Hero from "../../components/hero";
 import OurMission from "../../containers/about-us/OurMission";
 import OurStory from "../../containers/about-us/OurStory";
 import LegacyTimeline from "../../containers/about-us/LegacyTimeline";
+import SEO from "../../components/seo";
 
 const AboutUs = ({ data }) => {
   const { heroBackground, title, subtitle } = data.hero.nodes[0];
 
   return (
     <Layout inverted>
+      <SEO title="About us" />
       <Hero title={title} slogan={subtitle} image={heroBackground} />
       <OurMission data={data.ourmission.nodes[0]} />
       <OurStory data={data.ourstory.nodes[0]} />
