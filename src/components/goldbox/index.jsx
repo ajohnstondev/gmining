@@ -31,6 +31,7 @@ const GoldBox = ({
             {title}
           </h3>
         )}
+
         {main && (
           <p
             className={`${
@@ -45,7 +46,8 @@ const GoldBox = ({
             />
           </p>
         )}
-        <div className="content">
+
+        <div style={{display:"contents"}}>
           <div className="container-goldbox-btn">
             {button && (
               <button
