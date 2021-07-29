@@ -17,7 +17,7 @@ const Intro = ({ data, stockItem }) => {
         {stockItem && (
           <div className="flex lg:border-secondary lg:border lg:border-l-0 lg:border-solid lg:p-6 lg:pl-0">
             <div className="w-full bg-gray-200 rounded flex">
-              <div className="mx-6 my-auto">
+              <div className="m-6 md:my-auto">
                 <h4 className="text-primary uppercase mb-2">
                   Tsx-v {stockItem.ticker}
                 </h4>

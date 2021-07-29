@@ -5,7 +5,7 @@ const OurValues = ({ data }) => {
   const { title, shortDescription, values, content } = data;
 
   return (
-    <div className="max-w-78 mx-auto px-4 py-8 lg:py-16">
+    <div className="max-w-78 mx-auto p-8 lg:px-4 lg:py-16">
       <h1
         className="text-3xl text-secondary uppercase font-light py-2"
         style={{ fontFamily: "Lato" }}

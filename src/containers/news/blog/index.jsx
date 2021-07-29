@@ -14,15 +14,15 @@ const Blog = ({ data }) => {
   let pagLen = 1;
 
   const years = data.map(({ node: { date } }) => {
-    let year = new Date(date).getFullYear();
+    let year = new Date(date.replace(/-/g, "/")).getFullYear().toString();
     return year;
   });
 
   const filteredData = data.filter((item) => {
-    let year = (new Date(item.node.date).getFullYear()).toString();
+    let year = new Date(item.node.date.replace(/-/g, "/")).getFullYear().toString();
     return year.includes(filteredYear);
   });
-
+console.log(years, uniq(years));
   const renderPagination = () => {
     const pagination = [];
     let pgCount = Math.ceil(filteredData.length / 4);
@@ -53,7 +53,7 @@ const Blog = ({ data }) => {
                 FILTER BY DATE
               </h3>
               <div className="justify-between lg:flex">
-                <div className=" mb-6 lg:mb-0">
+                <div className="mb-6 lg:mb-0">
                   <ul className="flex lg:flex-col lg:gap-3 gap-x-12 gap-y-3 flex-wrap">
                     {uniq(years).map((year) => (
                       <li

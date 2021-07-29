@@ -8,8 +8,13 @@ const Approach = ({ data }) => {
       <div className="max-w-78 mx-auto">
         <h3 className="text-secondary text-center mb-3 uppercase">{data.title}</h3>
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 py-8 text-text">
-          <div>
-            <RRenderer data={data.leftContent} />
+          <div className="list-wrapper">
+            <RRenderer
+              data={data.leftContent}
+              config={{
+                li: "normal ml-4",
+              }}
+            />
           </div>
           <div className="list-wrapper">
             <RRenderer
