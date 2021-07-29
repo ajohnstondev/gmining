@@ -251,7 +251,8 @@ function Footer() {
                   </Link>
                 </div>
                 <div className="text-white font-xs w-full pt-4 mt-8 lg:mt-0 text-center footer-credits px-12">
-                  2021 G Mining Ventures Corp. All rights Reserved. Legal
+                  2021 G Mining Ventures Corp. All rights Reserved.{` `}
+                  <a href="/">Legal</a>
                 </div>
               </div>
             </div>

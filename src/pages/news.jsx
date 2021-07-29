@@ -31,7 +31,10 @@ export const query = graphql`
         title
       }
     }
-    news: allContentfulNews(filter: { node_locale: { eq: $locale } }) {
+    news: allContentfulNews(
+      filter: { node_locale: { eq: $locale } }
+      sort: { fields: date, order: DESC }
+    ) {
       edges {
         node {
           ctaText

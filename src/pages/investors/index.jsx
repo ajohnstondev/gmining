@@ -25,6 +25,7 @@ export const query = graphql`
   query ReportsAndFilingsQuery($locale: String) {
     documents: allContentfulReportsDisclosuresDocuments(
       filter: { node_locale: { eq: $locale } }
+      sort: { fields: date, order: DESC }
     ) {
       edges {
         node {
