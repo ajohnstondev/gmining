@@ -3,12 +3,12 @@ import { graphql, useStaticQuery, Link, navigate } from "gatsby";
 import { IntlContextConsumer, changeLocale } from "gatsby-plugin-intl";
 import { useLocation } from "@reach/router";
 
+import { Search } from "../icon";
 import "./index.scss";
 import Logo from "../../images/logo.png";
 import CrossIcon from "../../images/crossicon.png";
 import ArrowDownBlack from "../../images/down-arrow-black.png";
 import ArrowDownWhite from "../../images/down-arrow-white.png";
-import { Search } from "../icon";
 
 const languageName = {
   "en-US": "English",
@@ -36,7 +36,7 @@ const Header = ({ inverted }) => {
       projectsFr: allContentfulProject(filter: { node_locale: { eq: "fr" } }) {
         edges {
           node {
-            heading
+            heroTitle
             slug
           }
         }
@@ -64,7 +64,7 @@ const Header = ({ inverted }) => {
       ) {
         edges {
           node {
-            heading
+            heroTitle
             slug
           }
         }
@@ -117,7 +117,7 @@ const Header = ({ inverted }) => {
           let currentEdges = projectsFr.edges;
           currentEdges = currentEdges.map(({ node }) => {
             return {
-              title: node.heading,
+              title: node.heroTitle,
               path: `/${node.slug}`,
             };
           });
@@ -134,7 +134,7 @@ const Header = ({ inverted }) => {
           let currentEdges = projectsEn.edges;
           currentEdges = currentEdges.map(({ node }) => {
             return {
-              title: node.heading,
+              title: node.heroTitle,
               path: `/${node.slug}`,
             };
           });

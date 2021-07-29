@@ -10,7 +10,7 @@ import "./index.scss";
 
 const Blog = ({ data }) => {
   const [page, setPage] = useState(1);
-  const [filteredYear,setFilteredYear] = useState("")
+  const [filteredYear, setFilteredYear] = useState("");
   let pagLen = 1;
 
   const years = data.map(({ node: { date } }) => {
@@ -19,10 +19,12 @@ const Blog = ({ data }) => {
   });
 
   const filteredData = data.filter((item) => {
-    let year = new Date(item.node.date.replace(/-/g, "/")).getFullYear().toString();
+    let year = new Date(item.node.date.replace(/-/g, "/"))
+      .getFullYear()
+      .toString();
     return year.includes(filteredYear);
   });
-console.log(years, uniq(years));
+
   const renderPagination = () => {
     const pagination = [];
     let pgCount = Math.ceil(filteredData.length / 4);
@@ -58,7 +60,7 @@ console.log(years, uniq(years));
                     {uniq(years).map((year) => (
                       <li
                         className="text-primary font-xs cursor-pointer"
-                        onClick={()=>setFilteredYear(year)}
+                        onClick={() => setFilteredYear(year)}
                       >
                         {year}
                       </li>
@@ -79,24 +81,24 @@ console.log(years, uniq(years));
                             formattedDate,
                           },
                         }) => (
-                          <div className="article flex flex-col gap-3 rounded-lg py-5 lg:py-10 px-6">
-                            <h4 className="text-primary capitalize h-20">
+                          <div className="article flex flex-col rounded-lg py-5 lg:py-10 px-6">
+                            <h4 className="text-primary capitalize h-18 ">
                               <div className="md:hidden lg:block">
-                                {shortenText(title, 50)}
+                                {shortenText(title, 40)}
                               </div>
                               <div className="hidden md:block lg:hidden">
                                 {shortenText(title, 80)}
                               </div>
                             </h4>
-                            <h4 className="uppercase text-text font-xs">
+                            <h4 className="uppercase text-text font-xs mt-3">
                               {formattedDate}
                             </h4>
-                            <p className="flex-1 text-text read-more-content">
+                            <p className="flex-1 text-text read-more-content mt-3">
                               <RRenderer data={content} />
                             </p>
                             <Link
                               to={`/${currentLocale}/${ctaLink}`}
-                              className="font-xs text-secondary underline uppercase"
+                              className="font-xs text-secondary underline uppercase mt-3"
                             >
                               {ctaText || "Read the Article"}
                             </Link>
