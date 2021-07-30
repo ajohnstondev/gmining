@@ -7,7 +7,8 @@ import { useQueryParam, StringParam } from 'use-query-params';
 import TitledContainer from '../../../components/titledContainer';
 
 const SearchedContent = ({ data }) => {
-  const [query, setQuery] = useQueryParam('query', StringParam);
+  const [query, _] = useQueryParam('query', StringParam);
+  if(!query) return null;
 
   const { news, reports } = data;
   let totallength = 0;
