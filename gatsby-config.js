@@ -19,7 +19,8 @@ module.exports = {
     description: `THE NEW APPROACH TO PROJECT DEVELOPMENT`,
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
+    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-use-query-params',
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -43,13 +44,13 @@ module.exports = {
       resolve: `gatsby-plugin-sass`,
       options: {
         postCssPlugins: [
-          require("tailwindcss"),
-          require("./tailwind.config.js"), // Optional: Load custom Tailwind CSS configuration
+          require('tailwindcss'),
+          require('./tailwind.config.js'), // Optional: Load custom Tailwind CSS configuration
         ],
       },
     },
     {
-      resolve: "gatsby-plugin-postcss",
+      resolve: 'gatsby-plugin-postcss',
       options: {
         postCssPlugins: [require(`tailwindcss`)(`./tailwind.config.js`)],
       },
@@ -61,9 +62,9 @@ module.exports = {
         purgeOnly: [`src/css/style.css`],
       },
     },
-    `gatsby-plugin-offline`,
+    'gatsby-plugin-offline',
     {
-      resolve: "gatsby-source-hubspot-forms",
+      resolve: 'gatsby-source-hubspot-forms',
       options: {
         apiKey: process.env.HUBSPOT_API_KEY,
       },

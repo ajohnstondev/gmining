@@ -1,25 +1,25 @@
-import React, { useState } from "react";
-import { Link } from "gatsby";
-import { IntlContextConsumer } from "gatsby-plugin-intl";
-import uniq from "lodash.uniq";
+import React, { useState } from 'react';
+import { Link } from 'gatsby';
+import { IntlContextConsumer } from 'gatsby-plugin-intl';
+import uniq from 'lodash.uniq';
 
-import { shortenText } from "../../../utils/functions";
-import RRenderer from "../../../components/richtextRenderer";
-import { ChevronRight } from "../../../components/icon";
-import "./index.scss";
+import { shortenText } from '../../../utils/functions';
+import RRenderer from '../../../components/richtextRenderer';
+import { ChevronRight } from '../../../components/icon';
+import './index.scss';
 
 const Blog = ({ data }) => {
   const [page, setPage] = useState(1);
-  const [filteredYear, setFilteredYear] = useState("");
+  const [filteredYear, setFilteredYear] = useState('');
   let pagLen = 1;
 
   const years = data.map(({ node: { date } }) => {
-    let year = new Date(date.replace(/-/g, "/")).getFullYear().toString();
+    let year = new Date(date.replace(/-/g, '/')).getFullYear().toString();
     return year;
   });
 
   const filteredData = data.filter((item) => {
-    let year = new Date(item.node.date.replace(/-/g, "/"))
+    let year = new Date(item.node.date.replace(/-/g, '/'))
       .getFullYear()
       .toString();
     return year.includes(filteredYear);
@@ -36,7 +36,7 @@ const Blog = ({ data }) => {
     return pagination.map((num) => (
       <li
         className={`text-secondary cursor-pointer font-xs ${
-          num === page && "underline"
+          num === page && 'underline'
         }`}
         onClick={() => setPage(num)}
       >
@@ -82,7 +82,7 @@ const Blog = ({ data }) => {
                           },
                         }) => (
                           <div className="article flex flex-col rounded-lg py-5 lg:py-10 px-6">
-                            <h4 className="text-primary capitalize h-18 ">
+                            <h4 className="text-primary capitalize h-18">
                               <div className="md:hidden lg:block">
                                 {shortenText(title, 40)}
                               </div>

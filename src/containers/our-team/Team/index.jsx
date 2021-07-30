@@ -27,7 +27,7 @@ const LeftArrow = ({ onClick }) => {
 
 const Team = ({ data: { heading, subheading }, members }) => {
   const [activeMember, setActiveMember] = useState(0);
-  const [directors, setDirectors] = useState(true);
+  const [directors, setDirectors] = useState(false);
 
   const settings = {
     dots: false,

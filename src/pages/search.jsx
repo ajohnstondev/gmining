@@ -1,36 +1,21 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 
-import Hero from '../components/hero';
-import Blog from '../containers/news/blog';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
+import SearchedContent from '../containers/search/SearchedContent';
 
 const CorporateDirectory = ({ data }) => {
-  const { title, heroImage } = data.hero.nodes[0];
-  const { edges } = data.news;
-
   return (
     <Layout inverted>
-      <SEO title='News' />
-      <Hero title={title} image={heroImage} />
-      <Blog data={edges} />
+      <SEO title='Search' />
+      <SearchedContent data={data} />
     </Layout>
   );
 };
 
 export const query = graphql`
-  query NewsQuery($locale: String) {
-    hero: allContentfulNewsPageHero(filter: { node_locale: { eq: $locale } }) {
-      nodes {
-        heroImage {
-          file {
-            url
-          }
-        }
-        title
-      }
-    }
+  query SearchQuery($locale: String) {
     news: allContentfulNews(
       filter: { node_locale: { eq: $locale } }
       sort: { fields: date, order: DESC }
@@ -45,6 +30,19 @@ export const query = graphql`
           content {
             raw
           }
+        }
+      }
+    }
+
+    reports: allContentfulReportsDisclosuresReports(
+      filter: { node_locale: { eq: $locale } }
+    ) {
+      edges {
+        node {
+          date(formatString: "MMM DD, YYYY")
+          title
+          linkText
+          linkUrl
         }
       }
     }

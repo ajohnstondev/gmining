@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { graphql, useStaticQuery, Link, navigate } from "gatsby";
-import { IntlContextConsumer, changeLocale } from "gatsby-plugin-intl";
-import { useLocation } from "@reach/router";
+import React, { useEffect, useState } from 'react';
+import { graphql, useStaticQuery, Link, navigate } from 'gatsby';
+import { IntlContextConsumer, changeLocale } from 'gatsby-plugin-intl';
+import { useLocation } from '@reach/router';
 
-import { Search } from "../icon";
-import "./index.scss";
-import Logo from "../../images/logo.png";
-import CrossIcon from "../../images/crossicon.png";
-import ArrowDownBlack from "../../images/down-arrow-black.png";
-import ArrowDownWhite from "../../images/down-arrow-white.png";
+import { Search } from '../icon';
+import './index.scss';
+import Logo from '../../images/logo.png';
+import CrossIcon from '../../images/crossicon.png';
+import ArrowDownBlack from '../../images/down-arrow-black.png';
+import ArrowDownWhite from '../../images/down-arrow-white.png';
 
 const languageName = {
-  "en-US": "English",
-  fr: "Français",
+  'en-US': 'English',
+  fr: 'Français',
 };
 
 const Header = ({ inverted }) => {
@@ -21,6 +21,7 @@ const Header = ({ inverted }) => {
   const [isInverted, setInverted] = useState(inverted);
   const [langOpen, setLangOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [searchValue, setSearchValue] = useState('');
   const {
     projectsFr,
     contentFulNavigationsFr,
@@ -92,7 +93,7 @@ const Header = ({ inverted }) => {
   `);
 
   function scrollFunction() {
-    if (typeof window != "undefined") {
+    if (typeof window != 'undefined') {
       if (window.pageYOffset > 0) {
         setScroll(true);
       } else {
@@ -100,8 +101,9 @@ const Header = ({ inverted }) => {
       }
     }
   }
+
   useEffect(() => {
-    if (typeof window != "undefined") {
+    if (typeof window != 'undefined') {
       window.onscroll = function () {
         scrollFunction();
       };
@@ -113,7 +115,7 @@ const Header = ({ inverted }) => {
       {({ languages, language: currentLocale }) => {
         let navigations;
 
-        if (currentLocale === "fr") {
+        if (currentLocale === 'fr') {
           let currentEdges = projectsFr.edges;
           currentEdges = currentEdges.map(({ node }) => {
             return {
@@ -123,7 +125,7 @@ const Header = ({ inverted }) => {
           });
 
           const projectsLinks = {
-            title: "PROJETS",
+            title: 'PROJETS',
             path: currentEdges[0].path,
             items: currentEdges,
           };
@@ -140,7 +142,7 @@ const Header = ({ inverted }) => {
           });
 
           const projectsLinks = {
-            title: "PROJECTS",
+            title: 'PROJECTS',
             path: currentEdges[0].path,
             items: currentEdges,
           };
@@ -156,18 +158,18 @@ const Header = ({ inverted }) => {
               setInverted(false);
             }}
             className={`${
-              isInverted || inverted ? "bg-white shadow" : "bg-transparent"
+              isInverted || inverted ? 'bg-white shadow' : 'bg-transparent'
             } left-0 right-0 top-0 z-50 header-main ${
-              scroll ? "fixed bg-white shadow" : "absolute"
-            } ${isExpanded ? "active-nav relative" : ""}`}
+              scroll ? 'fixed bg-white shadow' : 'absolute'
+            } ${isExpanded ? 'active-nav relative' : ''}`}
           >
-            <div className="lg:py-1 flex flex-wrap items-center justify-between  md:px-6">
+            <div className="lg:py-1 flex flex-wrap items-center justify-between md:px-6">
               <div className="px-4 py-2 md:px-0 flex items-center justify-between w-full lg:w-auto logo-wrapper">
                 <Link
                   className="flex items-center justify-content no-underline text-white"
                   to={`/${currentLocale}/`}
                 >
-                  <img src={Logo} alt="logo" />
+                  <img src={Logo} alt='logo' />
                 </Link>
 
                 <button
@@ -177,7 +179,7 @@ const Header = ({ inverted }) => {
                   {isExpanded ? (
                     <img src={CrossIcon} />
                   ) : (
-                    <span className="navbarToggleIcon" />
+                    <span className='navbarToggleIcon' />
                   )}
                 </button>
               </div>
@@ -197,27 +199,27 @@ const Header = ({ inverted }) => {
                 ))}
                 <div className="cursor-pointer flex items-center flex-wrap-reverse lg:flex-wrap gap-x-8 pb-8 lg:pb-0 absolute bottom-0 lg:relative px-4 lg:px-0 w-full lg:w-auto">
                   <div
-                    className="w-full lg:w-auto px-3 link-item language-toggle block md:inline-block mt-4 font-xs md:mt-0 md:ml-10 no-underline text-primary "
+                    className="w-full lg:w-auto px-3 link-item language-toggle block md:inline-block mt-4 font-xs md:mt-0 md:ml-10 no-underline text-primary"
                     key="LanguageToggle"
                   >
                     <div className="hidden lg:inline-block">
                       <div className="item">{languageName[currentLocale]}</div>
                       <div
                         className={`${
-                          !langOpen && "hidden"
+                          !langOpen && 'hidden'
                         } flex langDropDown font-xs`}
                       >
                         {languages.map((language) => (
                           <a
-                            className="lang"
+                            className='lang'
                             onClick={() => changeLocale(language)}
                           >
                             <span
                               className={`${
                                 languageName[currentLocale] ===
                                 languageName[language]
-                                  ? "lg:text-secondary"
-                                  : ""
+                                  ? 'lg:text-secondary'
+                                  : ''
                               }`}
                             >
                               {languageName[language]}
@@ -230,13 +232,13 @@ const Header = ({ inverted }) => {
                       {languages.map((lang, idx) => {
                         return (
                           <>
-                            {idx !== 0 && " | "}
+                            {idx !== 0 && ' | '}
                             <span
                               className={`cursor-pointer px-4 ${
                                 languageName[lang] ===
                                 languageName[currentLocale]
-                                  ? "text-primary lg:text-secondary"
-                                  : "text-text"
+                                  ? 'text-primary lg:text-secondary'
+                                  : 'text-text'
                               }`}
                               onClick={() => changeLocale(lang)}
                             >
@@ -251,23 +253,34 @@ const Header = ({ inverted }) => {
                     className="w-full lg:w-auto block md:inline-block mt-4 md:mt-0 md:ml-10 no-underline text-black font-xs"
                     key="Search"
                   >
-                    <div className="flex items-center ">
+                    <form
+                      className="flex items-center"
+                      onSubmit={(e) => {
+                        e.preventDefault();
+                        if (searchValue) {
+                          const redirectLink = `/${currentLocale}/search?query=${searchValue}`;
+                          navigate(redirectLink);
+                        }
+                      }}
+                    >
                       <button onClick={() => setSearchOpen((prev) => !prev)}>
                         <Search
                           size={14}
                           className={`navbar-search-icon ${
-                            !searchOpen ? "inactive" : ""
+                            !searchOpen ? 'inactive' : ''
                           }`}
                         />
                       </button>
 
                       <input
-                        placeholder="SEARCH"
+                        placeholder='SEARCH'
+                        value={searchValue}
+                        onChange={(e) => setSearchValue(e.target.value)}
                         className={`font-xs navbar-search-field ml-2 ${
-                          searchOpen ? "px-2" : "inactive"
+                          searchOpen ? 'px-2' : 'inactive'
                         }`}
                       />
-                    </div>
+                    </form>
                   </div>
                 </div>
               </nav>
@@ -288,7 +301,7 @@ const NavListItem = ({ item, inverted, isInverted, scroll, currentLocale }) => {
     !item.items && navigate(`/${currentLocale}${item.path}`);
   };
 
-  let className = location.pathname.includes(item.path) ? "link" : "";
+  let className = location.pathname.includes(item.path) ? 'link' : '';
   return (
     <div>
       <div
@@ -303,7 +316,7 @@ const NavListItem = ({ item, inverted, isInverted, scroll, currentLocale }) => {
         {item.items && (
           <div
             className={`${
-              !subMenuVisible && "hidden"
+              !subMenuVisible && 'hidden'
             }  dropdown lg:absolute lg:-ml-4`}
           >
             <div className="dropdown-content">
@@ -322,9 +335,9 @@ const NavListItem = ({ item, inverted, isInverted, scroll, currentLocale }) => {
         )}
       </div>
       <Link
-        className={`cursor-pointer uppercase  hidden lg:inline-block  mt-4 md:mt-0 md:ml-10 no-underline link-item relative ${
-          inverted || isInverted ? "text-text" : "text-white"
-        } ${scroll ? "text-text" : "text-white"}`}
+        className={`cursor-pointer uppercase hidden lg:inline-block mt-4 md:mt-0 md:ml-10 no-underline link-item relative ${
+          inverted || isInverted ? 'text-text' : 'text-white'
+        } ${scroll ? 'text-text' : 'text-white'}`}
         key={item.title}
         activeClassName="link"
         partiallyActive={true}
@@ -346,8 +359,8 @@ const NavListItem = ({ item, inverted, isInverted, scroll, currentLocale }) => {
         {item.items && (
           <div
             className={`${
-              !subMenuVisible && "hidden"
-            }  dropdown lg:absolute lg:-ml-4`}
+              !subMenuVisible && 'hidden'
+            } dropdown lg:absolute lg:-ml-4`}
           >
             <div className="dropdown-content">
               {item.items?.map((item) => (

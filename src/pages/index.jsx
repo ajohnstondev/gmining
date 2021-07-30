@@ -54,7 +54,7 @@ const Home = ({ data }) => {
         },
       })
         .then((re) => re.json())
-        .then((res) => res["price"]);
+        .then((res) => res["ask"]);
 
       const {
         ticker,
@@ -68,10 +68,10 @@ const Home = ({ data }) => {
         stockPriceTitle,
         marketCapTitle,
         spotGoldTitle,
-        stockPrice: Number(stock["05. price"]).toFixed(2),
-        stockChangeInValue: Number(stock["09. change"]).toFixed(2),
-        stockChangeInPercent: stock["10. change percent"],
-        marketCap: commaDelineation(stock["06. volume"]),
+        stockPrice: stock ? Number(stock["05. price"]).toFixed(2) : "0",
+        stockChangeInValue: stock ? Number(stock["09. change"]).toFixed(2) : "0",
+        stockChangeInPercent: stock ? stock["10. change percent"] : "0",
+        marketCap: stock ? commaDelineation(stock["06. volume"]) : "0",
         spotGold: commaDelineation(Number(spot).toFixed(2)),
       });
     }

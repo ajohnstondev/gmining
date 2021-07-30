@@ -18,6 +18,7 @@ const languageName = {
 function Footer() {
   const [thankModal, setThankModal] = useState(false);
   const [formState, setForm] = useState({});
+  const [searchQuery, setSearchQuery] = useState("");
 
   const {
     projectsFr,
@@ -214,16 +215,28 @@ function Footer() {
                   })}
                 </ul>
                 <div className="lg:pl-4 w-9/12 lg:w-3/12 flex flex-col items-center lg:items-start lg:pb-12 pb-2">
-                  <div className="w-full flex items-center">
-                    <div>
+                  <form
+                    className="w-full flex items-center"
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      if (searchQuery) {
+                        navigate(
+                          `/${currentLocale}/search/?query=${searchQuery}`
+                        );
+                      }
+                    }}
+                  >
+                    <button>
                       <Search color="#fff" size={14} />
-                    </div>
+                    </button>
                     <input
                       type="text"
                       className="footer-search flex-1 ml-2 p-1 font-xs"
                       placeholder="SEARCH"
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
                     />
-                  </div>
+                  </form>
                   <div className="pt-4 lg:pt-2 lg:pl-6 text-white font-xs">
                     {/* English | French */}
                     {languages.map((lang, idx) => {
@@ -243,16 +256,32 @@ function Footer() {
                       );
                     })}
                   </div>
-                  <Link to="http://www.gminingservices.com/" className="w-full flex items-center pt-8">
-                    <span className="uppercase font-xs text-white mr-2" style={{whiteSpace:"nowrap"}}>
+                  <Link
+                    to="http://www.gminingservices.com/"
+                    className="w-full flex items-center pt-8"
+                  >
+                    <span
+                      className="uppercase font-xs text-white mr-2"
+                      style={{ whiteSpace: "nowrap" }}
+                    >
                       Visit our friends at
                     </span>
                     <img src={GMS} className="w-24 md:w-32" alt="" />
                   </Link>
                 </div>
                 <div className="text-white font-xs w-full pt-4 mt-8 lg:mt-0 text-center footer-credits px-12">
-                  2021 G Mining Ventures Corp. All rights Reserved.{` `}
-                  <a href="/">Legal</a>
+                  2021 G Mining Ventures Corp. All rights Reserved.
+                  <a
+                    className="underline font-bold"
+                    href={
+                      currentLocale === "en-US"
+                        ? "https://assets.ctfassets.net/jj9ent3ck4o2/6qqP1aK9mFEZaFuAe3qrMR/1e1911c727241c91d45408de177f310f/This_website_is_owned_and_operated_by__v2.docx"
+                        : "https://assets.ctfassets.net/jj9ent3ck4o2/6qqP1aK9mFEZaFuAe3qrMR/9fe726a3c9d729faf04aba57a0a35542/Ce_site_est_de__tenu_et_exploite___par___v2.docx"
+                    }
+                    target="_blank"
+                  >
+                    Legal
+                  </a>
                 </div>
               </div>
             </div>
