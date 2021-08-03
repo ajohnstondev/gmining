@@ -275,8 +275,8 @@ function Footer() {
                     className="underline font-bold"
                     href={
                       currentLocale === "en-US"
-                        ? "https://assets.ctfassets.net/jj9ent3ck4o2/6qqP1aK9mFEZaFuAe3qrMR/1e1911c727241c91d45408de177f310f/This_website_is_owned_and_operated_by__v2.docx"
-                        : "https://assets.ctfassets.net/jj9ent3ck4o2/6qqP1aK9mFEZaFuAe3qrMR/9fe726a3c9d729faf04aba57a0a35542/Ce_site_est_de__tenu_et_exploite___par___v2.docx"
+                        ? "https://assets.ctfassets.net/jj9ent3ck4o2/GS2VIIOn6MlqVJv672kD9/cfe1bc089e979eda96bd199d99ae7a84/Website_Legal_Disclaimer_-_English.pdf"
+                        : "https://assets.ctfassets.net/jj9ent3ck4o2/1Fak2QVv4RdpIQNUU3lQsd/a4a9db3b0c2048517e8b634b4fdd57f9/Website_Legal_Disclaimer_-_French.docx"
                     }
                     target="_blank"
                   >
