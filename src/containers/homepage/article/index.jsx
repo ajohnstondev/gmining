@@ -5,14 +5,14 @@ import { shortenText } from "../../../utils/functions";
 import GradientButton from "../../../components/gradientButton";
 import "./index.scss";
 
-const MarketingPosition = ({ quickLinks, news }) => {
+const Article = ({ quickLinks, news }) => {
   return (
     <section className="intro-section py-4 lg:py-12">
       <div className="max-w-78 mx-auto">
         <div class="grid gap-x-24 gap-y-8 grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 md:grid-cols-3 py-4 global-x-spacing">
           <div className="col-span-2">
             <h3 className="text-secondary uppercase pb-2 ml-5 lg:ml-0">
-              News Releases
+              {quickLinks.title}
             </h3>
 
             <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 xl:grid-cols-2 md:grid-cols-2">
@@ -69,4 +69,4 @@ const MarketingPosition = ({ quickLinks, news }) => {
   );
 };
 
-export default MarketingPosition;
+export default Article;
