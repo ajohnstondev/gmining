@@ -5,14 +5,14 @@ import Layout from "../../components/layout";
 import Hero from "../../components/hero";
 import Team from "../../containers/our-team/Team";
 import GetInTouch from "../../containers/our-team/GetInTouch";
-import SEO from "../../components/seo";
+import Seo from "../../components/seo";
 
 const OurTeam = ({ data }) => {
   const { title, heroImage, subtitle } = data.hero.nodes[0];
 
   return (
     <Layout inverted>
-      <SEO title="Our team" />
+      <Seo title="Our team" />
       <Hero title={title} slogan={subtitle} image={heroImage} />
       <Team data={data.team.nodes[0]} members={data.members.edges} />
       <GetInTouch />

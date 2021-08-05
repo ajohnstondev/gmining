@@ -4,7 +4,7 @@ import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import Hero from "../components/hero";
 import Article from "../containers/project/Article";
-import SEO from "../components/seo";
+import Seo from "../components/seo";
 
 const Project = ({ data }) => {
   const { node } = data.allContentfulProject.edges[0];
@@ -12,7 +12,7 @@ const Project = ({ data }) => {
 
   return (
     <Layout inverted>
-      <SEO title={heroTitle} />
+      <Seo title={heroTitle} />
       <Hero title={heroTitle} image={heroImage} />
       <Article data={node} />
     </Layout>

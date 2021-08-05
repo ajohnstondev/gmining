@@ -6,14 +6,14 @@ import OurMission from "../../containers/about-us/OurMission";
 import ExceptionalContent from "../../containers/investors/exceptional";
 import Achivements from "../../containers/investors/activements";
 import Approach from "../../containers/investors/approach";
-import SEO from "../../components/seo";
+import Seo from "../../components/seo";
 
 const InvestingWithUs = ({ data }) => {
   const { heroImage, title, subtitle } = data.hero.nodes[0];
 
   return (
     <Layout inverted>
-      <SEO title="Investing with us" />
+      <Seo title="Investing with us" />
       <Hero title={title} slogan={subtitle} image={heroImage} />
       <OurMission data={data.ourmission.nodes[0]} />
       <Achivements data={data.achivements.nodes[0]} />

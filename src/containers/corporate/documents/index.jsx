@@ -3,7 +3,7 @@ import { saveAs } from "file-saver";
 
 import "./index.scss";
 
-const Documents = ({ data }) => {
+const Documents = ({ data, title }) => {
   const DOCUMENTS = data.items;
   function onDownload(link, title, type) {
     if (link != "" || link != "/") saveAs(link, title+'.'+type);
@@ -13,7 +13,7 @@ const Documents = ({ data }) => {
     <div className="documents-container global-x-spacing">
       <div className="max-w-78 mx-auto">
         <h3 className="text-secondary uppercase text-center pb-2 lg:pb-0">
-          Refrence Documents
+          {title}
         </h3>
         <div>
           {DOCUMENTS.map(({ title, items }) => (

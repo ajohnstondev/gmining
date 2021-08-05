@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import { graphql } from "gatsby";
 import { saveAs } from "file-saver";
 import Layout from "../../components/layout";
 import Hero from "../../components/hero";
 import BusinessModel from "../../containers/about-us/BusinessModel";
 import GoldBox from "./../../components/goldbox";
-import SEO from "../../components/seo";
+import Seo from "../../components/seo";
 
 const OurBusinessModel = ({ data }) => {
-  const [modalOpen, setModalOpen] = useState(false);
+  // const [modalOpen, setModalOpen] = useState(false);
 
   const { heroImage, title, subtitle } = data.hero.nodes[0];
 
@@ -27,13 +27,13 @@ const OurBusinessModel = ({ data }) => {
       saveAs(blob, file.fileName);
     }
     setTimeout(() => {
-      setModalOpen(true);
+      // setModalOpen(true);
     }, 1000);
   };
 
   return (
     <Layout inverted>
-      <SEO title="Our business Model" />
+      <Seo title="Our business Model" />
       <Hero
         title={title}
         slogan={subtitle}

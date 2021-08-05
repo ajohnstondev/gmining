@@ -51,8 +51,8 @@ const Blog = ({ data }) => {
         return (
           <div className="py-8 lg:py-24">
             <div className="global-x-spacing px-0 max-w-78 mx-auto">
-              <h3 className="text-secondary border-b border-secondary pb-4 mb-4 lg:mb-8">
-                FILTER BY DATE
+              <h3 className="text-secondary uppercase border-b border-secondary pb-4 mb-4 lg:mb-8">
+                { currentLocale === "fr" ? "Filtrer par date" : "Filter by date" }
               </h3>
               <div className="justify-between lg:flex">
                 <div className="mb-6 lg:mb-0">

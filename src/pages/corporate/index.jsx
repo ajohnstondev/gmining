@@ -4,20 +4,23 @@ import Layout from "../../components/layout";
 import Hero from "../../components/hero";
 import GoldBox from "../../components/goldbox";
 import Documents from "../../containers/corporate/documents";
-import SEO from "../../components/seo";
+import Seo from "../../components/seo";
 
 const Coporate = ({ data }) => {
   const { title, heroImage } = data.hero.nodes[0];
   const { title: title2, content } = data.commitment.nodes[0];
   return (
     <Layout inverted>
-      <SEO title="Corporate" />
+      <Seo title="Corporate" />
       <Hero title={title} image={heroImage} />
       <GoldBox title={title2} main={content} />
       <Documents
         data={
           data.docs.nodes[0]
             .childrenContentfulCorporateGovernanceReferenceDocumentsDocumentsJsonNode[0]
+        }
+        title={
+          data.docs.nodes[0].title
         }
       />
     </Layout>
@@ -53,6 +56,7 @@ export const query = graphql`
       filter: { node_locale: { eq: $locale } }
     ) {
       nodes {
+        title
         childrenContentfulCorporateGovernanceReferenceDocumentsDocumentsJsonNode {
           items {
             title

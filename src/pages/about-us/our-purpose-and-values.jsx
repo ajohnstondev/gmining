@@ -6,13 +6,13 @@ import OurValues from "../../containers/about-us/OurValues";
 import Description from "../../containers/about-us/Description";
 import OurOperationals from "../../containers/about-us/OurOperational";
 import { MarketingPosition } from "./../../containers/homepage";
-import SEO from "../../components/seo";
+import Seo from "../../components/seo";
 
 const OurPurposeAndValue = ({ data }) => {
   const { heroBackground, title, subtitle } = data.hero.nodes[0];
   return (
     <Layout inverted>
-      <SEO title="Our purpose and values" />
+      <Seo title="Our purpose and values" />
       <Hero title={title} slogan={subtitle} image={heroBackground} />
       <MarketingPosition data={data.marketposition.nodes[0]} />
       <Description data={data.heading.nodes[0]} />

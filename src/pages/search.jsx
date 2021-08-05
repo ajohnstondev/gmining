@@ -2,13 +2,13 @@ import React from 'react';
 import { graphql } from 'gatsby';
 
 import Layout from '../components/layout';
-import SEO from '../components/seo';
+import Seo from '../components/seo';
 import SearchedContent from '../containers/search/SearchedContent';
 
 const CorporateDirectory = ({ data }) => {
   return (
     <Layout inverted>
-      <SEO title='Search' />
+      <Seo title='Search' />
       <SearchedContent data={data} />
     </Layout>
   );

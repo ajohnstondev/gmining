@@ -4,6 +4,7 @@ import { saveAs } from "file-saver";
 import Layout from "../components/layout";
 import GoldBox from "../components/goldbox";
 import Modal from "../components/Modal";
+import Seo from "../components/seo";
 import {
   Hero,
   Intro,
@@ -11,7 +12,6 @@ import {
   Article,
 } from "../containers/homepage";
 import { commaDelineation } from "../utils/functions";
-import SEO from "../components/seo";
 
 const Home = ({ data }) => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -77,11 +77,12 @@ const Home = ({ data }) => {
     }
 
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <Layout>
-      <SEO title="Home" />
+      <Seo title="Home" />
       {modalOpen && <Modal onClose={() => setModalOpen(false)} />}
       <Hero data={data.allContentfulHomeHero.nodes[0]} />
       <Intro

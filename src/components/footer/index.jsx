@@ -162,7 +162,10 @@ function Footer() {
             <div className="global-x-spacing footer-section relative z-10 flex justify-center">
               <div className="footer-overly text-center max-w-78 py-8 z-20 rounded-xl px-4">
                 <h3 className="text-primary uppercase mb-6 lg:mb-0">
-                  JOIN OUR MAILING LIST
+                  {currentLocale === "fr" 
+                    ? "Inscrivez-vous à notre liste d’envoi"
+                    : "Join our mailing list"
+                  }
                 </h3>
                 <form
                   onSubmit={(e) => {
@@ -199,7 +202,12 @@ function Footer() {
                   })}
 
                   <div className="mt-6 lg:mt-0">
-                    <GradientButton type="submit">Submit</GradientButton>
+                    <GradientButton type="submit">
+                      {currentLocale === "fr" 
+                        ? "Soumettre"
+                        : "Submit"
+                      }
+                    </GradientButton>
                   </div>
                 </form>
               </div>
