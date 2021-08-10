@@ -47,7 +47,7 @@ const Text = ({ data, config }) => {
           <div className="flex justify-center">
             <img
               className="mb-12"
-              src={node.data.target.file.url}
+              src={node.data.target.file?.url}
               alt={node.data.target.title}
             />
           </div>
