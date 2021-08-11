@@ -52,7 +52,7 @@ const Events = ({ data }) => {
           ({ node: { image, title, linkTitle, linkUrl, formattedDate } }) => (
             <div className="event-card-container rounded-xl overflow-hidden">
               <div className="card-image">
-                <img src={image?.file?.url} alt={title} className="w-full" />
+                <img src={image?.file?.url} alt={title} className="w-full h-full" />
               </div>
               <div className="card-detail flex flex-col gap-3 p-6">
                 <h4 className="text-primary">{title}</h4>

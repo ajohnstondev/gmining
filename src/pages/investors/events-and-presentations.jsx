@@ -22,6 +22,7 @@ export const query = graphql`
   query EventsAndPresentationQuery($locale: String) {
     events: allContentfulEventsPresentationsEvents(
       filter: { node_locale: { eq: $locale } }
+      sort: { fields: date, order: DESC }
     ) {
       edges {
         node {
