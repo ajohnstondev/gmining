@@ -27,18 +27,16 @@ const Text = ({ data, config }) => {
       ),
 
       [BLOCKS.UL_LIST]: (node, children) => (
-        <ul className="my-5 ml-6 flex flex-col">{children}</ul>
+        <ul className={(config && config.ul) || "my-5 ml-6 flex flex-col"}>{children}</ul>
       ),
 
       [BLOCKS.OL_LIST]: (node, children) => <ol>{children}</ol>,
 
-      [BLOCKS.LIST_ITEM]: (node, children) => {
-        return (
-          <li className={`${(config && config.li) || "disc-bullet"}`}>
-            <span className="flex-1">{children}</span>
-          </li>
-        );
-      },
+      [BLOCKS.LIST_ITEM]: (node, children) => (
+        <li className={(config && config.li) || "disc-bullet"}>
+          <span className="flex-1">{children}</span>
+        </li>
+      ),
 
       [BLOCKS.HR]: () => <hr />,
 
@@ -71,6 +69,22 @@ const Text = ({ data, config }) => {
             rel="noreferrer"
           >
             {content[0].value}
+          </a>
+        );
+      },
+
+      [INLINES.ASSET_HYPERLINK]: (node, children) => {
+        const { content, data } = node;
+        console.log('children >>', children);
+
+        return (
+          <a
+            className='cursor-pointer text-secondary underline mt-4 block'
+            href={data.uri}
+            target='_blank'
+            rel='noreferrer'
+          >
+            {children[0]}
           </a>
         );
       },

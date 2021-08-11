@@ -39,8 +39,11 @@ exports.createPages = async ({ graphql, actions }) => {
   `);
 
   result.data.news.edges.forEach((edge) => {
+    const ctaLink = edge.node.ctaLink;
+    if (ctaLink.startsWith('http')) return;
+
     createPage({
-      path: edge.node.ctaLink,
+      path: ctaLink,
       component: newsTemplate,
       context: {
         slug: edge.node.ctaLink,

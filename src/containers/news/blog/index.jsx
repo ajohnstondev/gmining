@@ -45,6 +45,28 @@ const Blog = ({ data }) => {
     ));
   };
 
+  const renderCtaLink = (currentLocale, ctaLink, ctaText) => {
+    if (ctaLink.startsWith('http')) {
+      return (
+        <a
+          href={ctaLink}
+          target='_blank'
+          className='font-xs text-secondary underline uppercase mt-3'
+        >
+          {ctaText || 'Read the Article'}
+        </a>
+      );
+    }
+    return (
+      <Link
+        to={`/${currentLocale}/${ctaLink}`}
+        className='font-xs text-secondary underline uppercase mt-3'
+      >
+        {ctaText || 'Read the Article'}
+      </Link>
+    );
+  };
+
   return (
     <IntlContextConsumer>
       {({ languages, language: currentLocale }) => {
@@ -93,15 +115,15 @@ const Blog = ({ data }) => {
                             <h4 className="uppercase text-text font-xs mt-3">
                               {formattedDate}
                             </h4>
-                            <p className="flex-1 text-text read-more-content mt-3">
-                              <RRenderer data={content} />
-                            </p>
-                            <Link
-                              to={`/${currentLocale}/${ctaLink}`}
-                              className="font-xs text-secondary underline uppercase mt-3"
-                            >
-                              {ctaText || "Read the Article"}
-                            </Link>
+                            <div className="flex-1 text-text read-more-content mt-3">
+                              <RRenderer
+                                data={content}
+                                config={{
+                                  ul: 'mt-1',
+                                }}
+                              />
+                            </div>
+                            {renderCtaLink(currentLocale, ctaLink, ctaText)}
                           </div>
                         )
                       )}

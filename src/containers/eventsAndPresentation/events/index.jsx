@@ -6,6 +6,7 @@ import "./index.scss";
 
 const Events = ({ data }) => {
   const [page, setPage] = useState(1);
+  const [filter, setFilter] = useState(null);
   let pagLen = 1;
 
   const generatePagination = () => {
@@ -18,18 +19,37 @@ const Events = ({ data }) => {
     return pagination;
   };
 
+  const generateFilters = () => {
+    const yearsArray = [];
+
+    data.forEach((edge) => {
+      // Fetching year
+      const date = edge.node.formattedDate;
+      const year = new Date(date).getFullYear();
+
+      console.log('year >>', year);
+
+      if (!yearsArray.includes(year)) {
+        yearsArray.push(year);
+      }
+    });
+    return yearsArray;
+  };
+
   return (
     <TitledContainer
-      title="SORT BY DATE"
-      sideList={["2001"]}
+      title='SORT BY DATE'
+      sideList={generateFilters()}
       pagination={generatePagination()}
       page={page}
       setPage={setPage}
       pagLen={pagLen}
+      setFilter={setFilter}
+      filter={filter}
     >
       <div className="grid grid-cols-1 lg:grid-cols-2 mb-4 lg:mb-10 gap-4">
         {data.map(
-          ({ node: { image, title, date, linkTitle, linkUrl, formattedDate } }) => (
+          ({ node: { image, title, linkTitle, linkUrl, formattedDate } }) => (
             <div className="event-card-container rounded-xl overflow-hidden">
               <div className="card-image">
                 <img src={image?.file?.url} alt={title} className="w-full" />
